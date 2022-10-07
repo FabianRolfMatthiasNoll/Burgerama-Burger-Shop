@@ -49,4 +49,11 @@
     <Street>Nürnburgring 12</Street>
     <Password>HelloFresh2022</Password>
   </User>
+  <User>
+    <Email>Kaulquappe</Email>
+    <Postal>Miese</Postal>
+    <City>Hallo</City>
+    <Street>Ziege</Street>
+    <Password>Frosch</Password>
+  </User>
 </Users>

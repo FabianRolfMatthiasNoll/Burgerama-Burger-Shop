@@ -5,15 +5,17 @@
     "categoryId": 1,
     "name": "Cheeseburger",
     "price": 7.99,
-    "prepTime": 5
+    "prepTime": 5,
+    "size": 0
   },
   {
     "id": 89,
     "category": "Food",
     "categoryId": 1,
     "name": "Classic Burger",
-    "price": 9.90,
-    "prepTime": 12
+    "price": 9.9,
+    "prepTime": 12,
+    "size": 0
   },
   {
     "id": 223,
@@ -21,7 +23,8 @@
     "categoryId": 2,
     "name": "Coca Cola",
     "price": 2.99,
-    "prepTime": 2
+    "prepTime": 2,
+    "size": 0
   },
   {
     "id": 33,
@@ -29,7 +32,8 @@
     "categoryId": 2,
     "name": "Sprite",
     "price": 2.99,
-    "prepTime": 2
+    "prepTime": 2,
+    "size": 0
   },
   {
     "id": 23,
@@ -37,7 +41,8 @@
     "categoryId": 1,
     "name": "Burgerama Special",
     "price": 16.99,
-    "prepTime": 16
+    "prepTime": 16,
+    "size": 0
   },
   {
     "id": 666,
@@ -45,15 +50,17 @@
     "categoryId": 1,
     "name": "Red Devil",
     "price": 12.99,
-    "prepTime": 14
+    "prepTime": 14,
+    "size": 0
   },
   {
     "id": 43,
     "category": "Drink",
     "categoryId": 2,
     "name": "Red Bull",
-    "price": 3.90,
-    "prepTime": 12
+    "price": 3.9,
+    "prepTime": 12,
+    "size": 0
   },
   {
     "id": 91,
@@ -61,23 +68,26 @@
     "categoryId": 3,
     "name": "T-Shirt Burgerama",
     "price": 12.89,
-    "prepTime": 0
+    "prepTime": 0,
+    "size": 0
   },
   {
     "id": 4,
     "category": "Merchandise (One Size)",
     "categoryId": 4,
     "name": "Snapback",
-    "price": 7.90,
-    "prepTime": 0
+    "price": 7.9,
+    "prepTime": 0,
+    "size": 0
   },
   {
     "id": 273,
     "category": "Merchandise (Clothing)",
     "categoryId": 3,
     "name": "Hoodie",
-    "price": 29.80,
-    "prepTime": 0
+    "price": 29.8,
+    "prepTime": 0,
+    "size": 0
   },
   {
     "id": 54,
@@ -85,7 +95,8 @@
     "categoryId": 1,
     "name": "French Fries",
     "price": 3.99,
-    "prepTime": 5
+    "prepTime": 5,
+    "size": 0
   },
   {
     "id": 387,
@@ -93,6 +104,7 @@
     "categoryId": 4,
     "name": "Stickers",
     "price": 0.99,
-    "prepTime": 0
+    "prepTime": 0,
+    "size": 0
   }
 ]
