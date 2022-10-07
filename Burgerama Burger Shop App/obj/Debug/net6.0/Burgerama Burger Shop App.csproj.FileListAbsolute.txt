@@ -1,0 +1,49 @@
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.csproj.AssemblyReference.cache
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.AssemblyInfoInputs.cache
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.AssemblyInfo.cs
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.csproj.CoreCompileInputs.cache
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.exe
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.deps.json
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.runtimeconfig.json
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.dll
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.pdb
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.dll
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\refint\Burgerama Burger Shop App.dll
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.pdb
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.genruntimeconfig.cache
+C:\Users\fanoll\source\repos\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\ref\Burgerama Burger Shop App.dll
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.exe
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.deps.json
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.runtimeconfig.json
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.dll
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.pdb
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.csproj.AssemblyReference.cache
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.AssemblyInfoInputs.cache
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.AssemblyInfo.cs
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.csproj.CoreCompileInputs.cache
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.dll
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\refint\Burgerama Burger Shop App.dll
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.pdb
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.genruntimeconfig.cache
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\ref\Burgerama Burger Shop App.dll
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\workspace\Burgerama Burger Shop App\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.csproj.CopyComplete
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.exe
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.deps.json
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.runtimeconfig.json
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.dll
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\Burgerama Burger Shop App.pdb
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.csproj.AssemblyReference.cache
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.AssemblyInfoInputs.cache
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.AssemblyInfo.cs
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.csproj.CoreCompileInputs.cache
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.csproj.CopyComplete
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.dll
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\refint\Burgerama Burger Shop App.dll
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.pdb
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.genruntimeconfig.cache
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\ref\Burgerama Burger Shop App.dll

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <User>
+    <Email>Fabian.Noll@gmail.com</Email>
+    <Postal>78532</Postal>
+    <City>Tuttlingen</City>
+    <Street>Neuhauserstraße 71</Street>
+    <Password>Florian</Password>
+  </User>
+  <User>
+    <Email>Florian.Armbruster@gmx.de</Email>
+    <Postal>78532</Postal>
+    <City>Wurmlingen</City>
+    <Street>Königsstraße 8</Street>
+    <Password>KST</Password>
+  </User>
+  <User>
+    <Email>Leander.Sekran@karlstorz.com</Email>
+    <Postal>70924</Postal>
+    <City>Baklava</City>
+    <Street>Hundaria 13</Street>
+    <Password>kstle123</Password>
+  </User>
+  <User>
+    <Email>Simon.Brubar@t-online.com</Email>
+    <Postal>78532</Postal>
+    <City>Tuttlingen</City>
+    <Street>DKS 34</Street>
+    <Password>kaiserstraße10</Password>
+  </User>
+  <User>
+    <Email>Dullenkopf.Christian@siemens.de</Email>
+    <Postal>78522</Postal>
+    <City>Mühlheim an der Donau</City>
+    <Street>Meerettischstraße 37</Street>
+    <Password>Balung43</Password>
+  </User>
+  <User>
+    <Email>admin</Email>
+    <Postal>admin</Postal>
+    <City>admin</City>
+    <Street>admin</Street>
+    <Password>admin</Password>
+  </User>
+  <User>
+    <Email>Heinrich.Summer@gmx.de</Email>
+    <Postal>34508</Postal>
+    <City>Simbabwe</City>
+    <Street>Nürnburgring 12</Street>
+    <Password>HelloFresh2022</Password>
+  </User>
+</Users>
