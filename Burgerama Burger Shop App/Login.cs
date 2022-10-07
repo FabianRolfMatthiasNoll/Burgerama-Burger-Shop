@@ -44,7 +44,7 @@ namespace Burgerama_Burger_Shop_App
 
         static bool CheckLoginCredentials(string email, string password)
         {
-            var usersXML = XElement.Load("C:\\workspace\\Burgerama Burger Shop App\\Burgerama Burger Shop App\\user_data.xml");
+            var usersXML = XElement.Load("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\user_data.xml");
             IEnumerable<XElement> users = usersXML.Elements();
 
             foreach (var user in users)
@@ -64,7 +64,7 @@ namespace Burgerama_Burger_Shop_App
             List<User> userList;
 
             //read in the xml file, deserialize it and put it into a userlist
-            using (var reader = new StreamReader("C:\\workspace\\Burgerama Burger Shop App\\Burgerama Burger Shop App\\user_data.xml"))
+            using (var reader = new StreamReader("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\user_data.xml"))
             {
                 XmlSerializer deserializer = new XmlSerializer(typeof(List<User>),
                     new XmlRootAttribute("Users"));
