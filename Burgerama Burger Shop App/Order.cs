@@ -26,14 +26,16 @@ namespace Burgerama_Burger_Shop_App
         public List<Product> boughtProducts;
         public User customer;
 
-        public Order(int orderId)
+        public Order()
         {
-            id = orderId;
             state = State.Preperation;
         }
 
         public static Object FillInformationInOrder(Order order, User user, List<Product> shoppingCart)
         {
+
+            List<Driver> drivers = Driver.LoadCurrentDriverStates();
+
             order.customer = user;
             order.boughtProducts = shoppingCart;
             
@@ -47,23 +49,47 @@ namespace Burgerama_Burger_Shop_App
 
                 order.totalSum = order.totalSum + product.price;
             }
-
-            //if a driver is free = 20min delivery - if not = 35min delivery
-            order.shipTime = (DriverManagment.IsDriverFree()) ? 20 : 35;
+            bool driverAvailable = false;
+            foreach (var driver in drivers)
+            {
+                if (Driver.IsDriverFree(driver))
+                {
+                    order.shipTime = 20;
+                    driverAvailable = true;
+                    break;
+                }
+            }
+            if (!driverAvailable)
+            {
+                order.shipTime = 35;
+            }
 
             order.totalTime = order.shipTime + order.prepTime;
 
             return order;
         }
 
-        public static void DecreaseTotalTime()
+        public static void DecreaseTotalTime(Order order)
         {
-
-        }
-
-        public static void ChangeStatus()
-        {
-
+            if (order.state == State.Preperation)
+            {
+                order.prepTime = order.prepTime - 15;
+                if (order.prepTime <= 0)
+                {
+                    order.state = State.Delivery;
+                    order.shipTime = order.shipTime - Math.Abs(order.prepTime);
+                    order.prepTime = 0;
+                }
+            }
+            else if (order.state == State.Delivery)
+            {
+                order.shipTime = order.shipTime - 15;
+                if (order.shipTime <= 0)
+                {
+                    order.state = State.Closed;
+                    order.shipTime = 0;
+                }
+            }
         }
     }
 }
