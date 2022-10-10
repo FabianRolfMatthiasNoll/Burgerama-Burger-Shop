@@ -13,8 +13,7 @@
         "categoryId": 1,
         "name": "Cheeseburger",
         "price": 7.99,
-        "prepTime": 5,
-        "size": null
+        "prepTime": 5
       }
     ],
     "customer": {
@@ -23,66 +22,6 @@
       "postal": "78532",
       "street": "Neuhauserstraße 71",
       "city": "Tuttlingen"
-    }
-  },
-  {
-    "id": 1,
-    "state": 0,
-    "prepTime": 0,
-    "shipTime": 20,
-    "totalTime": 20,
-    "totalSum": 29.8,
-    "boughtProducts": [
-      {
-        "id": 273,
-        "category": "Merchandise (Clothing)",
-        "categoryId": 3,
-        "name": "Hoodie",
-        "price": 29.8,
-        "prepTime": 0
-      }
-    ],
-    "customer": {
-      "email": "Florian.Armbruster@gmx.de",
-      "password": "KST",
-      "postal": "78532",
-      "street": "Königsstraße 8",
-      "city": "Wurmlingen"
-    }
-  },
-  {
-    "id": 2,
-    "state": 0,
-    "prepTime": 12,
-    "shipTime": 20,
-    "totalTime": 32,
-    "totalSum": 39.7,
-    "boughtProducts": [
-      {
-        "id": 273,
-        "category": "Merchandise (Clothing)",
-        "categoryId": 3,
-        "name": "Hoodie",
-        "price": 29.8,
-        "prepTime": 0,
-        "size": 4
-      },
-      {
-        "id": 89,
-        "category": "Food",
-        "categoryId": 1,
-        "name": "Classic Burger",
-        "price": 9.9,
-        "prepTime": 12,
-        "size": 0
-      }
-    ],
-    "customer": {
-      "email": "admin",
-      "password": "admin",
-      "postal": "admin",
-      "street": "admin",
-      "city": "admin"
     }
   }
 ]

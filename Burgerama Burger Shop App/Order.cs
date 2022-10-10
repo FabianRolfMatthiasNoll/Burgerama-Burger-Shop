@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Burgerama_Burger_Shop_App.products;
 
 namespace Burgerama_Burger_Shop_App
 {
@@ -53,6 +54,16 @@ namespace Burgerama_Burger_Shop_App
             order.totalTime = order.shipTime + order.prepTime;
 
             return order;
+        }
+
+        public static void DecreaseTotalTime()
+        {
+
+        }
+
+        public static void ChangeStatus()
+        {
+
         }
     }
 }
