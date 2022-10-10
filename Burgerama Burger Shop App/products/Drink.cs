@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleTables;
 
 namespace Burgerama_Burger_Shop_App.products
 {
@@ -22,17 +23,16 @@ namespace Burgerama_Burger_Shop_App.products
             onIce = prodOnIce;
         }
 
-        public override void PrintSummaryInfo(int consoleRow)
+        public override ConsoleTable PrintSummaryInfo(ConsoleTable table, int index)
         {
-            Console.SetCursorPosition(0, consoleRow);
-            Console.Write("(" + (consoleRow - 6) + ") ");
-            Console.Write(name);
-            if(onIce = true)
+            if (onIce = true)
             {
-                Console.Write(" (on Ice)");
+                table.AddRow(index, name, "On Ice", price + "$");
+            } else
+            {
+                table.AddRow(index, name, "", price + "$");
             }
-            Console.SetCursorPosition(40, consoleRow);
-            Console.WriteLine(price + "$");
+            return table;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleTables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,14 +27,10 @@ namespace Burgerama_Burger_Shop_App.products
             size = inputSize;
         }
 
-        public override void PrintSummaryInfo(int consoleRow)
+        public override ConsoleTable PrintSummaryInfo(ConsoleTable table, int index)
         {
-            Console.SetCursorPosition(0, consoleRow);
-            Console.Write("(" + (consoleRow - 6) + ") ");
-            Console.Write(name);
-            Console.Write(" " + size);
-            Console.SetCursorPosition(40, consoleRow);
-            Console.WriteLine(price + "$");
+            table.AddRow(index, name, size, price + "$");
+            return table;
         }
     }
 }

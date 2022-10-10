@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ConsoleTables;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,13 +28,10 @@ namespace Burgerama_Burger_Shop_App.products
             prepTime = prodPrepTime;
         }
 
-        public virtual void PrintSummaryInfo(int consoleRow)
+        public virtual ConsoleTable PrintSummaryInfo(ConsoleTable table, int index)
         {
-            Console.SetCursorPosition(0, consoleRow);
-            Console.Write("(" + (consoleRow - 6) + ") ");
-            Console.Write(name);
-            Console.SetCursorPosition(40, consoleRow);
-            Console.WriteLine(price + "$");
+            table.AddRow(index, name, "", price + "$");
+            return table;
         }
 
         public static void FillProductData()
