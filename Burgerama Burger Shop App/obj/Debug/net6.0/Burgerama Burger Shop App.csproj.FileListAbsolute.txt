@@ -47,3 +47,4 @@ C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj
 C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.pdb
 C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\Burgerama Burger Shop App.genruntimeconfig.cache
 C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\obj\Debug\net6.0\ref\Burgerama Burger Shop App.dll
+C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\ConsoleTables.dll

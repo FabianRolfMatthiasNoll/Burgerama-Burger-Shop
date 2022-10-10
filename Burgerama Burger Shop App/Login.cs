@@ -30,7 +30,7 @@ namespace Burgerama_Burger_Shop_App
             string password = HashString(GetPassword());
 
             //special login for manager overview
-            if (email == "Manager" && password == "king")
+            if (email == "Manager" && password == "39F968F400E6B06A5153F37683C348C94C948539B17636C0529A4E833ACE9C40")
             {
                 Console.Clear();
                 Managment.ManagerMenu();
