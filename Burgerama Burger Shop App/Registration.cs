@@ -35,7 +35,7 @@ namespace Burgerama_Burger_Shop_App
             }
 
             Console.Write("Please choose a Password: ");
-            newUser.password = Console.ReadLine();
+            newUser.password = Login.HashString(Login.GetPassword());
             Program.ClearCurrentConsoleLine();
 
             Console.Write("Please enter your Street: ");
