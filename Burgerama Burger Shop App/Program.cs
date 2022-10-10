@@ -8,6 +8,8 @@ using System.Xml.Serialization;
 using System.Security.Principal;
 using System.Text;
 using System.Collections;
+using Newtonsoft.Json;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace Burgerama_Burger_Shop_App
 {
@@ -16,7 +18,7 @@ namespace Burgerama_Burger_Shop_App
         public static void Main()
         {
 
-            //Debugging Bypass uncomment to whichever Interface you want to go
+            Console.SetWindowSize(140, 30);
 
             //Registration.RegistrationMenu();
 
@@ -26,10 +28,9 @@ namespace Burgerama_Burger_Shop_App
 
             //End of Debugging Bypass
 
-
             Console.WriteLine("\n                            |\\ /| /|_/|\r\n                          |\\||-|\\||-/|/|\r\n                           \\\\|\\|//||///\r\n          _..----.._       |\\/\\||//||||\r\n        .'     o    '.     |||\\\\|/\\\\ ||\r\n       /   o       o  \\    | './\\_/.' |\r\n      |o        o     o|   |          |\r\n      /'-.._o     __.-'\\   |          |\r\n      \\      `````     /   |          |\r\n      |``--........--'`|    '.______.'\r\n       \\              /\r\n        `'----------'`\n");
             Console.WriteLine("Welcome to Burgerama Burger Shop");
-            Console.WriteLine("Please log in to take your order or register a new accoutn with us :)");
+            Console.WriteLine("Please log in to take your order or register a new account with us :)");
             Console.WriteLine("(1) Register at Burgerama");
             Console.WriteLine("(2) Login at Burgerama");
             Console.WriteLine("");
