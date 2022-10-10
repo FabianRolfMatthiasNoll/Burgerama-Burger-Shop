@@ -1,5 +1,7 @@
 ﻿using Burgerama_Burger_Shop_App.products;
+using ConsoleTables;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +21,7 @@ namespace Burgerama_Burger_Shop_App
         {
             Console.WriteLine("Welcome " + user.email);
             Console.WriteLine("Please Have a look at out menu:");
-            Console.WriteLine("================================================================");
+            Console.WriteLine("-----------------------------------------");
 
             Product.FillProductData();  //Run only when first time initializing a new product_data.json
 
@@ -36,15 +38,23 @@ namespace Burgerama_Burger_Shop_App
 
         public static Order OrderProduct(List<Product> products, User user)
         {
-            ArrayList orderList = ReadOrderList();
+            //to be deleted if it continues to be obsolete
+            //ArrayList orderList = ReadOrderList();
+
+            //variable for different menu positions based from the header
+            int headerLength = 4;
 
             //create a new order
-            Order order = new Order(orderList.Count);
+            Order order = new Order();
 
             List<Product> shoppingCart = new List<Product>();
 
             while (true)
             {
+                //Get console entry position for menu alignment
+                int x = Console.CursorLeft;
+                int y = Console.CursorTop;
+
                 //choose a product to add to the shopping cart
                 Console.WriteLine("Please choose a product on from our menu");
                 Program.ClearCurrentConsoleLine();
@@ -75,14 +85,21 @@ namespace Burgerama_Burger_Shop_App
                 shoppingCart.Add(products[selection - 1]);
 
                 //setting the cursor behind the price
-                Console.SetCursorPosition(60, selection + 2);
+                Console.SetCursorPosition(60, selection + headerLength);
                 Console.Write("(1)");
-                Console.SetCursorPosition(0, 16);
+                Console.SetCursorPosition(x, y);
             }
             Console.Clear();
-            
-            orderList.Add(order);
-            WriteOrderList(orderList);
+
+            if(order.prepTime == 0)
+            {
+                order.state = State.Delivery;
+            }
+            Driver.AddOrderToDriver(order);
+
+            //for the time this function is obsolete because orders get saved in the drivers 
+            //orderList.Add(order);
+            //WriteOrderList(orderList);
             return order;
         }
 
@@ -94,46 +111,57 @@ namespace Burgerama_Burger_Shop_App
 
             List<Product> SortedProductList = productList.OrderBy(o => o.categoryId).ToList();
 
-            int i = 2;
-            foreach(var product in SortedProductList)
+            var table = new ConsoleTable("ID","Name","Category","Price");
+            
+            int index = 1;
+            foreach (var product in SortedProductList)
             {
-                i++;
-                Console.SetCursorPosition(0, i);
-                Console.Write("(" + (i - 2) + ") ");
-                Console.Write(product.name);
-                Console.SetCursorPosition(25, i);
-                Console.Write(product.category);
-                Console.SetCursorPosition(53, i);
-                Console.WriteLine(product.price + "$");
+                table.AddRow(index, product.name, product.category, product.price);
+                index++;
             }
-            Console.SetCursorPosition(0, i + 1);
-            Console.WriteLine("(" + (i - 1) + ") Place Order "); //i is only -1 because i didnt get incremented at the end of the foreach
+
+            table.AddRow(index, "Place Order","","");
+            table.Write(Format.MarkDown);
+            
             return SortedProductList;
         }
     
         public static void ShowTotalOrder(Order order)
         {
-            Console.WriteLine("===================================================");
-            Console.WriteLine("             Summary of your Order");
-            Console.WriteLine("===================================================");
-            Console.WriteLine("Delivering to: " + order.customer.postal + " " + order.customer.city);
-            Console.WriteLine("               " + order.customer.street);
-            Console.WriteLine("===================================================");
-            int consoleRow = 6; //i have to do this dynamicly at some point!!!
-            int totalSum;
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("        Summary of your Order");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("Delivering to:    " + order.customer.postal + " " + order.customer.city);
+            Console.WriteLine("                  " + order.customer.street);
+            Console.WriteLine("-----------------------------------------");
+
+            var table = new ConsoleTable("Pos.", "Name", "Variant", "Price");
+            int index = 1;
+
             foreach (var product in order.boughtProducts)
             {
-                consoleRow++;
-                product.PrintSummaryInfo(consoleRow);
+                table = product.PrintSummaryInfo(table, index);
+                index++;
             }
-            Console.WriteLine("\nYour total is: " + Math.Round(order.totalSum,2) + "$");
+            table.AddRow(index, "US Tax", "", Math.Round((order.totalSum * 0.0884), 2) + "$");
+
+            table.Write(Format.Minimal);
+            Console.WriteLine("\n-----------------------------------------");
+            Console.WriteLine("Your total including tax is: " + Math.Round((order.totalSum * 1.0884),2) + "$");
             Console.WriteLine("Your Delivery is estimated to take: " + order.totalTime + "min");
+            Console.ReadKey();
+            Console.Clear();
+            Program.Main();
         }
 
         static Product CheckIfDrink(Product product)
         {
             if (product.category == "Drink")
             {
+                if(product.name == "Red Bull")
+                {
+                    return product;
+                }
                 product = IsDrinkOnIce(product);
             }
             return product;
@@ -141,9 +169,12 @@ namespace Burgerama_Burger_Shop_App
 
         static Product IsDrinkOnIce(Product product)
         {
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
             Program.ClearCurrentConsoleLine();
             Console.Write("Please choose 'true' or 'false' if you want your Drink on Ice: ");
-            if (Console.ReadLine() == "true")
+            string input = Console.ReadLine();
+            string finput = input.ToLower();
+            if (finput == "true")
             {
                 Product drinkIce = new Drink(product.id,
                                           product.category,
@@ -152,6 +183,8 @@ namespace Burgerama_Burger_Shop_App
                                           product.prepTime,
                                           product.categoryId,
                                           true);
+
+                Program.ClearCurrentConsoleLine();
                 return drinkIce;
             }
             else
@@ -163,6 +196,8 @@ namespace Burgerama_Burger_Shop_App
                                           product.prepTime,
                                           product.categoryId,
                                           false);
+
+                Program.ClearCurrentConsoleLine();
                 return drink;
             }
         }
@@ -192,23 +227,24 @@ namespace Burgerama_Burger_Shop_App
             while (true) 
             {
                 string input = Console.ReadLine();
-                if (input == "S")
+                string finput = input.ToUpper();
+                if (finput == "S")
                 {
                     merch.SetSize("S");
                     return merch;
-                } else if (input == "M")
+                } else if (finput == "M")
                 {
                     merch.SetSize("M");
                     return merch;
-                } else if (input == "L")
+                } else if (finput == "L")
                 {
                     merch.SetSize("L");
                     return merch;
-                } else if (input == "XL")
+                } else if (finput == "XL")
                 {
                     merch.SetSize("XL");
                     return merch;
-                } else if (input == "XXL")
+                } else if (finput == "XXL")
                 {
                     merch.SetSize("XXL");
                     return merch;
