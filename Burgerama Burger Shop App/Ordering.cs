@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Burgerama_Burger_Shop_App.products;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -19,7 +21,7 @@ namespace Burgerama_Burger_Shop_App
             Console.WriteLine("Please Have a look at out menu:");
             Console.WriteLine("================================================================");
 
-            FillProductData();  //Run only when first time initializing a new product_data.json
+            Product.FillProductData();  //Run only when first time initializing a new product_data.json
 
             //displaying our product catalog and return sorted product catalog as displayed
             List<Product> products = ShowProductData();
@@ -32,7 +34,7 @@ namespace Burgerama_Burger_Shop_App
             Console.ReadKey();
         }
 
-        public static Object OrderProduct(List<Product> products, User user)
+        public static Order OrderProduct(List<Product> products, User user)
         {
             ArrayList orderList = ReadOrderList();
 
@@ -45,7 +47,9 @@ namespace Burgerama_Burger_Shop_App
             {
                 //choose a product to add to the shopping cart
                 Console.WriteLine("Please choose a product on from our menu");
+                Program.ClearCurrentConsoleLine();
                 Console.Write("Enter your Option: ");
+
                 int selection = Convert.ToInt32(Console.ReadLine());
 
                 //check that the input value is a correct one
@@ -63,20 +67,10 @@ namespace Burgerama_Burger_Shop_App
                     
                     break;
                 }
+                products[selection - 1] = CheckIfDrink(products[selection - 1]);
 
-                if (products[selection -1].category == "Merchandise (Clothing)")
-                {
-                    IMerchandise product = new Product(products[selection - 1].id,
-                                                       products[selection - 1].category,
-                                                       products[selection - 1].name,
-                                                       products[selection - 1].price,
-                                                       products[selection - 1].prepTime,
-                                                       products[selection - 1].categoryId);
-                    Console.WriteLine("You can choose: 0 - S / 1 - M / 2 - L / 3 - Xl / 4 - XXL");
-                    Console.Write("Please select a size: ");
-                    product.SetSize(Convert.ToInt32(Console.ReadLine()));
-                    products[selection - 1] = (Product)product;
-                }
+                products[selection - 1] = CheckIfMerchandise(products[selection - 1]);
+
                 //add product to shopping cart - MUST HAPPEN AFTER PLACING ORDER!
                 shoppingCart.Add(products[selection - 1]);
 
@@ -90,50 +84,6 @@ namespace Burgerama_Burger_Shop_App
             orderList.Add(order);
             WriteOrderList(orderList);
             return order;
-        }
-
-        public static void FillProductData()
-        {
-            Product product = new Product(130, "Food", "Cheeseburger", 7.99, 5, 1);
-            Product product2 = new Product(89, "Food", "Classic Burger", 9.90, 12, 1);
-            IDrink product3 = new Product(223, "Drink", "Coca Cola", 2.99, 2, 2);
-            IDrink product4 = new Product(33, "Drink", "Sprite", 2.99, 2, 2);
-            Product product5 = new Product(23, "Food", "Burgerama Special", 16.99, 16, 1);
-            Product product6 = new Product(666, "Food", "Red Devil", 12.99, 14, 1);
-            Product product7 = new Product(43, "Drink", "Red Bull", 3.90, 12, 2);
-            IMerchandise product8 = new Product(91, "Merchandise (Clothing)", "T-Shirt Burgerama", 12.89, 0, 3);
-            Product product9 = new Product(4, "Merchandise (One Size)", "Snapback", 7.90, 0, 4);
-            IMerchandise product10 = new Product(273, "Merchandise (Clothing)", "Hoodie", 29.80, 0, 3);
-            Product product11 = new Product(54, "Food", "French Fries", 3.99, 5, 1);
-            Product product12 = new Product(387, "Merchandise (One Size)", "Stickers", 0.99, 0, 4);
-
-            ArrayList products = new ArrayList();
-
-            /* TODO Make this a 3 liner instead every product singular
-            for(int i = 0; i < 11; i++)
-            {
-                products.Add(product+ToString(i));
-            }
-            */
-
-            products.Add(product);
-            products.Add(product2);
-            products.Add(product3);
-            products.Add(product4);
-            products.Add(product5);
-            products.Add(product6);
-            products.Add(product7);
-            products.Add(product8);
-            products.Add(product9);
-            products.Add(product10);
-            products.Add(product11);
-            products.Add(product12);
-
-            //serializes the product data to json
-            string json = JsonConvert.SerializeObject(products, Formatting.Indented);
-
-            //write serialized json to file
-            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\product_data.json", json);
         }
 
         public static List<Product> ShowProductData()
@@ -169,19 +119,108 @@ namespace Burgerama_Burger_Shop_App
             Console.WriteLine("Delivering to: " + order.customer.postal + " " + order.customer.city);
             Console.WriteLine("               " + order.customer.street);
             Console.WriteLine("===================================================");
-            int i = 6; //i have to do this dynamicly at some point!!!
+            int consoleRow = 6; //i have to do this dynamicly at some point!!!
             int totalSum;
             foreach (var product in order.boughtProducts)
             {
-                i++;
-                Console.SetCursorPosition(0, i);
-                Console.Write("(" + (i - 6) + ") ");
-                Console.Write(product.name);
-                Console.SetCursorPosition(25, i);
-                Console.WriteLine(product.price + "$");
+                consoleRow++;
+                product.PrintSummaryInfo(consoleRow);
             }
             Console.WriteLine("\nYour total is: " + Math.Round(order.totalSum,2) + "$");
             Console.WriteLine("Your Delivery is estimated to take: " + order.totalTime + "min");
+        }
+
+        static Product CheckIfDrink(Product product)
+        {
+            if (product.category == "Drink")
+            {
+                product = IsDrinkOnIce(product);
+            }
+            return product;
+        }
+
+        static Product IsDrinkOnIce(Product product)
+        {
+            Program.ClearCurrentConsoleLine();
+            Console.Write("Please choose 'true' or 'false' if you want your Drink on Ice: ");
+            if (Console.ReadLine() == "true")
+            {
+                Product drinkIce = new Drink(product.id,
+                                          product.category,
+                                          product.name,
+                                          product.price,
+                                          product.prepTime,
+                                          product.categoryId,
+                                          true);
+                return drinkIce;
+            }
+            else
+            {
+                Product drink = new Drink(product.id,
+                                          product.category,
+                                          product.name,
+                                          product.price,
+                                          product.prepTime,
+                                          product.categoryId,
+                                          false);
+                return drink;
+            }
+        }
+
+        static Product CheckIfMerchandise(Product product)
+        {
+            if (product.category == "Merchandise (Clothing)")
+            {
+                product = SetSize(product);
+            }
+            return product;
+        }
+
+        static Product SetSize(Product product)
+        {
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            Program.ClearCurrentConsoleLine();
+            Console.Write("Please choose a following Size S,M,L,XL,XXL: ");
+
+            Product merch = new Merchandise(product.id,
+                                                   product.category,
+                                                   product.name,
+                                                   product.price,
+                                                   product.prepTime,
+                                                   product.categoryId);
+
+            while (true) 
+            {
+                string input = Console.ReadLine();
+                if (input == "S")
+                {
+                    merch.SetSize("S");
+                    return merch;
+                } else if (input == "M")
+                {
+                    merch.SetSize("M");
+                    return merch;
+                } else if (input == "L")
+                {
+                    merch.SetSize("L");
+                    return merch;
+                } else if (input == "XL")
+                {
+                    merch.SetSize("XL");
+                    return merch;
+                } else if (input == "XXL")
+                {
+                    merch.SetSize("XXL");
+                    return merch;
+                } else
+                {
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please input a legitimate Size [Press Any Key to continue]");
+                    Console.ReadKey();
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please choose a following Size S,M,L,XL,XXL: ");
+                }
+            }
         }
 
         static ArrayList ReadOrderList()
