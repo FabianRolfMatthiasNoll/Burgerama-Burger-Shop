@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,28 @@ namespace Burgerama_Burger_Shop_App.products
         {
             table.AddRow(index, name, "", price + "$");
             return table;
+        }
+
+        public static void CheckProductID()
+        {
+            string json = File.ReadAllText("src/data/product_data.json");
+
+            var productList = JsonConvert.DeserializeObject<List<Product>>(json);
+
+            foreach(var product1 in productList)
+            {
+                foreach(var product2 in productList)
+                {
+                    if(product1.id == product2.id && product1.name != product2.name)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("[ERROR] Product Initialization failed [CAUSE] Duplicate IDs found");
+                        Console.WriteLine("[SOLUTION] fix multiple IDs and restart application");
+                        Console.ReadKey();
+                        Environment.Exit(0);
+                    }
+                }
+            }
         }
 
         public static void FillProductData()
@@ -75,12 +98,12 @@ namespace Burgerama_Burger_Shop_App.products
             string json = JsonConvert.SerializeObject(products, Formatting.Indented);
 
             //write serialized json to file
-            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\src\data\product_data.json", json);
+            File.WriteAllText(@"src/data/product_data.json", json);
         }
 
         public virtual void SetSize(string inputSize)
         {
-
+            //not a empty method. needed to overwrite in merchandis.cs
         }
     }
 }
