@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -21,11 +22,25 @@ namespace Burgerama_Burger_Shop_App
             Console.WriteLine("");
             Console.WriteLine("Please input your Login Credentials\n");
             Console.Write("Email:");
-            string email = Console.ReadLine();
-            Program.ClearCurrentConsoleLine();
+            var emailCheck = new EmailAddressAttribute();
+            string emailUnfiltered = Console.ReadLine();
+            string email = emailUnfiltered.ToLower();
 
-            
+            while (!emailCheck.IsValid(email))
+            {
+                if(email ==  "Manager" || email == "admin")
+                {
+                    break;
+                }
+
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter a valid email adress:");
+                email = Console.ReadLine();
+            }
+
             //hides password input 
+            Program.ClearCurrentConsoleLine();
             Console.Write("Password:");
             string password = HashString(GetPassword());
 
