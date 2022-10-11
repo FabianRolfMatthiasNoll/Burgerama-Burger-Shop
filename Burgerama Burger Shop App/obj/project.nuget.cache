@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kh8ulT8wOEE2hvRJ9mD0UhPyjmooOy83ECzd+2yFc6bAwpty9KPm9sdrPqDUiMX+mPrhlv8zGEA2l0+Mrw6cBw==",
+  "dgSpecHash": "FecW7NmiMghw/N/pathuQFbzqYYdsyUI+zr3mu0GUPz/Jibnj7kIYyystlVq82AbTOw/T4X54h11NAwMoySpfg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj",
+  "projectFilePath": "C:\\Users\\fanoll\\source\\repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fanoll\\.nuget\\packages\\consoletables\\2.4.2\\consoletables.2.4.2.nupkg.sha512",
     "C:\\Users\\fanoll\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

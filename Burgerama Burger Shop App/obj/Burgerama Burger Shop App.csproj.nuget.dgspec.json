@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj": {}
+    "C:\\Users\\fanoll\\source\\repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj": {
+    "C:\\Users\\fanoll\\source\\repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj",
+        "projectUniqueName": "C:\\Users\\fanoll\\source\\repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj",
         "projectName": "Burgerama Burger Shop App",
-        "projectPath": "C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj",
+        "projectPath": "C:\\Users\\fanoll\\source\\repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\Burgerama Burger Shop App.csproj",
         "packagesPath": "C:\\Users\\fanoll\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\obj\\",
+        "outputPath": "C:\\Users\\fanoll\\source\\repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fanoll\\AppData\\Roaming\\NuGet\\NuGet.Config",

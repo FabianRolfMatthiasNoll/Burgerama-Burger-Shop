@@ -29,11 +29,12 @@ namespace Burgerama_Burger_Shop_App
             Console.WriteLine("\nManagment System Online");
             Console.WriteLine("1) Move Time forward by 15min");
             Console.WriteLine("2) Delete all Orders that are 'closed'");
+            Console.WriteLine("3) Return to the main Menu");
             Console.Write("What do you want to do?: ");
 
             int menu = Convert.ToInt32(Console.ReadLine());
 
-            while (menu < 1 || menu > 2)
+            while (menu < 1 || menu > 3)
             {
                 //If entered value isnt a integer an error occurs
                 Program.ClearCurrentConsoleLine();
@@ -45,10 +46,14 @@ namespace Burgerama_Burger_Shop_App
                 SpeedUpTime(drivers);
                 ManagerMenu();
             }
-            else
+            else if(menu == 2)
             {
                 EraseClosedOrders(drivers);
                 ManagerMenu();
+            } else
+            {
+                Console.Clear();
+                Program.Main();
             }
         }
 
