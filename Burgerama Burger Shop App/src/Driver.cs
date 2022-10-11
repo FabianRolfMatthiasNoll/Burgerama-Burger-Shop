@@ -66,9 +66,31 @@ namespace Burgerama_Burger_Shop_App
             Driver.SaveCurrentDriverStates(drivers);
         }
 
+        public static void UpdateDrivers()
+        {
+            string jsonDriver = File.ReadAllText("src/data/driver_config.json");
+            string jsonData = File.ReadAllText("src/data/driver_data.json");
+
+            var driverStates = JsonConvert.DeserializeObject<List<Driver>>(jsonData);
+
+            List<Driver> drivers = JsonConvert.DeserializeObject<List<Driver>>(jsonDriver);
+
+            foreach(var driver1 in drivers)
+            {
+                foreach(var driver2 in driverStates)
+                {
+                    if(driver1.name == driver2.name)
+                    {
+                        driver1.orders = driver2.orders;
+                    }
+                }
+            }
+            SaveCurrentDriverStates(drivers);
+        }
+
         public static List<Driver> LoadCurrentDriverStates()
         {
-            string json = File.ReadAllText("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\src\\data\\driver_data.json");
+            string json = File.ReadAllText("src/data/driver_data.json");
 
             var drivers = JsonConvert.DeserializeObject<List<Driver>>(json);
 
@@ -78,7 +100,7 @@ namespace Burgerama_Burger_Shop_App
         public static void SaveCurrentDriverStates(List<Driver> drivers)
         {
             string json = JsonConvert.SerializeObject(drivers, Formatting.Indented);
-            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\src\data\driver_data.json", json);
+            File.WriteAllText(@"src/data/driver_data.json", json);
         }
     }
 }
