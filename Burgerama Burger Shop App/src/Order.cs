@@ -47,9 +47,19 @@ namespace Burgerama_Burger_Shop_App
                     order.prepTime = product.prepTime;
                 }
 
+                if (order.prepTime == 0)
+                {
+                    order.state = State.Delivery;
+                } else
+                {
+                    order.state = State.Preperation;
+                }
+
                 order.totalSum = order.totalSum + product.price;
             }
+
             bool driverAvailable = false;
+
             foreach (var driver in drivers)
             {
                 if (Driver.IsDriverFree(driver))
