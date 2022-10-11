@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Burgerama_Burger_Shop_App.products;
+using Burgerama_Burger_Shop_App.src;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,48 +22,119 @@ namespace Burgerama_Burger_Shop_App
             Console.WriteLine("");
             Console.WriteLine("For perfect customer satisfication we need a bit of information about you :)\n");
 
-            Console.Write("Please enter your Email: ");
-            newUser.email = Console.ReadLine();
-            Program.ClearCurrentConsoleLine();
+            newUser.email = GetEmail();
 
-            while (IsEmailTaken(newUser.email))
-            {
-                //Email is taken reenter until a new email is registered
-                Console.WriteLine("The Email you entered is already taken [Press any Key]");
-                Console.ReadKey();
-                Program.ClearCurrentConsoleLine();
+            newUser.password = GetPassword();
 
-                Console.Write("Please enter another Email: ");
-                newUser.email = Console.ReadLine();
-                Program.ClearCurrentConsoleLine();
-            }
+            newUser.street = GetStreet();
 
-            Console.Write("Please choose a Password: ");
-            newUser.password = Login.HashString(Login.GetPassword());
-            Program.ClearCurrentConsoleLine();
+            newUser.postal = GetZip();
 
-            Console.Write("Please enter your Street: ");
-            newUser.street = Console.ReadLine();
-            Program.ClearCurrentConsoleLine();
-
-            Console.Write("Please enter your ZIP-Code: ");
-            newUser.postal = Console.ReadLine();
-            Program.ClearCurrentConsoleLine();
-
-            Console.Write("Please enter your City: ");
-            newUser.city = Console.ReadLine();
-            Program.ClearCurrentConsoleLine();
+            newUser.city = GetCity();
 
             Console.WriteLine("Thank you for registering with Burgerama Burger :)");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             Console.Clear();
 
-            //give over the user data and write it into an xml file
             RegisterUser(newUser);
 
-            //return to the main menu so you can log in
             Program.Main();
+        }
+
+        static string GetEmail()
+        {
+            Console.Write("Please enter your Email: ");
+            var emailCheck = new EmailAddressAttribute();
+            string emailUnfiltered = Console.ReadLine();
+            string email = emailUnfiltered.ToLower();
+
+            while (IsEmailTaken(email) || !emailCheck.IsValid(email))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("The Email is either taken or not valid. Please try again: ");
+                email = Console.ReadLine();
+            }
+            return email;
+        }
+
+        static string GetPassword()
+        {
+            string password;
+            Console.Write("Please choose a Password: ");
+            password = Login.HashString(Login.GetPassword());
+            Program.ClearCurrentConsoleLine();
+            return password;
+        }
+
+        static string GetCity()
+        {
+            City city1 = new City();
+            string json = File.ReadAllText("src/data/german_cities.json");
+            var germanCities = JsonConvert.DeserializeObject<List<City>>(json);
+            Console.Write("Please enter your City: ");
+            string userCity = Console.ReadLine();
+            bool cityIsInvalid = true;
+            while (cityIsInvalid)
+            {
+                foreach (var city in germanCities)
+                {
+                    if (city.city == userCity)
+                    {
+                        cityIsInvalid = false;
+                        break;
+                    }
+                }
+                if (cityIsInvalid == false)
+                {
+                    break;
+                }
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Your city is not in our delivery range. [Enter]");
+                Console.ReadKey();
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter your City: ");
+                userCity = Console.ReadLine();
+            }
+            return userCity;
+        }
+
+        static string GetStreet()
+        {
+            Console.Write("Please enter your Street and Housenumber: ");
+            string street = Console.ReadLine();
+            while (string.IsNullOrEmpty(street))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Your Input can`t be empty! [Enter]");
+                Console.ReadKey();
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter your Street and Housenumber: ");
+                street = Console.ReadLine();
+            }
+            Program.ClearCurrentConsoleLine();
+            return street;
+        }
+
+        static string GetZip()
+        {
+            Console.Write("Please enter your ZIP-Code: ");
+            string postal = Console.ReadLine();
+            while (string.IsNullOrEmpty(postal))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Your Input can`t be empty! [Enter]");
+                Console.ReadKey();
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter your ZIP-Code: ");
+                postal = Console.ReadLine();
+            }
+            Program.ClearCurrentConsoleLine();
+            return postal;
         }
 
         static bool IsEmailTaken(string email)
