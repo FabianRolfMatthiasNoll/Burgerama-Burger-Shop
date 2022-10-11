@@ -53,3 +53,4 @@ C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\bin
 C:\Users\fanoll\source\repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\src\data\product_data.json
 C:\Users\fanoll\source\repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\src\data\user_data.xml
 C:\Users\fanoll\source\repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\src\data\driver_config.json
+C:\Users\fanoll\source\repos\burgerama-burger-shop\Burgerama Burger Shop App\bin\Debug\net6.0\src\data\german_cities.json

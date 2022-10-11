@@ -127,6 +127,7 @@
             "prepTime": 5
           },
           {
+            "onIce": true,
             "id": 223,
             "category": "Drink",
             "categoryId": 2,
