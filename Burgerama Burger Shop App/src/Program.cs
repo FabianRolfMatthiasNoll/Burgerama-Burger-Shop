@@ -64,9 +64,9 @@ namespace Burgerama_Burger_Shop_App
                 Console.ReadKey();
                 Environment.Exit(0);
             }
-            Thread.Sleep(1000);
-            Console.WriteLine("User Data loaded successfully");
             Thread.Sleep(500);
+            Console.WriteLine("User Data loaded successfully");
+            Thread.Sleep(200);
             Console.WriteLine("Loading Product Data...");
             if (!File.Exists("src/data/product_data.json"))
             {
@@ -74,9 +74,9 @@ namespace Burgerama_Burger_Shop_App
                 Console.ReadKey();
                 Environment.Exit(0);
             }
-            Thread.Sleep(1000);
-            Console.WriteLine("Product Data loaded successfully");
             Thread.Sleep(500);
+            Console.WriteLine("Product Data loaded successfully");
+            Thread.Sleep(200);
             Console.WriteLine("Loading Driver Configurations...");
             if (!File.Exists("src/data/driver_config.json"))
             {
@@ -84,9 +84,9 @@ namespace Burgerama_Burger_Shop_App
                 Console.ReadKey();
                 Environment.Exit(0);
             }
-            Thread.Sleep(1000);
-            Console.WriteLine("Driver Configuration loaded successfully");
             Thread.Sleep(500);
+            Console.WriteLine("Driver Configuration loaded successfully");
+            Thread.Sleep(200);
             Console.WriteLine("Loading Driver Data...");
             if (!File.Exists("src/data/driver_data.json"))
             {
@@ -94,9 +94,9 @@ namespace Burgerama_Burger_Shop_App
                 Console.ReadKey();
                 Environment.Exit(0);
             }
-            Thread.Sleep(1000);
-            Console.WriteLine("Driver Data loaded successfully");
             Thread.Sleep(500);
+            Console.WriteLine("Driver Data loaded successfully");
+            Thread.Sleep(200);
             Console.WriteLine("All Files are Ready. Press any key to start the application");
             Console.ReadKey();
             Console.Clear();
