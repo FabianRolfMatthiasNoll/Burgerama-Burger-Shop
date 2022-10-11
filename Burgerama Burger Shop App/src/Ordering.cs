@@ -38,15 +38,10 @@ namespace Burgerama_Burger_Shop_App
 
         public static Order OrderProduct(List<Product> products, User user)
         {
-            //to be deleted if it continues to be obsolete
-            //ArrayList orderList = ReadOrderList();
-
             //variable for different menu positions based from the header
             int headerLength = 4;
 
-            //create a new order
             Order order = new Order();
-
             List<Product> shoppingCart = new List<Product>();
 
             while (true)
@@ -60,28 +55,21 @@ namespace Burgerama_Burger_Shop_App
                 Program.ClearCurrentConsoleLine();
                 Console.Write("Enter your Option: ");
 
-                int selection = Convert.ToInt32(Console.ReadLine());
+                var selectInput = Console.ReadLine();
 
-                //check that the input value is a correct one
-                while (selection < 1 || selection > (products.Count + 1))
+                int selection = CheckValidInput(selectInput, products.Count);
+
+                if (selection == products.Count + 1)
                 {
-                    Program.ClearCurrentConsoleLine();
-                    Console.Write("Please enter a valid Option: ");
-                    selection = Convert.ToInt32(Console.ReadLine());
-                    Program.ClearCurrentConsoleLine();
-                }
-
-                //option 13 = place order
-                if (selection == products.Count + 1) {
                     order = (Order)Order.FillInformationInOrder(order, user, shoppingCart);
-                    
+
                     break;
                 }
+
                 products[selection - 1] = CheckIfDrink(products[selection - 1]);
 
                 products[selection - 1] = CheckIfMerchandise(products[selection - 1]);
 
-                //add product to shopping cart - MUST HAPPEN AFTER PLACING ORDER!
                 shoppingCart.Add(products[selection - 1]);
 
                 //setting the cursor behind the price
@@ -90,17 +78,29 @@ namespace Burgerama_Burger_Shop_App
                 Console.SetCursorPosition(x, y);
             }
             Console.Clear();
-
-            if(order.prepTime == 0)
-            {
-                order.state = State.Delivery;
-            }
             Driver.AddOrderToDriver(order);
-
-            //for the time this function is obsolete because orders get saved in the drivers 
-            //orderList.Add(order);
-            //WriteOrderList(orderList);
             return order;
+        }
+
+        public static int CheckValidInput(string selectInput, int products)
+        {
+            int selection;
+            while (!int.TryParse(selectInput, out selection))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter a number!:");
+                selectInput = Console.ReadLine();
+            }
+
+            if (selection < 1 || selection > (products + 1))
+            {
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter a valid Option: ");
+                selection = Convert.ToInt32(Console.ReadLine());
+                Program.ClearCurrentConsoleLine();
+            }
+            return selection;
         }
 
         public static List<Product> ShowProductData()
@@ -257,23 +257,6 @@ namespace Burgerama_Burger_Shop_App
                     Console.Write("Please choose a following Size S,M,L,XL,XXL: ");
                 }
             }
-        }
-
-        static ArrayList ReadOrderList()
-        {
-            string json = File.ReadAllText("src/data/order_data.json");
-
-            var orderList = JsonConvert.DeserializeObject<ArrayList>(json);
-            return orderList;
-        }
-
-        static void WriteOrderList(ArrayList orderList)
-        {
-            //serializes the product data to json
-            string json = JsonConvert.SerializeObject(orderList, Formatting.Indented);
-
-            //write serialized json to file
-            File.WriteAllText(@"src/data/order_data.json", json);
         }
     }
 }
