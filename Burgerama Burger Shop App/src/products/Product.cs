@@ -75,7 +75,7 @@ namespace Burgerama_Burger_Shop_App.products
             string json = JsonConvert.SerializeObject(products, Formatting.Indented);
 
             //write serialized json to file
-            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\product_data.json", json);
+            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\src\data\product_data.json", json);
         }
 
         public virtual void SetSize(string inputSize)

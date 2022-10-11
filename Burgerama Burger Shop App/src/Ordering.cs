@@ -105,7 +105,7 @@ namespace Burgerama_Burger_Shop_App
 
         public static List<Product> ShowProductData()
         {
-            string json = File.ReadAllText("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\product_data.json");
+            string json = File.ReadAllText("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\src\\data\\product_data.json");
 
             var productList = JsonConvert.DeserializeObject<List<Product>>(json);
 
@@ -261,7 +261,7 @@ namespace Burgerama_Burger_Shop_App
 
         static ArrayList ReadOrderList()
         {
-            string json = File.ReadAllText("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\order_data.json");
+            string json = File.ReadAllText("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\src\\data\\order_data.json");
 
             var orderList = JsonConvert.DeserializeObject<ArrayList>(json);
             return orderList;
@@ -273,7 +273,7 @@ namespace Burgerama_Burger_Shop_App
             string json = JsonConvert.SerializeObject(orderList, Formatting.Indented);
 
             //write serialized json to file
-            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\order_data.json", json);
+            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\src\data\order_data.json", json);
         }
     }
 }

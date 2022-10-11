@@ -68,7 +68,7 @@ namespace Burgerama_Burger_Shop_App
 
         public static List<Driver> LoadCurrentDriverStates()
         {
-            string json = File.ReadAllText("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\driver_data.json");
+            string json = File.ReadAllText("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\src\\data\\driver_data.json");
 
             var drivers = JsonConvert.DeserializeObject<List<Driver>>(json);
 
@@ -78,7 +78,7 @@ namespace Burgerama_Burger_Shop_App
         public static void SaveCurrentDriverStates(List<Driver> drivers)
         {
             string json = JsonConvert.SerializeObject(drivers, Formatting.Indented);
-            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\driver_data.json", json);
+            File.WriteAllText(@"C:\Users\fanoll\Source\Repos\burgerama-burger-shop\Burgerama Burger Shop App\src\data\driver_data.json", json);
         }
     }
 }

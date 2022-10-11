@@ -13,6 +13,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties product_3data_1json__JsonSchema="gd" /></VisualStudio></ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="tests\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
