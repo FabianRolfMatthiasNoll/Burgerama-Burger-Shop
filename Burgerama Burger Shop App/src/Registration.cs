@@ -65,7 +65,7 @@ namespace Burgerama_Burger_Shop_App
         static bool IsEmailTaken(string email)
         {
             //return true if taken return false if not
-            var usersXML = XElement.Load("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\src\\data\\user_data.xml");
+            var usersXML = XElement.Load("src/data/user_data.xml");
             IEnumerable<XElement> users = usersXML.Elements();
 
             foreach (var user in users)
@@ -83,7 +83,7 @@ namespace Burgerama_Burger_Shop_App
         static void RegisterUser(User newUser)
         {
             //loading in the current User File
-            var usersXML = XElement.Load("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\src\\data\\user_data.xml");
+            var usersXML = XElement.Load("src/data/user_data.xml");
             usersXML.Add(new XElement("User",
                                 //new XAttribute("ID", user),
                                 new XElement("Email", newUser.email),
@@ -94,7 +94,7 @@ namespace Burgerama_Burger_Shop_App
                                 )
                             );
             //saves the document after adding the new user
-            usersXML.Save("C:\\Users\\fanoll\\Source\\Repos\\burgerama-burger-shop\\Burgerama Burger Shop App\\src\\data\\user_data.xml");
+            usersXML.Save("src/data/user_data.xml");
         }
     }
 }
