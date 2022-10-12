@@ -11,12 +11,13 @@ namespace Burgerama_Burger_Shop_App
         {
             
             MainMenu mainMenu = new MainMenu();
+            DriverHandler driverHandler = new DriverHandler();
 
             //check if all necessary files exist
             CheckFileDependencies();
 
             //update drivers if driver_config.json has been changed
-            Driver.UpdateDrivers();
+            driverHandler.UpdateDrivers();
 
             //check all product ids and throw an error if there are duplicate ones
             Product.CheckProductID();
