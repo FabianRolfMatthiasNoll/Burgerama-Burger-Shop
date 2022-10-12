@@ -22,7 +22,13 @@ namespace Burgerama_Burger_Shop_App
             {
                 foreach(var order in driver.orders)
                 {
-                    table.AddRow(order.customer.email,order.customer.street + " " + order.customer.postal + " " + order.customer.city, driver.name, order.prepTime, order.shipTime, order.state);
+                    table.AddRow(order.customer.email,order.customer.street 
+                         + " " + order.customer.postal
+                         + " " + order.customer.city,
+                                 driver.name, 
+                                 order.prepTime, 
+                                 order.shipTime, 
+                                 order.state);
                 }
             }
             table.Write(Format.Alternative);
@@ -33,39 +39,48 @@ namespace Burgerama_Burger_Shop_App
             Console.WriteLine("3) Return to the main Menu");
             Console.Write("What do you want to do?: ");
 
+            int menu = InputValidation();
+           
+            if (menu == 1)
+            {
+                SpeedUpTime(drivers);
+                ManagerMenu();
+            }
+            else if (menu == 2)
+            {
+                EraseClosedOrders(drivers);
+                ManagerMenu();
+            }
+            else
+            {
+                Console.Clear();
+                Program.Main();
+            }
+        }
+
+        static int InputValidation()
+        {
             var menuInput = Console.ReadLine();
-            int menu;
+            int menuSelect = 0;
             while (true)
             {
-                while (!int.TryParse(menuInput, out menu))
+                while (!int.TryParse(menuInput, out menuSelect))
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Program.ClearCurrentConsoleLine();
                     Console.Write("Please enter a number!:");
                     menuInput = Console.ReadLine();
                 }
-                if (menu < 1 || menu > 3)
+                if (menuSelect < 1 || menuSelect > 3)
                 {
                     //If entered value isnt a integer an error occurs
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Program.ClearCurrentConsoleLine();
                     Console.Write("Please enter a valid Option: ");
                     menuInput = Console.ReadLine();
-                }
-                if (menu == 1)
+                } else
                 {
-                    SpeedUpTime(drivers);
-                    ManagerMenu();
-                }
-                else if (menu == 2)
-                {
-                    EraseClosedOrders(drivers);
-                    ManagerMenu();
-                }
-                else
-                {
-                    Console.Clear();
-                    Program.Main();
+                    return menuSelect;
                 }
             }
         }
