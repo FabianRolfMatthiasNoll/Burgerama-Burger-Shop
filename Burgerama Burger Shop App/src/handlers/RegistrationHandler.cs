@@ -83,7 +83,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void GetCity(string userCity)
         {
-            List<City> germanCities = cityData.LoadJSON<City>("german_cities.json");
+            List<City> germanCities = cityData.ReadJSON<City>("german_cities.json");
             bool cityIsInvalid = true;
             while (cityIsInvalid)
             {
