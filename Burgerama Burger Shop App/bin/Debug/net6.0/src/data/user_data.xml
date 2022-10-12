@@ -56,4 +56,18 @@
     <Street>Ziege</Street>
     <Password>56E1DFDF22C508710E4DE86628E0412B0F4E8D28D3A037B604ABC2D663A8DCE4</Password>
   </User>
+  <User>
+    <Email>Herman.Binder@ks.de</Email>
+    <Postal>88882</Postal>
+    <City>Tuttlingen</City>
+    <Street>Kambutchane 1</Street>
+    <Password>AEE3A254CFB246738B137929181D31BB4912F8777275A18AC218EFB1939DB99A</Password>
+  </User>
+  <User>
+    <Email>mama@windows.de</Email>
+    <Postal>42069</Postal>
+    <City>Mannheim</City>
+    <Street>linux 87</Street>
+    <Password>9BC0375A719A30884566024F1E385A1EED335A15FF2EF938252EF403DCDCA922</Password>
+  </User>
 </Users>
