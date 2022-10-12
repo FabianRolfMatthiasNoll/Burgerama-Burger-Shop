@@ -56,7 +56,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return false;
         }
 
-        public List<T> LoadJSON<T>(string fileName)
+        public List<T> ReadJSON<T>(string fileName)
         {
             string json = File.ReadAllText($"{filePath}{fileName}");
             List<T> list = JsonConvert.DeserializeObject<List<T>>(json);
