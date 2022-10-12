@@ -21,6 +21,7 @@ namespace Burgerama_Burger_Shop_App
             capacity = inCapacity;
             orders = new List<Order>();
         }
+
         public static bool IsDriverFree(Driver driver)
         {
             if(driver.capacity > driver.orders.Count)
@@ -43,64 +44,6 @@ namespace Burgerama_Burger_Shop_App
                 }
             }
             return index;
-        }
-
-        public static void AddOrderToDriver(Order order)
-        {
-            List<Driver> drivers = Driver.LoadCurrentDriverStates();
-            bool driverAvailable = false;
-            foreach (var driver in drivers)
-            {
-                if (Driver.IsDriverFree(driver))
-                {
-                    driver.orders.Add(order);
-                    driverAvailable = true;
-                    break;
-                }
-            }
-            if (!driverAvailable)
-            {
-                int driverNum = Driver.CheckLeastOpenOrders(drivers);
-                drivers[driverNum].orders.Add(order);
-            }
-            Driver.SaveCurrentDriverStates(drivers);
-        }
-
-        public static void UpdateDrivers()
-        {
-            string jsonDriver = File.ReadAllText("src/data/driver_config.json");
-            string jsonData = File.ReadAllText("src/data/driver_data.json");
-
-            var driverStates = JsonConvert.DeserializeObject<List<Driver>>(jsonData);
-
-            List<Driver> drivers = JsonConvert.DeserializeObject<List<Driver>>(jsonDriver);
-
-            foreach(var driver1 in drivers)
-            {
-                foreach(var driver2 in driverStates)
-                {
-                    if(driver1.name == driver2.name)
-                    {
-                        driver1.orders = driver2.orders;
-                    }
-                }
-            }
-            SaveCurrentDriverStates(drivers);
-        }
-
-        public static List<Driver> LoadCurrentDriverStates()
-        {
-            string json = File.ReadAllText("src/data/driver_data.json");
-
-            var drivers = JsonConvert.DeserializeObject<List<Driver>>(json);
-
-            return drivers; 
-        }
-
-        public static void SaveCurrentDriverStates(List<Driver> drivers)
-        {
-            string json = JsonConvert.SerializeObject(drivers, Formatting.Indented);
-            File.WriteAllText(@"src/data/driver_data.json", json);
         }
     }
 }
