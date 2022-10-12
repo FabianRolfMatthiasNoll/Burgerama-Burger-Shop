@@ -1,48 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace Burgerama_Burger_Shop_App
+namespace Burgerama_Burger_Shop_App.src
 {
-    internal class Login
+    internal class LoginHandler
     {
-        public static void LoginMenu()
+        FileHandler userData;
+
+        public LoginHandler()
         {
-            Console.Clear();
-            Console.WriteLine("\n                            |\\ /| /|_/|\r\n                          |\\||-|\\||-/|/|\r\n                           \\\\|\\|//||///\r\n          _..----.._       |\\/\\||//||||\r\n        .'     o    '.     |||\\\\|/\\\\ ||\r\n       /   o       o  \\    | './\\_/.' |\r\n      |o        o     o|   |          |\r\n      /'-.._o     __.-'\\   |          |\r\n      \\      `````     /   |          |\r\n      |``--........--'`|    '.______.'\r\n       \\              /\r\n        `'----------'`\n");
-            Console.WriteLine("");
-            Console.WriteLine("Please input your Login Credentials\n");
-
-            string email = GetEmail();
-
-            Program.ClearCurrentConsoleLine();
-            Console.Write("Password:");
-            string password = HashString(GetPassword());
-
-            IsUserManager(email, password);
-
-            if (CheckLoginCredentials(email, password))
-            {
-                User LoggedUser = (User)ReturnUser(email, password);
-                Ordering.OrderMenu(LoggedUser);
-            }
-
-            Console.WriteLine("Your login credentials were incorrect");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
-            LoginMenu();
+            userData = new FileHandler("src/data/");
         }
 
-        static string GetEmail()
+        public static string GetEmail()
         {
             Console.Write("Email:");
             var emailCheck = new EmailAddressAttribute();
@@ -97,7 +72,7 @@ namespace Burgerama_Burger_Shop_App
             return input.ToString();
         }
 
-        static void IsUserManager(string email, string password)
+        public static void IsUserManager(string email, string password)
         {
             if (email == "manager" && password == "39F968F400E6B06A5153F37683C348C94C948539B17636C0529A4E833ACE9C40")
             {
@@ -106,15 +81,13 @@ namespace Burgerama_Burger_Shop_App
             }
         }
 
-        static bool CheckLoginCredentials(string email, string password)
+        public bool CheckLoginCredentials(string email, string password)
         {
-            var usersXML = XElement.Load("src\\data\\user_data.xml");
-            IEnumerable<XElement> users = usersXML.Elements();
-
-            foreach (var user in users)
+            List<User> userList = this.userData.LoadUserData();
+            foreach (var user in userList)
             {
                 //compares the string of user emails and the given email
-                if (String.Equals((user.Element("Email").Value), email) && String.Equals((user.Element("Password").Value), password))
+                if (user.email == email && user.password == password)
                 {
                     Console.Clear();
                     return true;
@@ -123,20 +96,12 @@ namespace Burgerama_Burger_Shop_App
             return false;
         }
 
-        static Object ReturnUser(string email, string password)
+        public Object ReturnUser(string email, string password)
         {
-            List<User> userList;
-
-            //read in the xml file, deserialize it and put it into a userlist
-            using (var reader = new StreamReader("src/data/user_data.xml"))
-            {
-                XmlSerializer deserializer = new XmlSerializer(typeof(List<User>),
-                    new XmlRootAttribute("Users"));
-                userList = (List<User>)deserializer.Deserialize(reader);
-            }
+            List<User> userList = this.userData.LoadUserData();
 
             //check which user is logged in and return it for future use
-            foreach(var login in userList)
+            foreach (var login in userList)
             {
                 if (String.Equals(login.email, email) && String.Equals(login.password, password))
                 {
