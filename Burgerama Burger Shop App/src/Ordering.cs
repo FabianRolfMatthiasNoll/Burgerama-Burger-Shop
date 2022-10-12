@@ -85,22 +85,28 @@ namespace Burgerama_Burger_Shop_App
         public static int CheckValidInput(string selectInput, int products)
         {
             int selection;
-            while (!int.TryParse(selectInput, out selection))
+            while (true)
             {
-                Console.SetCursorPosition(0, Console.CursorTop - 1);
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Please enter a number!:");
-                selectInput = Console.ReadLine();
-            }
+                while (!int.TryParse(selectInput, out selection))
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please enter a number!:");
+                    selectInput = Console.ReadLine();
+                }
 
-            if (selection < 1 || selection > (products + 1))
-            {
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Please enter a valid Option: ");
-                selection = Convert.ToInt32(Console.ReadLine());
-                Program.ClearCurrentConsoleLine();
+                if (selection < 1 || selection > (products + 1))
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please enter a valid Option: ");
+                    selectInput = Console.ReadLine();
+                    Program.ClearCurrentConsoleLine();
+                } else
+                {
+                    return selection;
+                }
             }
-            return selection;
         }
 
         public static List<Product> ShowProductData()
@@ -261,6 +267,7 @@ namespace Burgerama_Burger_Shop_App
                     return merch;
                 } else
                 {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Program.ClearCurrentConsoleLine();
                     Console.Write("Please input a legitimate Size [Press Any Key to continue]");
                     Console.ReadKey();
