@@ -174,32 +174,43 @@ namespace Burgerama_Burger_Shop_App
             Console.Write("Please choose 'true' or 'false' if you want your Drink on Ice: ");
             string input = Console.ReadLine();
             string finput = input.ToLower();
-            if (finput == "true")
+            while(true)
             {
-                Product drinkIce = new Drink(product.id,
-                                          product.category,
-                                          product.name,
-                                          product.price,
-                                          product.prepTime,
-                                          product.categoryId,
-                                          true);
+                if (finput == "true")
+                {
+                    Product drinkIce = new Drink(product.id,
+                                              product.category,
+                                              product.name,
+                                              product.price,
+                                              product.prepTime,
+                                              product.categoryId,
+                                              true);
 
-                Program.ClearCurrentConsoleLine();
-                return drinkIce;
-            }
-            else
-            {
-                Product drink = new Drink(product.id,
-                                          product.category,
-                                          product.name,
-                                          product.price,
-                                          product.prepTime,
-                                          product.categoryId,
-                                          false);
+                    Program.ClearCurrentConsoleLine();
+                    return drinkIce;
+                }
+                else if (finput == "false")
+                {
+                    Product drink = new Drink(product.id,
+                                              product.category,
+                                              product.name,
+                                              product.price,
+                                              product.prepTime,
+                                              product.categoryId,
+                                              false);
 
-                Program.ClearCurrentConsoleLine();
-                return drink;
-            }
+                    Program.ClearCurrentConsoleLine();
+                    return drink;
+                }
+                else
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please choose 'true' or 'false' if you want your Drink on Ice: ");
+                    input = Console.ReadLine();
+                    finput = input.ToLower();
+                }
+            } 
         }
 
         static Product CheckIfMerchandise(Product product)
