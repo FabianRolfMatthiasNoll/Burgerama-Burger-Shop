@@ -15,7 +15,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             managmentUI = new ManagmentUI();
             orderUI = new OrderUI();
         }
-
+        
         public void LoginMenu()
         {
             Return:
