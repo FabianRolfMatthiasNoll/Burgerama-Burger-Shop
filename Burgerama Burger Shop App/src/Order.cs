@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.products;
+using Burgerama_Burger_Shop_App.src.handlers;
 
 namespace Burgerama_Burger_Shop_App
 {
@@ -26,36 +27,40 @@ namespace Burgerama_Burger_Shop_App
         public List<Product> boughtProducts;
         public User customer;
 
+        FileHandler fileHandler;
+        List<Driver> drivers;
+
         public Order()
         {
             state = State.Preperation;
+            fileHandler = new FileHandler("src/data/");
+            boughtProducts = new List<Product>();
+            drivers = new List<Driver>();
+
         }
 
-        public static Object FillInformationInOrder(Order order, User user, List<Product> shoppingCart)
+        public void FillInformationInOrder(User user)
         {
-
-            List<Driver> drivers = Driver.LoadCurrentDriverStates();
-
-            order.customer = user;
-            order.boughtProducts = shoppingCart;
+            drivers = fileHandler.ReadJSON<Driver>("driver_data.json");
+            customer = user;
             
-            foreach(var product in order.boughtProducts)
+            foreach(var product in boughtProducts)
             {
                 //pass highest prepTime only
-                if (order.prepTime < product.prepTime)
+                if (prepTime < product.prepTime)
                 {
-                    order.prepTime = product.prepTime;
+                    prepTime = product.prepTime;
                 }
 
-                if (order.prepTime == 0)
+                if (prepTime == 0)
                 {
-                    order.state = State.Delivery;
+                    state = State.Delivery;
                 } else
                 {
-                    order.state = State.Preperation;
+                    state = State.Preperation;
                 }
 
-                order.totalSum = order.totalSum + product.price;
+                totalSum = totalSum + product.price;
             }
 
             bool driverAvailable = false;
@@ -64,40 +69,38 @@ namespace Burgerama_Burger_Shop_App
             {
                 if (Driver.IsDriverFree(driver))
                 {
-                    order.shipTime = 20;
+                    shipTime = 20;
                     driverAvailable = true;
                     break;
                 }
             }
             if (!driverAvailable)
             {
-                order.shipTime = 35;
+                shipTime = 35;
             }
 
-            order.totalTime = order.shipTime + order.prepTime;
-
-            return order;
+            totalTime = shipTime + prepTime;
         }
 
-        public static void DecreaseTotalTime(Order order)
+        public void DecreaseTotalTime()
         {
-            if (order.state == State.Preperation)
+            if (state == State.Preperation)
             {
-                order.prepTime = order.prepTime - 15;
-                if (order.prepTime <= 0)
+                prepTime = prepTime - 15;
+                if (prepTime <= 0)
                 {
-                    order.state = State.Delivery;
-                    order.shipTime = order.shipTime - Math.Abs(order.prepTime);
-                    order.prepTime = 0;
+                    state = State.Delivery;
+                    shipTime = shipTime - Math.Abs(prepTime);
+                    prepTime = 0;
                 }
             }
-            else if (order.state == State.Delivery)
+            else if (state == State.Delivery)
             {
-                order.shipTime = order.shipTime - 15;
-                if (order.shipTime <= 0)
+                shipTime = shipTime - 15;
+                if (shipTime <= 0)
                 {
-                    order.state = State.Closed;
-                    order.shipTime = 0;
+                    state = State.Closed;
+                    shipTime = 0;
                 }
             }
         }
