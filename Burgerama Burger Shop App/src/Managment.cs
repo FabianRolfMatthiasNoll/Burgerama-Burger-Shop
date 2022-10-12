@@ -11,6 +11,7 @@ namespace Burgerama_Burger_Shop_App
     {
         public static void ManagerMenu()
         {
+            Console.SetWindowSize(150, 50);
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("                                             Welcome Back Manager");
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
@@ -32,28 +33,40 @@ namespace Burgerama_Burger_Shop_App
             Console.WriteLine("3) Return to the main Menu");
             Console.Write("What do you want to do?: ");
 
-            int menu = Convert.ToInt32(Console.ReadLine());
-
-            while (menu < 1 || menu > 3)
+            var menuInput = Console.ReadLine();
+            int menu;
+            while (true)
             {
-                //If entered value isnt a integer an error occurs
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Please enter a valid Option: ");
-                menu = Convert.ToInt32(Console.ReadLine());
-            }
-            if (menu == 1)
-            {
-                SpeedUpTime(drivers);
-                ManagerMenu();
-            }
-            else if(menu == 2)
-            {
-                EraseClosedOrders(drivers);
-                ManagerMenu();
-            } else
-            {
-                Console.Clear();
-                Program.Main();
+                while (!int.TryParse(menuInput, out menu))
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please enter a number!:");
+                    menuInput = Console.ReadLine();
+                }
+                if (menu < 1 || menu > 3)
+                {
+                    //If entered value isnt a integer an error occurs
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please enter a valid Option: ");
+                    menuInput = Console.ReadLine();
+                }
+                if (menu == 1)
+                {
+                    SpeedUpTime(drivers);
+                    ManagerMenu();
+                }
+                else if (menu == 2)
+                {
+                    EraseClosedOrders(drivers);
+                    ManagerMenu();
+                }
+                else
+                {
+                    Console.Clear();
+                    Program.Main();
+                }
             }
         }
 
@@ -72,7 +85,20 @@ namespace Burgerama_Burger_Shop_App
 
         static void EraseClosedOrders(List<Driver> drivers)
         {
-
+            foreach (var driver in drivers)
+            {
+                restart:
+                foreach (var order in driver.orders)
+                {
+                    if (order.state == State.Closed)
+                    {
+                        driver.orders.Remove(order);
+                        goto restart;
+                    }
+                }
+            }
+            Driver.SaveCurrentDriverStates(drivers);
+            Console.Clear();
         }
     }
 }
