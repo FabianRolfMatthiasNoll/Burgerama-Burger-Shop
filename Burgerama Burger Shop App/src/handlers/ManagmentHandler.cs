@@ -16,11 +16,12 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public ManagmentHandler()
         {
             fileHandler = new FileHandler("src/data/");
-            drivers = fileHandler.LoadJSON<Driver>("driver_data.json");
+            drivers = new List<Driver>();
         }
 
         public ConsoleTable CreateOrderOverview()
         {
+            drivers = fileHandler.ReadJSON<Driver>("driver_data.json");
             var table = new ConsoleTable("Email of User", "Address", "Driver", "Prep. Time", "Ship. Time", "Status");
             foreach (var driver in drivers)
             {
@@ -44,8 +45,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             {
                 foreach (var order in driver.orders)
                 {
-                    //to be changed to an instance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    Order.DecreaseTotalTime(order);
+                    order.DecreaseTotalTime();
                 }
             }
             fileHandler.WriteJSON(drivers, "driver_data.json");
@@ -54,7 +54,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void ReloadData()
         {
-            drivers = fileHandler.LoadJSON<Driver>("driver_data.json");
+            drivers = fileHandler.ReadJSON<Driver>("driver_data.json");
         }
 
         public void EraseClosedOrders()
