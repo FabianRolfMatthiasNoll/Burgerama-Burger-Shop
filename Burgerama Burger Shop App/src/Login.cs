@@ -21,6 +21,29 @@ namespace Burgerama_Burger_Shop_App
             Console.WriteLine("\n                            |\\ /| /|_/|\r\n                          |\\||-|\\||-/|/|\r\n                           \\\\|\\|//||///\r\n          _..----.._       |\\/\\||//||||\r\n        .'     o    '.     |||\\\\|/\\\\ ||\r\n       /   o       o  \\    | './\\_/.' |\r\n      |o        o     o|   |          |\r\n      /'-.._o     __.-'\\   |          |\r\n      \\      `````     /   |          |\r\n      |``--........--'`|    '.______.'\r\n       \\              /\r\n        `'----------'`\n");
             Console.WriteLine("");
             Console.WriteLine("Please input your Login Credentials\n");
+
+            string email = GetEmail();
+
+            Program.ClearCurrentConsoleLine();
+            Console.Write("Password:");
+            string password = HashString(GetPassword());
+
+            IsUserManager(email, password);
+
+            if (CheckLoginCredentials(email, password))
+            {
+                User LoggedUser = (User)ReturnUser(email, password);
+                Ordering.OrderMenu(LoggedUser);
+            }
+
+            Console.WriteLine("Your login credentials were incorrect");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            LoginMenu();
+        }
+
+        static string GetEmail()
+        {
             Console.Write("Email:");
             var emailCheck = new EmailAddressAttribute();
             string emailUnfiltered = Console.ReadLine();
@@ -28,7 +51,7 @@ namespace Burgerama_Burger_Shop_App
 
             while (!emailCheck.IsValid(email))
             {
-                if(email ==  "Manager" || email == "admin")
+                if (email == "manager" || email == "admin")
                 {
                     break;
                 }
@@ -38,34 +61,7 @@ namespace Burgerama_Burger_Shop_App
                 Console.Write("Please enter a valid email adress:");
                 email = Console.ReadLine();
             }
-
-            //hides password input 
-            Program.ClearCurrentConsoleLine();
-            Console.Write("Password:");
-            string password = HashString(GetPassword());
-
-            //special login for manager overview
-            if (email == "Manager" && password == "39F968F400E6B06A5153F37683C348C94C948539B17636C0529A4E833ACE9C40")
-            {
-                Console.Clear();
-                Managment.ManagerMenu();
-                Program.Main();
-            }
-
-            if (CheckLoginCredentials(email, password))
-            {
-                User LoggedUser = (User)ReturnUser(email, password);
-                //i could read in the xml and filter out the user again and give it to the order menu
-                //i can do this like with the json one so i dont have to rebuild the current system :D
-                Ordering.OrderMenu(LoggedUser);
-            }
-            else
-            {
-                Console.WriteLine("Your login credentials were incorrect");
-                Console.WriteLine("Press any key to continue");
-                Console.ReadKey();
-                LoginMenu();
-            } 
+            return email;
         }
 
         public static string GetPassword()
@@ -99,6 +95,15 @@ namespace Burgerama_Burger_Shop_App
                 }
             }
             return input.ToString();
+        }
+
+        static void IsUserManager(string email, string password)
+        {
+            if (email == "manager" && password == "39F968F400E6B06A5153F37683C348C94C948539B17636C0529A4E833ACE9C40")
+            {
+                Console.Clear();
+                Managment.ManagerMenu();
+            }
         }
 
         static bool CheckLoginCredentials(string email, string password)
