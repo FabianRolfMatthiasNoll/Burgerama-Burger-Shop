@@ -16,34 +16,33 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public string email;
         public string password;
 
-        public LoginHandler()
+        public LoginHandler(string filePath, string fileName)
         {
-            userData = new FileHandler("src/data/");
+            userData = new FileHandler(filePath);
             emailValidator = new EmailValidator();
             passwordValidator = new PasswordValidator();
-            users = userData.LoadUserData();
+            users = userData.LoadUserData(fileName);
         }
 
-        public void GetEmail(string emailInput)
+        public bool SetEmail(string emailInput)
         {
             emailInput = emailInput.ToLower();
-            while (!emailValidator.IsEmailValid(emailInput))
-            {
-                if (emailInput == "manager" || emailInput == "admin")
-                {
-                    break;
-                }
 
-                Console.SetCursorPosition(0, Console.CursorTop - 1);
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Please enter a valid email adress:");
-                emailInput = Console.ReadLine();
-                emailInput = emailInput.ToLower();
+            if (emailInput == "manager" || emailInput == "admin")
+            {
+                this.email = emailInput;
+                return true;
             }
-            this.email = emailInput;
+
+            if (emailValidator.IsEmailValid(emailInput))
+            {
+                this.email = emailInput;
+                return true;
+            }
+            return false;
         }
 
-        public void GetPassword()
+        public void SetPassword()
         {
             password = passwordValidator.PasswordInput();
             password = passwordValidator.HashString(password);
@@ -62,10 +61,8 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         {
             foreach (var user in users)
             {
-                //compares the string of user emails and the given email
                 if (user.email == email && user.password == password)
                 {
-                    Console.Clear();
                     return true;
                 }
             }
@@ -78,7 +75,9 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             {
                 if (string.Equals(login.email, email) && string.Equals(login.password, password))
                 {
-                    return login;
+                    User user = new User();
+                    user = login;
+                    return user;
                 }
             }
             return null;
