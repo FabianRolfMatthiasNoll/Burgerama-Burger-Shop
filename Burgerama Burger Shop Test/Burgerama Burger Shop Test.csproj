@@ -31,7 +31,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="src\test data\user_data_test.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
@@ -53,7 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\handler tests\" />
     <Folder Include="src\product tests\" />
   </ItemGroup>
 

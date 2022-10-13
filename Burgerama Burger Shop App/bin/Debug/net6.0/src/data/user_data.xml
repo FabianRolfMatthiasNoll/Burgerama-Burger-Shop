@@ -22,14 +22,14 @@
     <Password>69CA6781A5A3FD9E6C06381EFCA699F13E947678B04E7EC976B5D52290AB8F33</Password>
   </User>
   <User>
-    <Email>Simon.Brubar@t-online.de</Email>
+    <Email>simon.brubar@t-online.de</Email>
     <Postal>78532</Postal>
     <City>Tuttlingen</City>
     <Street>DKS 34</Street>
     <Password>56E1DFDF22C508710E4DE86628E0412B0F4E8D28D3A037B604ABC2D663A8DCE4</Password>
   </User>
   <User>
-    <Email>Dullenkopf.Christian@siemens.de</Email>
+    <Email>dullenkopf.christian@siemens.de</Email>
     <Postal>78522</Postal>
     <City>Mühlheim an der Donau</City>
     <Street>Meerrettichstraße 37</Street>
@@ -43,38 +43,17 @@
     <Password>182906571A6237B82F137B3F2D83C003E564209E481304BF32F84B44A126C5B3</Password>
   </User>
   <User>
-    <Email>Heinrich.Summer@gmx.de</Email>
+    <Email>heinrich.summer@gmx.de</Email>
     <Postal>34508</Postal>
     <City>Simbabwe</City>
     <Street>Nürnburgring 12</Street>
     <Password>22DFDA2D0DA77E6C5BD7F87F05E7ACC1D1617A1FE59DEE0A17A61A034359D786</Password>
   </User>
   <User>
-    <Email>Kaulquappe</Email>
+    <Email>kaulquappe</Email>
     <Postal>Miese</Postal>
     <City>Hallo</City>
     <Street>Ziege</Street>
     <Password>56E1DFDF22C508710E4DE86628E0412B0F4E8D28D3A037B604ABC2D663A8DCE4</Password>
-  </User>
-  <User>
-    <Email>Herman.Binder@ks.de</Email>
-    <Postal>88882</Postal>
-    <City>Tuttlingen</City>
-    <Street>Kambutchane 1</Street>
-    <Password>AEE3A254CFB246738B137929181D31BB4912F8777275A18AC218EFB1939DB99A</Password>
-  </User>
-  <User>
-    <Email>mama@windows.de</Email>
-    <Postal>42069</Postal>
-    <City>Mannheim</City>
-    <Street>linux 87</Street>
-    <Password>9BC0375A719A30884566024F1E385A1EED335A15FF2EF938252EF403DCDCA922</Password>
-  </User>
-  <User>
-    <Email>fabian.no@gmail.com</Email>
-    <Postal>78532</Postal>
-    <City>Tuttlingen</City>
-    <Street>Kaiserstraße 10</Street>
-    <Password>75D3784ED67D5CE714CCAB50B5EEB20D6BBC16FDCB7B28DC9B97107E2645ADEB</Password>
   </User>
 </Users>
