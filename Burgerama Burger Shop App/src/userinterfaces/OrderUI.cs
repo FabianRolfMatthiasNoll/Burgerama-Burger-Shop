@@ -16,7 +16,7 @@ using Burgerama_Burger_Shop_App.src.validators;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
-    internal class OrderUI
+    public class OrderUI
     {
         IntValidator intValidator;
         OrderHandler orderHandler;
@@ -37,9 +37,9 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
 
             int headerLength = 4;
 
-            //orderHandler.CreateProductOverview().Write(Format.MarkDown);
-            var table = orderHandler.CreateProductOverview();
-            table.Write(Format.MarkDown);
+            orderHandler.CreateProductOverview().Write(Format.MarkDown);
+            //var table = orderHandler.CreateProductOverview();
+            //table.Write(Format.MarkDown);
 
             Console.WriteLine("Please choose a product on from our menu");
             //Get console entry position for menu alignment
@@ -82,17 +82,9 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             Console.WriteLine("                  " + orderHandler.order.customer.street);
             Console.WriteLine("-----------------------------------------");
 
-            var table = new ConsoleTable("Pos.", "Name", "Variant", "Price");
-            int index = 1;
-
-            foreach (var product in orderHandler.order.boughtProducts)
-            {
-                table = product.PrintSummaryInfo(table, index);
-                index++;
-            }
-            table.AddRow(index, "US Tax", "", Math.Round(orderHandler.order.totalSum * 0.0884, 2) + "$");
-
+            var table = orderHandler.CreateSummaryOverview();
             table.Write(Format.Minimal);
+
             Console.WriteLine("\n-----------------------------------------");
             Console.WriteLine("Your total including tax is: " + Math.Round(orderHandler.order.totalSum * 1.0884, 2) + "$");
             Console.WriteLine("Your Delivery is estimated to take: " + orderHandler.order.totalTime + "min");

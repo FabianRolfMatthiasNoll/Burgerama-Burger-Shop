@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_App.src.validators
 {
-    internal class IntValidator
+    public class IntValidator
     {
         public IntValidator()
         {

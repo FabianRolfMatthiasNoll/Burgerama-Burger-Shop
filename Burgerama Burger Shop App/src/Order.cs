@@ -16,7 +16,7 @@ namespace Burgerama_Burger_Shop_App
         Closed = 2
     }
 
-    internal class Order
+    public class Order
     {
         public int id;
         public State state;

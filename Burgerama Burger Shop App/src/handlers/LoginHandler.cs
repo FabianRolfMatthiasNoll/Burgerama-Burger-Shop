@@ -7,7 +7,7 @@ using Burgerama_Burger_Shop_App.src.validators;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
-    internal class LoginHandler
+    public class LoginHandler
     {
         EmailValidator emailValidator;
         PasswordValidator passwordValidator;

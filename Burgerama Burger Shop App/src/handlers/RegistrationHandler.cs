@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
-    internal class RegistrationHandler
+    public class RegistrationHandler
     {
         EmailValidator emailValidator;
         StringValidator stringValidator;

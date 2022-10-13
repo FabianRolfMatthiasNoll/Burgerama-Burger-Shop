@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
-    internal class RegistrationUI
+    public class RegistrationUI
     {
         RegistrationHandler registrationHandler;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
-    internal class DriverHandler
+    public class DriverHandler
     {
         FileHandler fileHandler;
         List<Driver> drivers;
@@ -41,16 +41,12 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void UpdateDrivers()
         {
-            string jsonDriver = File.ReadAllText("src/data/driver_config.json");
-            string jsonData = File.ReadAllText("src/data/driver_data.json");
+            drivers = fileHandler.ReadJSON<Driver>("driver_data.json");
+            List<Driver> driverStates = fileHandler.ReadJSON<Driver>("driver_config.json");
 
-            var driverStates = JsonConvert.DeserializeObject<List<Driver>>(jsonData);
-
-            List<Driver> drivers = JsonConvert.DeserializeObject<List<Driver>>(jsonDriver);
-
-            foreach (var driver1 in drivers)
+            foreach (var driver1 in driverStates)
             {
-                foreach (var driver2 in driverStates)
+                foreach (var driver2 in drivers)
                 {
                     if (driver1.name == driver2.name)
                     {
@@ -68,8 +64,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void SaveCurrentDriverStates()
         {
-            string json = JsonConvert.SerializeObject(drivers, Formatting.Indented);
-            File.WriteAllText(@"src/data/driver_data.json", json);
+            fileHandler.WriteJSON<Driver>(drivers, "driver_data.json");
         }
     }
 }

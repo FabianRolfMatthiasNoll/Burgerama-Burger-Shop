@@ -3,7 +3,7 @@ using Burgerama_Burger_Shop_App.src.handlers;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
-    internal class LoginUI
+    public class LoginUI
     {
         LoginHandler login;
         ManagmentUI managmentUI;

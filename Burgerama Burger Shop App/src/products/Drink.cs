@@ -7,7 +7,7 @@ using ConsoleTables;
 
 namespace Burgerama_Burger_Shop_App.products
 {
-    internal class Drink : Product
+    public class Drink : Product
     {
         public bool onIce;
         

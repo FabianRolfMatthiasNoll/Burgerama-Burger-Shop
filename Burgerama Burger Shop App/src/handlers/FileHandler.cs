@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
-    internal class FileHandler
+    public class FileHandler
     {
         public string filePath;
 

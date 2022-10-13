@@ -8,7 +8,7 @@ using Burgerama_Burger_Shop_App.products;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
-    internal class OrderHandler
+    public class OrderHandler
     {
         FileHandler fileHandler;
         DriverHandler driverHandler;
@@ -42,6 +42,20 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             }
 
             table.AddRow(index, "Place Order", "", "");
+            return table;
+        }
+
+        public ConsoleTable CreateSummaryOverview()
+        {
+            var table = new ConsoleTable("Pos.", "Name", "Variant", "Price");
+            int index = 1;
+
+            foreach (var product in order.boughtProducts)
+            {
+                table = product.PrintSummaryInfo(table, index);
+                index++;
+            }
+            table.AddRow(index, "US Tax", "", Math.Round(order.totalSum * 0.0884, 2) + "$");
             return table;
         }
 

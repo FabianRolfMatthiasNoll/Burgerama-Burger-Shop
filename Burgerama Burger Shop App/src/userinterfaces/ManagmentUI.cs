@@ -9,7 +9,7 @@ using Burgerama_Burger_Shop_App.src.validators;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
-    internal class ManagmentUI
+    public class ManagmentUI
     {
         ManagmentHandler managmentHandler;
         IntValidator intValidator;

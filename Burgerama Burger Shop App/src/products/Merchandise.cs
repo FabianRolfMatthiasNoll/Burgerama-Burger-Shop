@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Burgerama_Burger_Shop_App.products
 {
 
-    internal class Merchandise : Product
+    public class Merchandise : Product
     {
         public string size;
 

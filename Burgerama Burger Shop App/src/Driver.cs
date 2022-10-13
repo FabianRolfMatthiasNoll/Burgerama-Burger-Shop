@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_App
 {
-    internal class Driver
+    public class Driver
     {
         public string name;
         public int capacity;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
-    internal class ManagmentHandler
+    public class ManagmentHandler
     {
         FileHandler fileHandler;
         List<Driver> drivers;

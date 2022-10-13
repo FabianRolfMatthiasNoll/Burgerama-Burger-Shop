@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_App.src.validators
 {
-    internal class PasswordValidator
+    public class PasswordValidator
     {
         public PasswordValidator()
         {
