@@ -61,6 +61,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public int GetProductCount()
         {
+            LoadProductData();
             return unsortedProducts.Count;
         }
 
