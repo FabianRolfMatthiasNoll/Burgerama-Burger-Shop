@@ -57,27 +57,13 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             user.password = passwordValidator.HashString(password);
         }
 
-        public void GetStreet(string street)
+        public void SetStreet(string street)
         {
-            while (stringValidator.IsStringEmpty(street))
-            {
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Please enter your Street and Housenumber: ");
-                street = Console.ReadLine();
-            }
-            Program.ClearCurrentConsoleLine();
             user.street = street;
         }
 
-        public void GetZip(string postal)
+        public void SetZIP(string postal)
         {
-            while (stringValidator.IsStringEmpty(postal))
-            {
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Please enter your ZIP-Code: ");
-                postal = Console.ReadLine();
-            }
-            Program.ClearCurrentConsoleLine();
             user.postal = postal;
         }
 
