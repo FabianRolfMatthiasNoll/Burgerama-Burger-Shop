@@ -33,7 +33,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void GetEmail()
         {
-            List<User> users = userData.LoadUserData();
+            List<User> users = userData.LoadUserData("user_data.xml");
 
             Console.Write("Please enter your Email: ");
             string email = Console.ReadLine();
@@ -98,7 +98,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void RegisterUser()
         {
-            userData.WriteUserData(user);
+            userData.WriteUserData(user,"user_data.xml");
         }
     }
 }
