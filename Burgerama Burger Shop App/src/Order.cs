@@ -9,7 +9,7 @@ using Burgerama_Burger_Shop_App.src.handlers;
 
 namespace Burgerama_Burger_Shop_App
 {
-    enum State
+    public enum State
     {
         Preperation = 0,
         Delivery = 1,
