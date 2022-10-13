@@ -20,11 +20,12 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
     {
         IntValidator intValidator;
         OrderHandler orderHandler;
+        public string userInput;
 
         public OrderUI()
         {
-            intValidator = new IntValidator();
             orderHandler = new OrderHandler();
+            intValidator = new IntValidator(1, orderHandler.GetProductCount() + 1);
         }
 
         public void OrderMenu(User user)
@@ -53,18 +54,28 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
                 Program.ClearCurrentConsoleLine();
                 Console.Write("Enter your Option: ");
 
-                int selection = intValidator.IsInputValid(Console.ReadLine(), 1, orderHandler.GetProductCount() + 1);
+                this.userInput = Console.ReadLine();
 
-                if (selection == orderHandler.GetProductCount() + 1)
+                while (!intValidator.IsInputValid(userInput))
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please enter a valid number!:");
+                    userInput = Console.ReadLine();
+                }
+
+                int.TryParse(this.userInput, out int userSelection);
+
+                if (userSelection == orderHandler.GetProductCount() + 1)
                 {
                     orderHandler.FinishOrder(user);
                     break;
                 }
 
-                orderHandler.AddProductToOrder(selection - 1);
+                orderHandler.AddProductToOrder(userSelection - 1);
 
                 //setting the cursor behind the price
-                Console.SetCursorPosition(60, selection + headerLength);
+                Console.SetCursorPosition(60, userSelection + headerLength);
                 Console.Write("(1)");
                 Console.SetCursorPosition(x, y);
             }

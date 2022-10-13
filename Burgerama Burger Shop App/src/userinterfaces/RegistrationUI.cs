@@ -1,5 +1,6 @@
 ﻿using Burgerama_Burger_Shop_App.products;
 using Burgerama_Burger_Shop_App.src.handlers;
+using Burgerama_Burger_Shop_App.src.validators;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
     public class RegistrationUI
     {
         RegistrationHandler registrationHandler;
+        StringValidator stringValidator;
 
         public RegistrationUI()
         {
             registrationHandler = new RegistrationHandler();
+            stringValidator = new StringValidator();
         }
         public void RegistrationMenu()
         {
@@ -33,10 +36,10 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             registrationHandler.GetPassword();
 
             Console.Write("Please enter your Street and Housenumber: ");
-            registrationHandler.GetStreet(Console.ReadLine());
+            GetStreet(Console.ReadLine());
 
             Console.Write("Please enter your ZIP-Code: ");
-            registrationHandler.GetZip(Console.ReadLine());
+            GetZip(Console.ReadLine());
 
             Console.Write("Please enter your City: ");
             registrationHandler.GetCity(Console.ReadLine());
@@ -48,6 +51,38 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
 
             registrationHandler.RegisterUser();
 
+        }
+
+        public void GetStreet(string street)
+        {
+            while (stringValidator.IsStringEmpty(street))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Your Input can`t be empty! [Enter]");
+                Console.ReadKey();
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter your Street and Housenumber: ");
+                street = Console.ReadLine();
+            }
+            Program.ClearCurrentConsoleLine();
+            registrationHandler.SetStreet(street);
+        }
+
+        public void GetZip(string postal)
+        {
+            while (stringValidator.IsStringEmpty(postal))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Your Input can`t be empty! [Enter]");
+                Console.ReadKey();
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter your ZIP-Code: ");
+                postal = Console.ReadLine();
+            }
+            Program.ClearCurrentConsoleLine();
+            registrationHandler.SetZIP(postal);
         }
     }
 }

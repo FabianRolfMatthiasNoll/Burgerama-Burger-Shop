@@ -13,11 +13,12 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
     {
         ManagmentHandler managmentHandler;
         IntValidator intValidator;
+        string userInput;
 
         public ManagmentUI()
         {
             managmentHandler = new ManagmentHandler();
-            intValidator = new IntValidator();
+            intValidator = new IntValidator(1,3);
         }
 
         public void ManagerMenu()
@@ -39,21 +40,31 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             Console.WriteLine("3) Return to the main Menu");
             Console.Write("What do you want to do?: ");
 
-            int menu = intValidator.IsInputValid(Console.ReadLine(), 1, 3);
+            this.userInput = Console.ReadLine();
 
-            if (menu == 1)
+            while (!intValidator.IsInputValid(userInput))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter a valid number!:");
+                userInput = Console.ReadLine();
+            }
+
+            int.TryParse(this.userInput, out int userSelection);
+
+            if (userSelection == 1)
             {
                 managmentHandler.FastForwardTime();
                 managmentHandler.ReloadData();
                 goto MenuStart;
             }
-            else if (menu == 2)
+            else if (userSelection == 2)
             {
                 managmentHandler.EraseClosedOrders();
                 managmentHandler.ReloadData();
                 goto MenuStart;
             }
-            else if (menu == 3)
+            else if (userSelection == 3)
             {
                 Console.Clear();
             }

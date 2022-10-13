@@ -8,38 +8,57 @@ namespace Burgerama_Burger_Shop_App.src.validators
 {
     public class IntValidator
     {
-        public IntValidator()
-        {
+        public int minVal;
+        public int maxVal;
+        public int outputInt;
+        public string inputString;
+        
 
+        public IntValidator(int minVal, int maxVal)
+        {
+            this.minVal = minVal;
+            this.maxVal = maxVal;
         }
 
-        public int IsInputValid(string menuInput, int minVal, int maxVal)
+        public bool IsInputValid(string input)
         {
-            int menuSelect = 0;
-            while (true)
+            inputString = input;
+            if (this.IsInputInt() && this.IsInputInBound())
             {
-                while (!int.TryParse(menuInput, out menuSelect))
-                {
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Program.ClearCurrentConsoleLine();
-                    Console.Write("Please enter a number!:");
-                    menuInput = Console.ReadLine();
-                }
-                if (menuSelect < minVal || menuSelect > maxVal)
-                {
-                    //If entered value isnt a integer an error occurs
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Program.ClearCurrentConsoleLine();
-                    Console.Write("Please enter a valid Option: ");
-                    menuInput = Console.ReadLine();
-                }
-                else
-                {
-                    return menuSelect;
-                }
+                return true;
+            } else
+            {
+                return false;
             }
         }
 
+        public bool IsInputValid(int input)
+        {
+            outputInt = input;
+            if (this.IsInputInBound())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        public bool IsInputInt()
+        {
+            return int.TryParse(this.inputString, out this.outputInt);
+        }
+
+        public bool IsInputInBound()
+        {
+            if (this.outputInt < this.minVal || this.outputInt > this.maxVal)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
     }
 }

@@ -16,12 +16,8 @@ namespace Burgerama_Burger_Shop_App.src.validators
 
         public bool IsStringEmpty(string input)
         {
-            if (string.IsNullOrEmpty(input))
+            if (string.IsNullOrWhiteSpace(input))
             {
-                Console.SetCursorPosition(0, Console.CursorTop - 1);
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Your Input can`t be empty! [Enter]");
-                Console.ReadKey();
                 return true;
             }
             return false;

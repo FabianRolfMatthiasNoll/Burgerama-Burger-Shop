@@ -13,12 +13,13 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
         LoginUI loginUI;
         RegistrationUI registrationUI;
         IntValidator intValidator;
+        string userInput;
 
         public MainMenu()
         {
             loginUI = new LoginUI();
             registrationUI = new RegistrationUI();
-            intValidator = new IntValidator();
+            intValidator = new IntValidator(1,2);
         }
 
         public void menuUI()
@@ -33,14 +34,25 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             Console.WriteLine("(2) Login at Burgerama");
             Console.WriteLine("");
             Console.Write("Please select an Option: ");
-            int menu = intValidator.IsInputValid(Console.ReadLine(), 1, 2);
 
-            if (menu == 1)
+            this.userInput = Console.ReadLine();
+
+            while (!intValidator.IsInputValid(userInput))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter a valid number!:");
+                userInput = Console.ReadLine();
+            }
+
+            int.TryParse(this.userInput, out int userSelection);
+
+            if (userSelection == 1)
             {
                 registrationUI.RegistrationMenu();
                 goto Return;
             }
-            else if (menu == 2)
+            else if (userSelection == 2)
             {
                 loginUI.LoginMenu();
                 goto Return;
