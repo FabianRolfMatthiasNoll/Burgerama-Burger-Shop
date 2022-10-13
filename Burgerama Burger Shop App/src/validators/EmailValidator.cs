@@ -30,7 +30,6 @@ namespace Burgerama_Burger_Shop_App.src.validators
             string email = emailInput.ToLower();
             foreach (var user in users)
             {
-                //compares the string of user emails and the given email
                 if (user.email == email)
                 {
                     return true;
