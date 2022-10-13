@@ -8,10 +8,11 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
         LoginHandler login;
         ManagmentUI managmentUI;
         OrderUI orderUI;
+        string userInput;
 
         public LoginUI()
         {
-            login = new LoginHandler();
+            login = new LoginHandler("src/data/", "user_data.xml");
             managmentUI = new ManagmentUI();
             orderUI = new OrderUI();
         }
@@ -25,11 +26,19 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             Console.WriteLine("Please input your Login Credentials\n");
 
             Console.Write("Please enter your Email: ");
-            login.GetEmail(Console.ReadLine());
+            userInput = Console.ReadLine();
+            while (!login.SetEmail(userInput)) 
+            { 
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Please enter a valid email adress:");
+                userInput = Console.ReadLine();
+                userInput = userInput.ToLower();
+            }
 
             Program.ClearCurrentConsoleLine();
             Console.Write("Password:");
-            login.GetPassword();
+            login.SetPassword();
 
             if (login.IsUserManager())
             {
@@ -38,6 +47,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
 
             if (login.IsUserRegistered())
             {
+                Console.Clear();
                 orderUI.OrderMenu(login.ReturnUser());
             } 
             else if (login.IsUserManager())
