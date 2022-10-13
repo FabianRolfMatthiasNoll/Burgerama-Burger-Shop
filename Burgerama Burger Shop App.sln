@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Burgerama Burger Shop App", "Burgerama Burger Shop App\Burgerama Burger Shop App.csproj", "{4E3B1428-D3C3-4558-9DBE-777FAD1A2FF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Burgerama Burger Shop App", "Burgerama Burger Shop App\Burgerama Burger Shop App.csproj", "{4E3B1428-D3C3-4558-9DBE-777FAD1A2FF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Burgerama Burger Shop Test", "Burgerama Burger Shop Test\Burgerama Burger Shop Test.csproj", "{CC1C3A93-CF6C-409F-800D-73109DEE3C09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4E3B1428-D3C3-4558-9DBE-777FAD1A2FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E3B1428-D3C3-4558-9DBE-777FAD1A2FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E3B1428-D3C3-4558-9DBE-777FAD1A2FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1C3A93-CF6C-409F-800D-73109DEE3C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1C3A93-CF6C-409F-800D-73109DEE3C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1C3A93-CF6C-409F-800D-73109DEE3C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1C3A93-CF6C-409F-800D-73109DEE3C09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

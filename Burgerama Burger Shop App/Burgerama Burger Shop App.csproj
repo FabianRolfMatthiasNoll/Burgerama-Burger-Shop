@@ -41,7 +41,6 @@
 
   <ItemGroup>
     <Folder Include="material\" />
-    <Folder Include="tests\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
