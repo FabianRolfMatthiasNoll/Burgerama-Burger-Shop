@@ -1,4 +1,6 @@
-﻿using Burgerama_Burger_Shop_App.src.validators;
+﻿using Burgerama_Burger_Shop_App.src.handlers;
+using Burgerama_Burger_Shop_App.src.validators;
+using Burgerama_Burger_Shop_App;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,40 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             bool output;
 
             output = emailValidator.IsEmailValid(input);
+
+            Assert.False(output);
+        }
+
+        [Theory]
+        [InlineData("Fabian.Noll@gmail.com")]
+        [InlineData("Florian.Armbruster@gmx.de")]
+        [InlineData("HeiNRich.SumMEr@gmx.de")]
+        [InlineData("Dullenkopf.christian@siemens.de")]
+        public void IsEmailTakenPass(string input)
+        {
+            FileHandler fileHandler = new FileHandler("src/test data/");
+            EmailValidator emailValidator = new EmailValidator();
+            List<User> userlist = fileHandler.LoadUserData("user_data_test.xml");
+            bool output;
+
+            output = emailValidator.IsEmailTaken(userlist, input);
+
+            Assert.True(output);
+        }
+
+        [Theory]
+        [InlineData("Fabian.Noll@goaglemail.com")]
+        [InlineData("Nigerian.Prince@money.de")]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void IsEmailTakenFail(string input)
+        {
+            FileHandler fileHandler = new FileHandler("src/test data/");
+            EmailValidator emailValidator = new EmailValidator();
+            List<User> userlist = fileHandler.LoadUserData("user_data_test.xml");
+            bool output;
+
+            output = emailValidator.IsEmailTaken(userlist, input);
 
             Assert.False(output);
         }
