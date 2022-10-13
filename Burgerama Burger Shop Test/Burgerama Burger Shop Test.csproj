@@ -10,6 +10,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\test data\driver_config_test.json" />
+    <None Remove="src\test data\driver_data_test.json" />
+    <None Remove="src\test data\german_cities_test.json" />
+    <None Remove="src\test data\product_data_test.json" />
+    <None Remove="src\test data\user_data_test.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="src\test data\driver_config_test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\driver_data_test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\german_cities_test.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\product_data_test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\user_data_test.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -29,8 +55,6 @@
   <ItemGroup>
     <Folder Include="src\handler tests\" />
     <Folder Include="src\product tests\" />
-    <Folder Include="src\validator tests\" />
-    <Folder Include="src\test data\" />
   </ItemGroup>
 
 </Project>

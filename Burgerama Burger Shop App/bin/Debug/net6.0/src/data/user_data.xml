@@ -70,4 +70,11 @@
     <Street>linux 87</Street>
     <Password>9BC0375A719A30884566024F1E385A1EED335A15FF2EF938252EF403DCDCA922</Password>
   </User>
+  <User>
+    <Email>fabian.no@gmail.com</Email>
+    <Postal>78532</Postal>
+    <City>Tuttlingen</City>
+    <Street>Kaiserstraße 10</Street>
+    <Password>75D3784ED67D5CE714CCAB50B5EEB20D6BBC16FDCB7B28DC9B97107E2645ADEB</Password>
+  </User>
 </Users>
