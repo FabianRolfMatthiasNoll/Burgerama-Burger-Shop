@@ -19,10 +19,10 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             filePath = path;
         }
 
-        public List<User> LoadUserData()
+        public List<User> LoadUserData(string fileName)
         {
             List<User> users = new List<User>();
-            using (var reader = new StreamReader($"{filePath}user_data.xml"))
+            using (var reader = new StreamReader($"{filePath}{fileName}"))
             {
                 XmlSerializer deserializer = new XmlSerializer(typeof(List<User>),
                     new XmlRootAttribute("Users"));
@@ -31,9 +31,9 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return users;
         }
 
-        public void WriteUserData(User user)
+        public void WriteUserData(User user, string fileName)
         {
-            var usersXML = XElement.Load($"{filePath}user_data.xml");
+            var usersXML = XElement.Load($"{filePath}{fileName}");
             usersXML.Add(new XElement("User",
                                 //new XAttribute("ID", user),
                                 new XElement("Email", user.email),
@@ -44,7 +44,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                                 )
                             );
             //saves the document after adding the new user
-            usersXML.Save($"{filePath}user_data.xml");
+            usersXML.Save($"{filePath}{fileName}");
         }
 
         public bool IsDataAvailable(string fileName)
