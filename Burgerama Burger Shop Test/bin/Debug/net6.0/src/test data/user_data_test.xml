@@ -56,4 +56,11 @@
     <Street>teststreet 1</Street>
     <Password>encanto</Password>
   </User>
+  <User>
+    <Email>fernando.rodriguez@spain.to</Email>
+    <Postal>00000</Postal>
+    <City>testamonia</City>
+    <Street>teststreet 1</Street>
+    <Password>encanto</Password>
+  </User>
 </Users>
