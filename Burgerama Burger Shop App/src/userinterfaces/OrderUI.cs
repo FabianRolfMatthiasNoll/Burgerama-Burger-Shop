@@ -20,12 +20,14 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
     {
         IntValidator intValidator;
         OrderHandler orderHandler;
+        BoolValidator boolValidator;
         public string userInput;
 
         public OrderUI()
         {
-            orderHandler = new OrderHandler();
+            orderHandler = new OrderHandler("src/data/", "product_data.json", "driver_data.json");
             intValidator = new IntValidator(1, orderHandler.GetProductCount() + 1);
+            boolValidator = new BoolValidator();
         }
 
         public void OrderMenu(User user)
@@ -54,7 +56,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
                 Program.ClearCurrentConsoleLine();
                 Console.Write("Enter your Option: ");
 
-                this.userInput = Console.ReadLine();
+                userInput = Console.ReadLine();
 
                 while (!intValidator.IsInputValid(userInput))
                 {
@@ -70,6 +72,38 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
                 {
                     orderHandler.FinishOrder(user);
                     break;
+                }
+
+                if (orderHandler.IsProductDrink(userSelection - 1))
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please choose 'true' or 'false' if you want your Drink on Ice: ");
+                    userInput = Console.ReadLine();
+                    while (!boolValidator.IsStringValidBool(userInput))
+                    {
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        Program.ClearCurrentConsoleLine();
+                        Console.Write("You can only choose 'true' or 'false'. Please try again: ");
+                        userInput = Console.ReadLine();
+                    }
+                    orderHandler.SetDrinkOnIce(userInput, userSelection - 1);
+                }
+
+                if (orderHandler.IsProductMerchandise(userSelection - 1))
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Program.ClearCurrentConsoleLine();
+                    Console.Write("Please choose a following Size S,M,L,XL,XXL: ");
+                    userInput = Console.ReadLine();
+                    while (!orderHandler.SizeValidator(userInput))
+                    {
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        Program.ClearCurrentConsoleLine();
+                        Console.Write("You can only choose between: S,M,L,XL,XXL. Please try again: ");
+                        userInput = Console.ReadLine();
+                    }
+                    orderHandler.SetSizeOfProduct(userInput, userSelection - 1);
                 }
 
                 orderHandler.AddProductToOrder(userSelection - 1);
