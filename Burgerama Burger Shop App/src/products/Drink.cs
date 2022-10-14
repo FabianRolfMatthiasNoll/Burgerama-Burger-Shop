@@ -25,7 +25,7 @@ namespace Burgerama_Burger_Shop_App.products
 
         public override ConsoleTable PrintSummaryInfo(ConsoleTable table, int index)
         {
-            if (onIce = true)
+            if (onIce == true)
             {
                 table.AddRow(index, name, "On Ice", price + "$");
             } else
