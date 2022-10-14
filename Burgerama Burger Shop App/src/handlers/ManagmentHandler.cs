@@ -11,17 +11,23 @@ namespace Burgerama_Burger_Shop_App.src.handlers
     public class ManagmentHandler
     {
         FileHandler fileHandler;
-        List<Driver> drivers;
+        public List<Driver> drivers;
+        string fileName;
 
-        public ManagmentHandler()
+        public ManagmentHandler(string filePath, string fName)
         {
-            fileHandler = new FileHandler("src/data/");
+            fileHandler = new FileHandler(filePath);
             drivers = new List<Driver>();
+            fileName = fName;
+        }
+
+        public void LoadDriverData()
+        {
+            drivers = fileHandler.ReadJSON<Driver>(fileName);
         }
 
         public ConsoleTable CreateOrderOverview()
         {
-            drivers = fileHandler.ReadJSON<Driver>("driver_data.json");
             var table = new ConsoleTable("Email of User", "Address", "Driver", "Prep. Time", "Ship. Time", "Status");
             foreach (var driver in drivers)
             {
@@ -48,12 +54,12 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                     order.DecreaseTotalTime();
                 }
             }
-            fileHandler.WriteJSON(drivers, "driver_data.json");
+            fileHandler.WriteJSON(drivers, fileName);
         }
 
         public void ReloadData()
         {
-            drivers = fileHandler.ReadJSON<Driver>("driver_data.json");
+            drivers = fileHandler.ReadJSON<Driver>(fileName);
         }
 
         public void EraseClosedOrders()
@@ -70,8 +76,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                     }
                 }
             }
-            fileHandler.WriteJSON(drivers, "driver_data.json");
-            Console.Clear();
+            fileHandler.WriteJSON(drivers, fileName);
         }
     }
 }
