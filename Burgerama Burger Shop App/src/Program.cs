@@ -10,7 +10,7 @@ namespace Burgerama_Burger_Shop_App
         public static void Main()
         {
             MainMenu mainMenu = new MainMenu();
-            DriverHandler driverHandler = new DriverHandler();
+            DriverHandler driverHandler = new DriverHandler("src/data/", "driver_data.json", "driver_config.json");
 
             CheckFileDependencies();
 
