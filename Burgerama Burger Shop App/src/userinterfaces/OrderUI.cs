@@ -25,7 +25,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
 
         public OrderUI()
         {
-            orderHandler = new OrderHandler("src/data/", "product_data.json", "driver_data.json");
+            orderHandler = new OrderHandler("src/data/", "product_data.json", "driver_data.json", "driver_config.json");
             intValidator = new IntValidator(1, orderHandler.GetProductCount() + 1);
             boolValidator = new BoolValidator();
         }
