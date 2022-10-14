@@ -16,7 +16,6 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         {
             //ARRANGE
             StringValidator stringValidator = new StringValidator();
-            //string input = "Hello";
             bool output;
 
             //ACT
