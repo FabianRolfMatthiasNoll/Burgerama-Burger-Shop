@@ -17,12 +17,13 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
 
         public ManagmentUI()
         {
-            managmentHandler = new ManagmentHandler();
+            managmentHandler = new ManagmentHandler("src/data/", "driver_data.json");
             intValidator = new IntValidator(1,3);
         }
 
         public void ManagerMenu()
         {
+            managmentHandler.LoadDriverData();
             MenuStart:
             Console.Clear();
             Console.SetWindowSize(150, 50);
