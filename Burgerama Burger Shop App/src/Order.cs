@@ -105,6 +105,11 @@ namespace Burgerama_Burger_Shop_App
                     shipTime = 0;
                 }
             }
+            totalTime = totalTime - 15;
+            if(totalTime < 0)
+            {
+                totalTime = 0;
+            }
         }
     }
 }
