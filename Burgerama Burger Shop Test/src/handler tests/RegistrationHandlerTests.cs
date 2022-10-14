@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_Test.src.handler_tests
 {
-    public class RegistrationHandlerTests
+    [Collection("Non-Parallel Collection")]
+    public class RegistrationHandlerTestsParallel
     {
         [Fact]
         public void DoesDataLoadCorrectly()
@@ -19,7 +20,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             registrationHandler.LoadRegistrationData("user_data_test.xml", "german_cities_test.json");
 
             Assert.Equal("Berlin", registrationHandler.germanCities[0].city);
-            Assert.Equal("fabian.noll@googlemail.com", registrationHandler.users[0].email);  
+            Assert.Equal("fabian.noll@googlemail.com", registrationHandler.users[0].email);
         }
 
         [Theory]
