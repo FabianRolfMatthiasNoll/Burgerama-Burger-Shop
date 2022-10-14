@@ -20,6 +20,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public OrderHandler(string filePath, string fileNameP, string fileNameD)
         {
             fileNameProduct = fileNameP;
+            products = new List<Product>();
             order = new Order(filePath,  fileNameD);
             fileHandler = new FileHandler(filePath);
             driverHandler = new DriverHandler();
