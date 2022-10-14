@@ -50,6 +50,32 @@ namespace Burgerama_Burger_Shop_App.src.validators
             return int.TryParse(this.inputString, out this.outputInt);
         }
 
+        public bool IsInputInt(string input)
+        {
+            return int.TryParse(input, out int output);
+        }
+
+        public bool IsIntPositiv(string input)
+        {
+            if(int.TryParse(input, out int output))
+            {
+                if (output >= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsIntPositiv(int input)
+        {
+            if (input >= 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool IsInputInBound()
         {
             if (this.outputInt < this.minVal || this.outputInt > this.maxVal)
