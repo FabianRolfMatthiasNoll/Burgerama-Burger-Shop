@@ -13,20 +13,22 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         FileHandler fileHandler;
         DriverHandler driverHandler;
         List<Product> unsortedProducts;
-        List<Product> products;
+        public List<Product> products;
         public Order order;
+        public string fileNameProduct;
 
-        public OrderHandler()
+        public OrderHandler(string filePath, string fileNameP, string fileNameD)
         {
-            order = new Order();
-            fileHandler = new FileHandler("src/data/");
+            fileNameProduct = fileNameP;
+            order = new Order(filePath,  fileNameD);
+            fileHandler = new FileHandler(filePath);
             driverHandler = new DriverHandler();
             unsortedProducts = new List<Product>();
         }
 
         public void LoadProductData()
         {
-            unsortedProducts = fileHandler.ReadJSON<Product>("product_data.json");
+            unsortedProducts = fileHandler.ReadJSON<Product>(fileNameProduct);
             products = unsortedProducts.OrderBy(o => o.categoryId).ToList();
         }
 
@@ -65,13 +67,9 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return unsortedProducts.Count;
         }
 
-        public void AddProductToOrder(int selection)
+        public void AddProductToOrder(int index)
         {
-            products[selection] = CheckIfDrink(products[selection]);
-
-            products[selection] = CheckIfMerchandise(products[selection]);
-
-            order.boughtProducts.Add(products[selection]);
+            order.boughtProducts.Add(products[index]);
         }
 
         public void FinishOrder(User user)
@@ -80,126 +78,56 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             driverHandler.AddOrderToDriver(order);
         }
 
-        Product CheckIfDrink(Product product)
+        public bool IsProductDrink(int index)
         {
-            if (product.category == "Drink")
+            if (products[index].category == "Drink" && !(products[index].name == "Red Bull"))
             {
-                if (product.name == "Red Bull")
-                {
-                    return product;
-                }
-                product = IsDrinkOnIce(product);
+                    return true;
             }
-            return product;
+            return false;
         }
 
-        Product IsDrinkOnIce(Product product)
+        public void SetDrinkOnIce(string input, int index)
         {
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
-            Program.ClearCurrentConsoleLine();
-            Console.Write("Please choose 'true' or 'false' if you want your Drink on Ice: ");
-            string input = Console.ReadLine();
-            string finput = input.ToLower();
-            while (true)
+            if(input == "true")
             {
-                if (finput == "true")
-                {
-                    Product drinkIce = new Drink(product.id,
-                                              product.category,
-                                              product.name,
-                                              product.price,
-                                              product.prepTime,
-                                              product.categoryId,
-                                              true);
-
-                    Program.ClearCurrentConsoleLine();
-                    return drinkIce;
-                }
-                else if (finput == "false")
-                {
-                    Product drink = new Drink(product.id,
-                                              product.category,
-                                              product.name,
-                                              product.price,
-                                              product.prepTime,
-                                              product.categoryId,
-                                              false);
-
-                    Program.ClearCurrentConsoleLine();
-                    return drink;
-                }
-                else
-                {
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Program.ClearCurrentConsoleLine();
-                    Console.Write("Please choose 'true' or 'false' if you want your Drink on Ice: ");
-                    input = Console.ReadLine();
-                    finput = input.ToLower();
-                }
-            }
+                Product drinkIce = new Drink(products[index].id,
+                                             products[index].category,
+                                             products[index].name,
+                                             products[index].price,
+                                             products[index].prepTime,
+                                             products[index].categoryId,
+                                             true);
+                products[index] = drinkIce;
+            } 
         }
 
-        Product CheckIfMerchandise(Product product)
+        public bool IsProductMerchandise(int index)
         {
-            if (product.category == "Merchandise (Clothing)")
+            if (products[index].category == "Merchandise (Clothing)")
             {
-                product = SetSize(product);
+                return true;
             }
-            return product;
+            return false;
         }
 
-        Product SetSize(Product product)
+        public bool SizeValidator(string input)
         {
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
-            Program.ClearCurrentConsoleLine();
-            Console.Write("Please choose a following Size S,M,L,XL,XXL: ");
+            input = input.ToUpper();
+            return new[] { "S", "M", "L", "XL", "XXL" }.Contains(input);
+        }
 
-            Product merch = new Merchandise(product.id,
-                                                   product.category,
-                                                   product.name,
-                                                   product.price,
-                                                   product.prepTime,
-                                                   product.categoryId);
-
-            while (true)
-            {
-                string input = Console.ReadLine();
-                string finput = input.ToUpper();
-                if (finput == "S")
-                {
-                    merch.SetSize("S");
-                    return merch;
-                }
-                else if (finput == "M")
-                {
-                    merch.SetSize("M");
-                    return merch;
-                }
-                else if (finput == "L")
-                {
-                    merch.SetSize("L");
-                    return merch;
-                }
-                else if (finput == "XL")
-                {
-                    merch.SetSize("XL");
-                    return merch;
-                }
-                else if (finput == "XXL")
-                {
-                    merch.SetSize("XXL");
-                    return merch;
-                }
-                else
-                {
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Program.ClearCurrentConsoleLine();
-                    Console.Write("Please input a legitimate Size [Press Any Key to continue]");
-                    Console.ReadKey();
-                    Program.ClearCurrentConsoleLine();
-                    Console.Write("Please choose a following Size S,M,L,XL,XXL: ");
-                }
-            }
+        public void SetSizeOfProduct(string input, int index)
+        {
+            input = input.ToUpper();
+            Product merch = new Merchandise(products[index].id,
+                                            products[index].category,
+                                            products[index].name,
+                                            products[index].price,
+                                            products[index].prepTime,
+                                            products[index].categoryId);
+            merch.SetSize(input);
+            products[index] = merch;
         }
     }
 }
