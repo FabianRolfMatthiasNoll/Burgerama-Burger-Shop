@@ -6,9 +6,9 @@
       {
         "id": 0,
         "state": 0,
-        "prepTime": 16,
+        "prepTime": 10,
         "shipTime": 20,
-        "totalTime": 36,
+        "totalTime": 30,
         "totalSum": 58.76,
         "boughtProducts": [
           {
@@ -62,7 +62,7 @@
       },
       {
         "id": 0,
-        "state": 1,
+        "state": 2,
         "prepTime": 0,
         "shipTime": 20,
         "totalTime": 20,
@@ -87,7 +87,7 @@
       },
       {
         "id": 0,
-        "state": 0,
+        "state": 2,
         "prepTime": 12,
         "shipTime": 20,
         "totalTime": 32,
@@ -112,7 +112,7 @@
       },
       {
         "id": 0,
-        "state": 0,
+        "state": 2,
         "prepTime": 5,
         "shipTime": 35,
         "totalTime": 40,
