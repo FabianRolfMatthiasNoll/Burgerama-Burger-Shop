@@ -49,7 +49,6 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                 }
             }
             fileHandler.WriteJSON(drivers, "driver_data.json");
-            Console.Clear();
         }
 
         public void ReloadData()
