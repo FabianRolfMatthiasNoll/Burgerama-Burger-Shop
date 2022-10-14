@@ -16,39 +16,42 @@ namespace Burgerama_Burger_Shop_App.src.handlers
     {
         EmailValidator emailValidator;
         StringValidator stringValidator;
+        IntValidator intValidator;
         PasswordValidator passwordValidator;
         FileHandler userData;
         FileHandler cityData;
-        User user;
+        public List<City> germanCities;
+        public List<User> users;
+        public User user;
 
-        public RegistrationHandler()
+        public RegistrationHandler(string filePath)
         {
             user = new User();
-            userData = new FileHandler("src/data/");
-            cityData = new FileHandler("src/data/");
+            users = new List<User>();
+            germanCities = new List<City>();
+            userData = new FileHandler(filePath);
+            cityData = new FileHandler(filePath);
             emailValidator = new EmailValidator();
             stringValidator = new StringValidator();
+            intValidator = new IntValidator(0,0);
             passwordValidator = new PasswordValidator();
         }
 
-        public void GetEmail()
+        public void LoadRegistrationData(string userDataFile, string cityFile)
         {
-            List<User> users = userData.LoadUserData("user_data.xml");
+            users = userData.LoadUserData(userDataFile);
+            germanCities = cityData.ReadJSON<City>(cityFile);
+        }
 
-            Console.Write("Please enter your Email: ");
-            string email = Console.ReadLine();
-            email = email.ToLower();
-
-            while (emailValidator.IsEmailTaken(users, email) || !emailValidator.IsEmailValid(email))
+        public bool SetEmailIfValid(string email)
+        {
+            if(!emailValidator.IsEmailTaken(users, email) && emailValidator.IsEmailValid(email))
             {
-                Console.SetCursorPosition(0, Console.CursorTop - 1);
-                Program.ClearCurrentConsoleLine();
-                Console.Write("The Email is either taken or not valid. Please try again: ");
-                email = Console.ReadLine();
                 email = email.ToLower();
+                user.email = email;
+                return true;
             }
-
-            user.email = email;
+            return false;
         }
 
         public void GetPassword()
@@ -57,48 +60,42 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             user.password = passwordValidator.HashString(password);
         }
 
-        public void SetStreet(string street)
+        public bool SetStreetIfValid(string street)
         {
-            user.street = street;
-        }
-
-        public void SetZIP(string postal)
-        {
-            user.postal = postal;
-        }
-
-        public void GetCity(string userCity)
-        {
-            List<City> germanCities = cityData.ReadJSON<City>("german_cities.json");
-            bool cityIsInvalid = true;
-            while (cityIsInvalid)
+            if (!stringValidator.IsStringEmpty(street) && !intValidator.IsInputInt(street))
             {
-                foreach (var city in germanCities)
-                {
-                    if (city.city == userCity)
-                    {
-                        cityIsInvalid = false;
-                        break;
-                    }
-                }
-                if (cityIsInvalid == false)
-                {
-                    break;
-                }
-                Console.SetCursorPosition(0, Console.CursorTop - 1);
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Your city is not in our delivery range. [Enter]");
-                Console.ReadKey();
-                Program.ClearCurrentConsoleLine();
-                Console.Write("Please enter your City: ");
-                userCity = Console.ReadLine();
+                user.street = street;
+                return true;
             }
-            user.city = userCity;
+            return false;
         }
 
-        public void RegisterUser()
+        public bool SetZIPIfValid(string postal)
         {
-            userData.WriteUserData(user,"user_data.xml");
+            if (!stringValidator.IsStringEmpty(postal) && intValidator.IsInputInt(postal) && intValidator.IsIntPositiv(postal))
+            {
+                user.postal = postal;
+                return true;
+            }
+            return false;
+        }
+
+        public bool SetCityIfValid(string userCity)
+        {
+            foreach (var city in germanCities)
+            {
+                if (city.city == userCity)
+                {
+                    user.city = userCity;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void RegisterUser(string fileName)
+        {
+            userData.WriteUserData(user,fileName);
         }
     }
 }

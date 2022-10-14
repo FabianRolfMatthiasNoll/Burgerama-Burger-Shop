@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,42 +21,37 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
 
         public RegistrationUI()
         {
-            registrationHandler = new RegistrationHandler();
+            registrationHandler = new RegistrationHandler("src/data/");
             stringValidator = new StringValidator();
         }
         public void RegistrationMenu()
         {
+            registrationHandler.LoadRegistrationData("user_data.xml", "german_cities.json");
+
             Console.Clear();
             Console.WriteLine("\n                            |\\ /| /|_/|\r\n                          |\\||-|\\||-/|/|\r\n                           \\\\|\\|//||///\r\n          _..----.._       |\\/\\||//||||\r\n        .'     o    '.     |||\\\\|/\\\\ ||\r\n       /   o       o  \\    | './\\_/.' |\r\n      |o        o     o|   |          |\r\n      /'-.._o     __.-'\\   |          |\r\n      \\      `````     /   |          |\r\n      |``--........--'`|    '.______.'\r\n       \\              /\r\n        `'----------'`\n");
             Console.WriteLine("");
             Console.WriteLine("For perfect customer satisfication we need a bit of information about you :)\n");
 
-            registrationHandler.GetEmail();
+            string userInput;
+            Console.Write("Please enter a email: ");
+            userInput = Console.ReadLine();
+
+            while (!registrationHandler.SetEmailIfValid(userInput))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Your Email is either taken or invalid. Please try again: ");
+                userInput= Console.ReadLine();
+            }
 
             Console.Write("Please choose a Password: ");
             registrationHandler.GetPassword();
 
             Console.Write("Please enter your Street and Housenumber: ");
-            GetStreet(Console.ReadLine());
+            userInput = Console.ReadLine();
 
-            Console.Write("Please enter your ZIP-Code: ");
-            GetZip(Console.ReadLine());
-
-            Console.Write("Please enter your City: ");
-            registrationHandler.GetCity(Console.ReadLine());
-
-            Console.WriteLine("Thank you for registering with Burgerama Burger :)");
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-            Console.Clear();
-
-            registrationHandler.RegisterUser();
-
-        }
-
-        public void GetStreet(string street)
-        {
-            while (stringValidator.IsStringEmpty(street))
+            while (!registrationHandler.SetStreetIfValid(userInput))
             {
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
                 Program.ClearCurrentConsoleLine();
@@ -63,15 +59,14 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
                 Console.ReadKey();
                 Program.ClearCurrentConsoleLine();
                 Console.Write("Please enter your Street and Housenumber: ");
-                street = Console.ReadLine();
+                userInput = Console.ReadLine();
             }
             Program.ClearCurrentConsoleLine();
-            registrationHandler.SetStreet(street);
-        }
 
-        public void GetZip(string postal)
-        {
-            while (stringValidator.IsStringEmpty(postal))
+            Console.Write("Please enter your ZIP-Code: ");
+            userInput = Console.ReadLine();
+
+            while (!registrationHandler.SetZIPIfValid(userInput))
             {
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
                 Program.ClearCurrentConsoleLine();
@@ -79,10 +74,28 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
                 Console.ReadKey();
                 Program.ClearCurrentConsoleLine();
                 Console.Write("Please enter your ZIP-Code: ");
-                postal = Console.ReadLine();
+                userInput = Console.ReadLine();
             }
             Program.ClearCurrentConsoleLine();
-            registrationHandler.SetZIP(postal);
+
+            Console.Write("Please enter your City: ");
+            userInput = Console.ReadLine();
+
+            while (!registrationHandler.SetCityIfValid(userInput))
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Your city is not in our delivery range. Please try again: ");
+                userInput = Console.ReadLine();
+            }
+
+            Console.WriteLine("Thank you for registering with Burgerama Burger :)");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
+
+            registrationHandler.RegisterUser("user_data.xml");
+
         }
     }
 }
