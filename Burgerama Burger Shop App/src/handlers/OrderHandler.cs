@@ -17,13 +17,13 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public Order order;
         public string fileNameProduct;
 
-        public OrderHandler(string filePath, string fileNameP, string fileNameD)
+        public OrderHandler(string filePath, string fileNameP, string fileNameDStates, string fileNameDConfig)
         {
             fileNameProduct = fileNameP;
             products = new List<Product>();
-            order = new Order(filePath,  fileNameD);
+            order = new Order(filePath,  fileNameDStates);
             fileHandler = new FileHandler(filePath);
-            driverHandler = new DriverHandler();
+            driverHandler = new DriverHandler(filePath, fileNameDStates, fileNameDConfig);
             unsortedProducts = new List<Product>();
         }
 
