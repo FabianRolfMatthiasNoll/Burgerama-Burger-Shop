@@ -48,7 +48,13 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             }
 
             Console.Write("Please choose a Password: ");
-            registrationHandler.GetPassword();
+            while (!registrationHandler.GetPassword())
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Program.ClearCurrentConsoleLine();
+                Console.Write("Your Password cant be blank. Please choose another password: ");
+            }
+            
 
             Console.Write("Please enter your Street and Housenumber: ");
             userInput = Console.ReadLine();
