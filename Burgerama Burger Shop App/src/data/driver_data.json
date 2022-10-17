@@ -2,6 +2,7 @@
   {
     "name": "Joe Pegg",
     "capacity": 3,
+    "openOrders": 4,
     "orders": [
       {
         "id": 0,
@@ -149,6 +150,7 @@
   {
     "name": "Lara Croft",
     "capacity": 6,
+    "openOrders": 6,
     "orders": [
       {
         "id": 0,
@@ -553,6 +555,7 @@
   {
     "name": "Nishal Bondeli",
     "capacity": 2,
+    "openOrders": 4,
     "orders": [
       {
         "id": 0,
