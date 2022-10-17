@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Burgerama_Burger_Shop_App.src.userinterfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
     public class DriverHandler
     {
         FileHandler fileHandler;
-        List<Driver> drivers;
+        public List<Driver> drivers;
         string fileNameStates;
         string fileNameConfig;
 
@@ -22,25 +23,40 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             fileNameConfig = fNameConfig;
         }
 
-        public void AddOrderToDriver(Order order)
+        public void CountOpenOrders()
         {
-            UpdateDriverStates();
-            bool driverAvailable = false;
-            foreach (var driver in drivers)
+            foreach(var driver in drivers)
             {
-                if (Driver.IsDriverFree(driver))
+                foreach (var order in driver.orders)
+                {
+                    if (order.state != State.Closed)
+                    {
+                        driver.openOrders++;
+                    }
+                }
+            }
+        }
+
+        public void AddOrderToBestDriver(Order order)
+        {
+            LoadDriverStates();
+            CountOpenOrders();
+            drivers = drivers.OrderBy(o => o.openOrders).ToList();
+            bool driverAdded = false;
+            foreach(var driver in drivers)
+            {
+                if (driver.IsDriverFree())
                 {
                     driver.orders.Add(order);
-                    driverAvailable = true;
+                    driverAdded = true;
                     break;
                 }
             }
-            if (!driverAvailable)
+
+            if(driverAdded == false)
             {
-                int driverNum = Driver.CheckLeastOpenOrders(drivers);
-                drivers[driverNum].orders.Add(order);
+                drivers[0].orders.Add(order);
             }
-            SaveCurrentDriverStates();
         }
 
         public void UpdateDrivers()
@@ -61,7 +77,22 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             SaveCurrentDriverStates();
         }
 
-        public void UpdateDriverStates()
+        public int CheckLeastOpenOrders()
+        {
+            int index = 0;
+            int orders = drivers[0].orders.Count;
+            foreach (var driver in drivers)
+            {
+                if (driver.orders.Count < orders)
+                {
+                    index++;
+                    orders = driver.orders.Count;
+                }
+            }
+            return index;
+        }
+
+        public void LoadDriverStates()
         {
             drivers = fileHandler.ReadJSON<Driver>(fileNameStates);
         }
