@@ -69,7 +69,7 @@ namespace Burgerama_Burger_Shop_App
 
             foreach (var driver in drivers)
             {
-                if (Driver.IsDriverFree(driver))
+                if (driver.IsDriverFree())
                 {
                     shipTime = 20;
                     driverAvailable = true;
