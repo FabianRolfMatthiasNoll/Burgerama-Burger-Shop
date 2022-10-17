@@ -13,6 +13,11 @@
     <None Remove="src\test data\driver_config_test.json" />
     <None Remove="src\test data\driver_data_test.json" />
     <None Remove="src\test data\driver_data_test2.json" />
+    <None Remove="src\test data\driver_data_test_free.json" />
+    <None Remove="src\test data\driver_data_test_no_free.json" />
+    <None Remove="src\test data\driver_data_test_time1.json" />
+    <None Remove="src\test data\driver_data_test_time2.json" />
+    <None Remove="src\test data\driver_data_test_time3.json" />
     <None Remove="src\test data\german_cities_test.json" />
     <None Remove="src\test data\product_data_test.json" />
     <None Remove="src\test data\user_data_test.xml" />
@@ -20,6 +25,21 @@
 
   <ItemGroup>
     <Content Include="src\test data\driver_config_test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\driver_data_test_free.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\driver_data_test_time3.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\driver_data_test_time2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\driver_data_test_time1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\driver_data_test_no_free.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="src\test data\driver_data_test2.json">
@@ -41,6 +61,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="ReportGenerator" Version="5.1.10" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
