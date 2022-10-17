@@ -10,7 +10,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
     public class PasswordValidatorTests
     {
         [Fact]
-        public void String_To_Hash()
+        public void StringToHash()
         {
             PasswordValidator passwordValidator = new PasswordValidator();
             string password = "KST";
@@ -20,6 +20,18 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             output = passwordValidator.HashString(password);
 
             Assert.Equal(hash, output);
+        }
+
+        [Fact]
+        public void StringToHashFail()
+        {
+            PasswordValidator passwordValidator = new PasswordValidator();
+            string password = "";
+            string output;
+
+            output = passwordValidator.HashString(password);
+
+            Assert.Equal("", output);
         }
     }
 }
