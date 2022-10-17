@@ -25,16 +25,22 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void CountOpenOrders()
         {
-            foreach(var driver in drivers)
+            LoadDriverStates();
+            foreach (var driver in drivers)
             {
+                int openOrderCount = 0;
+
                 foreach (var order in driver.orders)
                 {
                     if (order.state != State.Closed)
                     {
-                        driver.openOrders++;
+                        openOrderCount++;
                     }
                 }
+
+                driver.openOrders = openOrderCount;
             }
+            SaveCurrentDriverStates();
         }
 
         public void AddOrderToBestDriver(Order order)
@@ -57,6 +63,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             {
                 drivers[0].orders.Add(order);
             }
+            SaveCurrentDriverStates();
         }
 
         public void UpdateDrivers()
