@@ -14,14 +14,21 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         PasswordValidator passwordValidator;
         FileHandler userData;
         List<User> users;
+        string fileName;
         public string email;
         public string password;
 
-        public LoginHandler(string filePath, string fileName)
+        public LoginHandler(string filePath, string fName)
         {
             userData = new FileHandler(filePath);
             emailValidator = new EmailValidator();
             passwordValidator = new PasswordValidator();
+            users = new List<User>();
+            fileName = fName;
+        }
+
+        public void LoadUserData()
+        {
             users = userData.LoadUserData(fileName);
         }
 
