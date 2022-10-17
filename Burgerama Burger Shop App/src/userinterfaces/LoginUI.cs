@@ -27,6 +27,8 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             Console.WriteLine("");
             Console.WriteLine("Please input your Login Credentials\n");
 
+            login.LoadUserData();
+
             Console.Write("Please enter your Email: ");
             userInput = Console.ReadLine();
             while (!login.SetEmail(userInput)) 
