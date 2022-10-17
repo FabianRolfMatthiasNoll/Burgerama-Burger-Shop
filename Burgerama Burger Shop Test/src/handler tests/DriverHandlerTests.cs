@@ -13,7 +13,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         [Fact]
         public void AddOrderToDriver()
         {
-            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test.json", "driver_config_test.json");
+            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test2.json", "driver_config_test.json");
             Order order = new Order("src/test data/", "driver_data_test.json");
             driverHandler.LoadDriverStates();
             order = driverHandler.drivers[2].orders[2];
@@ -27,7 +27,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         [Fact]
         public void CountAllOpenOrders()
         {
-            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test.json", "driver_config_test.json");
+            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test2.json", "driver_config_test.json");
 
             driverHandler.CountOpenOrders();
 
@@ -39,7 +39,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         [Fact]
         public void AddNewDriver()
         {
-            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test.json", "driver_config_test.json");
+            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test2.json", "driver_config_test.json");
 
             driverHandler.UpdateDrivers();
 
