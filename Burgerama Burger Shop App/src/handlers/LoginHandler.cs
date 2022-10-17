@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
 using Burgerama_Burger_Shop_App.src.userinterfaces;
@@ -42,6 +43,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return false;
         }
 
+        [ExcludeFromCodeCoverage]
         public void SetPassword()
         {
             password = passwordValidator.PasswordInput();
