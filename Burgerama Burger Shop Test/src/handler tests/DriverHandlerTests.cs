@@ -11,9 +11,23 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
     public class DriverHandlerTests
     {
         [Fact]
-        public void AddOrderToDriver()
+        public void AddOrderToFreeDriver()
         {
-            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test2.json", "driver_config_test.json");
+            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test_free.json", "driver_config_test.json");
+            Order order = new Order("src/test data/", "driver_data_test.json");
+            driverHandler.LoadDriverStates();
+            order = driverHandler.drivers[2].orders[2];
+
+            driverHandler.AddOrderToBestDriver(order);
+            driverHandler.LoadDriverStates();
+
+            Assert.Equal(3, driverHandler.drivers[0].orders.Count);
+        }
+
+        [Fact]
+        public void AddOrderToNotFreeDriver()
+        {
+            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test_no_free.json", "driver_config_test.json");
             Order order = new Order("src/test data/", "driver_data_test.json");
             driverHandler.LoadDriverStates();
             order = driverHandler.drivers[2].orders[2];
