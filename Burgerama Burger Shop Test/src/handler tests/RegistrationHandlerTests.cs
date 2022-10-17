@@ -119,6 +119,39 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             Assert.NotEqual(postal, registrationHandler.user.postal);
         }
 
+        [Theory]
+        [InlineData("Tuttlingen")]
+        [InlineData("Stuttgart")]
+        [InlineData("Mannheim")]
+        public void SetCityIfValidPass(string city)
+        {
+            RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
+            registrationHandler.LoadRegistrationData("user_data_test.xml", "german_cities_test.json");
+            bool output;
+
+            output = registrationHandler.SetCityIfValid(city);
+
+            Assert.True(output);
+            Assert.Equal(city, registrationHandler.user.city);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("100")]
+        [InlineData("-100")]
+        [InlineData("Dirkishausen")]
+        public void SetCityIfValidFail(string city)
+        {
+            RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
+            bool output;
+
+            output = registrationHandler.SetCityIfValid(city);
+
+            Assert.False(output);
+            Assert.NotEqual(city, registrationHandler.user.city);
+        }
+
         [Fact]
         public void IsUserRegisteredCorrect()
         {
