@@ -120,5 +120,18 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             Assert.Equal("Tuttlingen", user.city);
 
         }
+
+        [Fact]
+        public void ReturnUserAfterLoginNull()
+        {
+            LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
+            User user = new User();
+            loginHandler.email = "";
+            loginHandler.password = "";
+
+            user = loginHandler.ReturnUser();
+
+            Assert.Null(user);
+        }
     }
 }
