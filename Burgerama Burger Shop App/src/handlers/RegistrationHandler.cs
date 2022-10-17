@@ -56,10 +56,17 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         }
 
         [ExcludeFromCodeCoverage]
-        public void GetPassword()
+        public bool GetPassword()
         {
             string password = passwordValidator.PasswordInput();
-            user.password = passwordValidator.HashString(password);
+            if (stringValidator.IsStringEmpty(password))
+            {
+                return false;
+            } else
+            {
+                user.password = passwordValidator.HashString(password);
+                return true;
+            } 
         }
 
         public bool SetStreetIfValid(string street)
