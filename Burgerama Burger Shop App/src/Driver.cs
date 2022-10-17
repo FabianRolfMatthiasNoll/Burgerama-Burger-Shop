@@ -12,7 +12,7 @@ namespace Burgerama_Burger_Shop_App
     {
         public string name;
         public int capacity;
-
+        public int openOrders = 0;
         public List<Order> orders;
 
         public Driver(string inName, int inCapacity)
@@ -22,28 +22,13 @@ namespace Burgerama_Burger_Shop_App
             orders = new List<Order>();
         }
 
-        public static bool IsDriverFree(Driver driver)
+        public bool IsDriverFree()
         {
-            if(driver.capacity > driver.orders.Count)
+            if(capacity > orders.Count)
             {
                 return true;
             }
             return false;
-        }
-
-        public static int CheckLeastOpenOrders(List<Driver> drivers)
-        {
-            int index = 0;
-            int orders = drivers[0].orders.Count;
-            foreach(var driver in drivers)
-            {
-                if(driver.orders.Count < orders)
-                {
-                    index++;
-                    orders = driver.orders.Count;
-                }
-            }
-            return index;
         }
     }
 }
