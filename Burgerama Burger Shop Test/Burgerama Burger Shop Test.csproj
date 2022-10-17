@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="src\test data\driver_config_test.json" />
     <None Remove="src\test data\driver_data_test.json" />
+    <None Remove="src\test data\driver_data_test2.json" />
     <None Remove="src\test data\german_cities_test.json" />
     <None Remove="src\test data\product_data_test.json" />
     <None Remove="src\test data\user_data_test.xml" />
@@ -19,6 +20,9 @@
 
   <ItemGroup>
     <Content Include="src\test data\driver_config_test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\driver_data_test2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="src\test data\driver_data_test.json">
@@ -50,10 +54,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Burgerama Burger Shop App\Burgerama Burger Shop App.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="src\product tests\" />
   </ItemGroup>
 
 </Project>
