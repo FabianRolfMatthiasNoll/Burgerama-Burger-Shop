@@ -68,8 +68,8 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void UpdateDrivers()
         {
-            drivers = fileHandler.ReadJSON<Driver>(fileNameStates);
-            List<Driver> driverStates = fileHandler.ReadJSON<Driver>(fileNameConfig);
+            List<Driver> driverStates = fileHandler.ReadJSON<Driver>(fileNameStates);
+            drivers = fileHandler.ReadJSON<Driver>(fileNameConfig);
 
             foreach (var driver1 in driverStates)
             {
@@ -77,26 +77,13 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                 {
                     if (driver1.name == driver2.name)
                     {
-                        driver1.orders = driver2.orders;
+                        driver2.orders = driver1.orders;
+                        driver2.openOrders = driver1.openOrders;
+                        driver2.capacity = driver1.capacity;
                     }
                 }
             }
             SaveCurrentDriverStates();
-        }
-
-        public int CheckLeastOpenOrders()
-        {
-            int index = 0;
-            int orders = drivers[0].orders.Count;
-            foreach (var driver in drivers)
-            {
-                if (driver.orders.Count < orders)
-                {
-                    index++;
-                    orders = driver.orders.Count;
-                }
-            }
-            return index;
         }
 
         public void LoadDriverStates()
