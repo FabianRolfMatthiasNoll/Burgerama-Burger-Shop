@@ -2,14 +2,14 @@
   {
     "name": "Joe Pegg",
     "capacity": 3,
-    "openOrders": 1,
+    "openOrders": 2,
     "orders": [
       {
         "id": 0,
-        "state": 0,
-        "prepTime": 10,
-        "shipTime": 20,
-        "totalTime": 30,
+        "state": 2,
+        "prepTime": 0,
+        "shipTime": 0,
+        "totalTime": 0,
         "totalSum": 58.76,
         "boughtProducts": [
           {

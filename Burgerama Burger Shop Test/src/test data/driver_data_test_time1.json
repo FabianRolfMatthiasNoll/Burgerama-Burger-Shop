@@ -2,7 +2,7 @@
   {
     "name": "Joe Pegg",
     "capacity": 3,
-    "openOrders": 1,
+    "openOrders": 2,
     "orders": [
       {
         "id": 0,

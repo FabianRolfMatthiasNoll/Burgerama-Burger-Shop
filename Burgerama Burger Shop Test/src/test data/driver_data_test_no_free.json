@@ -1,7 +1,7 @@
 [
   {
     "name": "Joe Pegg",
-    "capacity": 3,
+    "capacity": 1,
     "openOrders": 1,
     "orders": [
       {
@@ -90,7 +90,7 @@
   },
   {
     "name": "Lara Croft",
-    "capacity": 6,
+    "capacity": 1,
     "openOrders": 3,
     "orders": [
       {
@@ -316,7 +316,7 @@
   },
   {
     "name": "Nishal Bondeli",
-    "capacity": 4,
+    "capacity": 1,
     "openOrders": 3,
     "orders": [
       {
