@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleTables;
 using Burgerama_Burger_Shop_App.src.validators;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
+    [ExcludeFromCodeCoverage]
     public class ManagmentUI
     {
         ManagmentHandler managmentHandler;

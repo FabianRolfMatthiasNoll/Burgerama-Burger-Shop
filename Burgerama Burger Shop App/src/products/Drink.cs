@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using ConsoleTables;
 
 namespace Burgerama_Burger_Shop_App.products
 {
+    [ExcludeFromCodeCoverage]
     public class Drink : Product
     {
         public bool onIce;

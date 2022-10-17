@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
@@ -26,6 +27,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             drivers = fileHandler.ReadJSON<Driver>(fileName);
         }
 
+        [ExcludeFromCodeCoverage]
         public ConsoleTable CreateOrderOverview()
         {
             var table = new ConsoleTable("Email of User", "Address", "Driver", "Prep. Time", "Ship. Time", "Status");
@@ -57,6 +59,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             fileHandler.WriteJSON(drivers, fileName);
         }
 
+        [ExcludeFromCodeCoverage]
         public void ReloadData()
         {
             drivers = fileHandler.ReadJSON<Driver>(fileName);

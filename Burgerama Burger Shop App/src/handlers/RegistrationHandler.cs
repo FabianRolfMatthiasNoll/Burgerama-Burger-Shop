@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
@@ -54,6 +55,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return false;
         }
 
+        [ExcludeFromCodeCoverage]
         public void GetPassword()
         {
             string password = passwordValidator.PasswordInput();

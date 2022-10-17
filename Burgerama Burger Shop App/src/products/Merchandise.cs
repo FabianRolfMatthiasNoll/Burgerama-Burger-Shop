@@ -1,13 +1,14 @@
 ﻿using ConsoleTables;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_App.products
 {
-
+    [ExcludeFromCodeCoverage]
     public class Merchandise : Product
     {
         public string size;

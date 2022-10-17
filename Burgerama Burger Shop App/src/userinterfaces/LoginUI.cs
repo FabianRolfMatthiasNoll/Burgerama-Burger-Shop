@@ -1,8 +1,10 @@
 ﻿using Burgerama_Burger_Shop_App.src;
 using Burgerama_Burger_Shop_App.src.handlers;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
+    [ExcludeFromCodeCoverage]
     public class LoginUI
     {
         LoginHandler login;

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ using System.Xml.Linq;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
+    [ExcludeFromCodeCoverage]
     public class RegistrationUI
     {
         RegistrationHandler registrationHandler;

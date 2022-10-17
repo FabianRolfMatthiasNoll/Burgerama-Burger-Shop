@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.products;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
@@ -33,6 +34,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             products = unsortedProducts.OrderBy(o => o.categoryId).ToList();
         }
 
+        [ExcludeFromCodeCoverage]
         public ConsoleTable CreateProductOverview()
         {
             var table = new ConsoleTable("ID", "Name", "Category", "Price");
@@ -48,6 +50,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return table;
         }
 
+        [ExcludeFromCodeCoverage]
         public ConsoleTable CreateSummaryOverview()
         {
             var table = new ConsoleTable("Pos.", "Name", "Variant", "Price");
@@ -62,6 +65,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return table;
         }
 
+        [ExcludeFromCodeCoverage]
         public int GetProductCount()
         {
             LoadProductData();
@@ -73,6 +77,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             order.boughtProducts.Add(products[index]);
         }
 
+        [ExcludeFromCodeCoverage]
         public void FinishOrder(User user)
         {
             order.FillInformationInOrder(user);
