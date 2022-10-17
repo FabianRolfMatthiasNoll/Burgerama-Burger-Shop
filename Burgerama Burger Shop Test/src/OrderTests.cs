@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_Test.src
 {
+    [Collection("Non-Parallel Collection")]
     public class OrderTests
     {
         [Fact]

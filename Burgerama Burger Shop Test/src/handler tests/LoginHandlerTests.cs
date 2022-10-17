@@ -79,6 +79,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void UserRegisteredPass(string email, string password)
         {
             LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
+            loginHandler.LoadUserData();
             loginHandler.email = email;
             loginHandler.password = password;
             bool output;
@@ -95,6 +96,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void UserRegisteredFail(string email, string password)
         {
             LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
+            loginHandler.LoadUserData();
             loginHandler.email = email;
             loginHandler.password = password;
             bool output;
@@ -108,6 +110,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void ReturnUserAfterLogin()
         {
             LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
+            loginHandler.LoadUserData();
             User user = new User();
             loginHandler.email = "fabian.noll@gmail.com";
             loginHandler.password = "65A8CDC868F6772F6DBB72932FD008F53CF8F43090D37BDBC1B39B4663DE2791";
@@ -125,6 +128,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void ReturnUserAfterLoginNull()
         {
             LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
+            loginHandler.LoadUserData();
             User user = new User();
             loginHandler.email = "";
             loginHandler.password = "";
