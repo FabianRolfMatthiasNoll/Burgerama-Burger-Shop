@@ -1,11 +1,6 @@
-﻿using System;
-using Burgerama_Burger_Shop_App.src.handlers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Burgerama_Burger_Shop_App.src.validators;
+﻿using Burgerama_Burger_Shop_App.src.validators;
 using System.Diagnostics.CodeAnalysis;
+using Burgerama_Burger_Shop_App.src.interfaces;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
@@ -14,7 +9,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
     {
         LoginUI loginUI;
         RegistrationUI registrationUI;
-        IntValidator intValidator;
+        IIntValidator intValidator;
         string userInput;
 
         public MainMenu()
@@ -39,7 +34,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
 
             this.userInput = Console.ReadLine();
 
-            while (!intValidator.IsInputValid(userInput))
+            while (!intValidator.IsValid(userInput))
             {
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
                 Program.ClearCurrentConsoleLine();

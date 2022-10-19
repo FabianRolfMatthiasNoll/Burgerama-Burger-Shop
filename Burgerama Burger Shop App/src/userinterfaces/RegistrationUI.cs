@@ -1,5 +1,6 @@
 ﻿using Burgerama_Burger_Shop_App.products;
 using Burgerama_Burger_Shop_App.src.handlers;
+using Burgerama_Burger_Shop_App.src.interfaces;
 using Burgerama_Burger_Shop_App.src.validators;
 using Newtonsoft.Json;
 using System;
@@ -19,12 +20,10 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
     public class RegistrationUI
     {
         RegistrationHandler registrationHandler;
-        StringValidator stringValidator;
 
         public RegistrationUI()
         {
             registrationHandler = new RegistrationHandler("src/data/");
-            stringValidator = new StringValidator();
         }
         public void RegistrationMenu()
         {

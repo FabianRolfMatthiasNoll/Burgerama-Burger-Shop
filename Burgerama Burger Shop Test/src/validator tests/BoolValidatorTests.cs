@@ -20,7 +20,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             BoolValidator boolValidator = new BoolValidator();
             bool output;
 
-            output = boolValidator.IsStringValidBool(input);
+            output = boolValidator.IsValid(input);
 
             Assert.True(output);
         }
@@ -36,7 +36,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             BoolValidator boolValidator = new BoolValidator();
             bool output;
 
-            output = boolValidator.IsStringValidBool(input);
+            output = boolValidator.IsValid(input);
 
             Assert.False(output);
         }

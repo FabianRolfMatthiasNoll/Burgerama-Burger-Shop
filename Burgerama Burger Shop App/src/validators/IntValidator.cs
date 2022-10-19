@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Burgerama_Burger_Shop_App.src.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_App.src.validators
 {
-    public class IntValidator
+    public class IntValidator : IIntValidator
     {
         public int minVal;
         public int maxVal;
@@ -20,7 +21,7 @@ namespace Burgerama_Burger_Shop_App.src.validators
             this.maxVal = maxVal;
         }
 
-        public bool IsInputValid(string input)
+        public bool IsValid(string input)
         {
             inputString = input;
             if (this.IsInputInt() && this.IsInputInBound())
@@ -32,7 +33,7 @@ namespace Burgerama_Burger_Shop_App.src.validators
             }
         }
 
-        public bool IsInputValid(int input)
+        public bool IsValid(int input)
         {
             outputInt = input;
             if (this.IsInputInBound())

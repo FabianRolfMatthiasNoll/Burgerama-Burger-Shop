@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
+using Burgerama_Burger_Shop_App.src.interfaces;
 using Burgerama_Burger_Shop_App.src.userinterfaces;
 using Burgerama_Burger_Shop_App.src.validators;
 
@@ -10,7 +11,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 {
     public class LoginHandler
     {
-        EmailValidator emailValidator;
+        IEmailValidator emailValidator;
         PasswordValidator passwordValidator;
         FileHandler userData;
         List<User> users;
@@ -42,7 +43,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                 return true;
             }
 
-            if (emailValidator.IsEmailValid(emailInput))
+            if (emailValidator.IsValid(emailInput))
             {
                 this.email = emailInput;
                 return true;

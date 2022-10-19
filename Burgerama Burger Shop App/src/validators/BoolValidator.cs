@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Burgerama_Burger_Shop_App.src.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_App.src.validators
 {
-    public class BoolValidator
+    public class BoolValidator : IValidator
     {
-        StringValidator stringValidator;
+        IValidator stringValidator;
 
         public BoolValidator()
         {
             stringValidator = new StringValidator();
         }
 
-        public bool IsStringValidBool(string input)
+        public bool IsValid(string input)
         {
             input = input.ToLower();
-            if (stringValidator.IsStringEmpty(input))
+            if (stringValidator.IsValid(input))
             {
                 return false;
             }

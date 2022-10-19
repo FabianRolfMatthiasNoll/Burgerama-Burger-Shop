@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Burgerama_Burger_Shop_App.src.interfaces;
 
 namespace Burgerama_Burger_Shop_App.src.validators
 {
-    public class StringValidator
+    public class StringValidator : IValidator
     {
         public StringValidator()
         {
 
         }
 
-        public bool IsStringEmpty(string input)
+        public bool IsValid(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
             {

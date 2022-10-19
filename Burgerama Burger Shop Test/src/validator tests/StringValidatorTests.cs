@@ -19,7 +19,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             bool output;
 
             //ACT
-            output = stringValidator.IsStringEmpty(input);
+            output = stringValidator.IsValid(input);
 
             //ASSERT
             Assert.Equal(false, output);
@@ -36,7 +36,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             bool output;
 
             //ACT
-            output = stringValidator.IsStringEmpty(input);
+            output = stringValidator.IsValid(input);
 
             //ASSERT
             Assert.Equal(true, output);

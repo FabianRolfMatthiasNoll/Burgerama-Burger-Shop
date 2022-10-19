@@ -1,28 +1,18 @@
 ﻿using Burgerama_Burger_Shop_App.products;
 using Burgerama_Burger_Shop_App.src.handlers;
 using ConsoleTables;
-using Newtonsoft.Json;
-using System.Security.Cryptography;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.src.validators;
 using System.Diagnostics.CodeAnalysis;
+using Burgerama_Burger_Shop_App.src.interfaces;
 
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
     [ExcludeFromCodeCoverage]
     public class OrderUI
     {
-        IntValidator intValidator;
+        IIntValidator intValidator;
         OrderHandler orderHandler;
-        BoolValidator boolValidator;
+        IValidator boolValidator;
         public string userInput;
 
         public OrderUI()
@@ -60,7 +50,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
 
                 userInput = Console.ReadLine();
 
-                while (!intValidator.IsInputValid(userInput))
+                while (!intValidator.IsValid(userInput))
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Program.ClearCurrentConsoleLine();
@@ -82,7 +72,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
                     Program.ClearCurrentConsoleLine();
                     Console.Write("Please choose 'true' or 'false' if you want your Drink on Ice: ");
                     userInput = Console.ReadLine();
-                    while (!boolValidator.IsStringValidBool(userInput))
+                    while (!boolValidator.IsValid(userInput))
                     {
                         Console.SetCursorPosition(0, Console.CursorTop - 1);
                         Program.ClearCurrentConsoleLine();

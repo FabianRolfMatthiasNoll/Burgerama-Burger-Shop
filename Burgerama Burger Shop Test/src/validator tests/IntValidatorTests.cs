@@ -19,7 +19,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             IntValidator intValidator = new IntValidator(1, 3);
             bool output;
 
-            output = intValidator.IsInputValid(input);
+            output = intValidator.IsValid(input);
 
             Assert.True(output);
         }
@@ -33,7 +33,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             IntValidator intValidator = new IntValidator(1, 3);
             bool output;
 
-            output = intValidator.IsInputValid(input);
+            output = intValidator.IsValid(input);
 
             Assert.False(output);
         }
@@ -47,7 +47,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             IntValidator intValidator = new IntValidator(1, 3);
             bool output;
 
-            output = intValidator.IsInputValid(input);
+            output = intValidator.IsValid(input);
 
             Assert.True(output);
         }
@@ -63,7 +63,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             IntValidator intValidator = new IntValidator(1, 3);
             bool output;
 
-            output = intValidator.IsInputValid(input);
+            output = intValidator.IsValid(input);
 
             Assert.False(output);
         }

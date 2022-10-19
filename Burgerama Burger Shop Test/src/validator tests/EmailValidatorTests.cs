@@ -20,7 +20,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             EmailValidator emailValidator = new EmailValidator();
             bool output;
 
-            output = emailValidator.IsEmailValid(input);
+            output = emailValidator.IsValid(input);
 
             Assert.True(output);
         }
@@ -36,7 +36,7 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             EmailValidator emailValidator = new EmailValidator();
             bool output;
 
-            output = emailValidator.IsEmailValid(input);
+            output = emailValidator.IsValid(input);
 
             Assert.False(output);
         }

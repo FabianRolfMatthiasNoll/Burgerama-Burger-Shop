@@ -5,19 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.src.validators;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
-using System.Diagnostics;
-using System.IO;
-using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
+using Burgerama_Burger_Shop_App.src.interfaces;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
     public class RegistrationHandler
     {
-        EmailValidator emailValidator;
-        StringValidator stringValidator;
-        IntValidator intValidator;
+        IEmailValidator emailValidator;
+        IValidator stringValidator;
+        IIntValidator intValidator;
         PasswordValidator passwordValidator;
         FileHandler userData;
         FileHandler cityData;
@@ -46,7 +43,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public bool SetEmailIfValid(string email)
         {
-            if(!emailValidator.IsEmailTaken(users, email) && emailValidator.IsEmailValid(email))
+            if(!emailValidator.IsEmailTaken(users, email) && emailValidator.IsValid(email))
             {
                 email = email.ToLower();
                 user.email = email;
@@ -59,7 +56,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public bool GetPassword()
         {
             string password = passwordValidator.PasswordInput();
-            if (stringValidator.IsStringEmpty(password))
+            if (stringValidator.IsValid(password))
             {
                 return false;
             } else
@@ -71,7 +68,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public bool SetStreetIfValid(string street)
         {
-            if (!stringValidator.IsStringEmpty(street) && !intValidator.IsInputInt(street))
+            if (!stringValidator.IsValid(street) && !intValidator.IsInputInt(street))
             {
                 user.street = street;
                 return true;
@@ -81,7 +78,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public bool SetZIPIfValid(string postal)
         {
-            if (!stringValidator.IsStringEmpty(postal) && intValidator.IsInputInt(postal) && intValidator.IsIntPositiv(postal))
+            if (!stringValidator.IsValid(postal) && intValidator.IsInputInt(postal) && intValidator.IsIntPositiv(postal))
             {
                 user.postal = postal;
                 return true;
