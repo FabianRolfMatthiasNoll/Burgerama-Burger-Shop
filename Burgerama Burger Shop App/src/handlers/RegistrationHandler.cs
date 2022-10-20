@@ -12,12 +12,12 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 {
     public class RegistrationHandler
     {
-        IEmailValidator emailValidator;
-        IValidator stringValidator;
-        IIntValidator intValidator;
-        PasswordValidator passwordValidator;
-        FileHandler userData;
-        FileHandler cityData;
+        private readonly IEmailValidator _emailValidator;
+        private readonly IValidator _stringValidator;
+        private readonly IIntValidator _intValidator;
+        private readonly PasswordValidator _passwordValidator;
+        private readonly FileHandler _userData;
+        private readonly FileHandler _cityData;
         public List<City> germanCities;
         public List<User> users;
         public User user;
@@ -27,63 +27,55 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             user = new User();
             users = new List<User>();
             germanCities = new List<City>();
-            userData = new FileHandler(filePath);
-            cityData = new FileHandler(filePath);
-            emailValidator = new EmailValidator();
-            stringValidator = new StringValidator();
-            intValidator = new IntValidator(0,0);
-            passwordValidator = new PasswordValidator();
+            _userData = new FileHandler(filePath);
+            _cityData = new FileHandler(filePath);
+            _emailValidator = new EmailValidator();
+            _stringValidator = new StringValidator();
+            _intValidator = new IntValidator(0,0);
+            _passwordValidator = new PasswordValidator();
         }
 
         public void LoadRegistrationData(string userDataFile, string cityFile)
         {
-            users = userData.LoadUserData(userDataFile);
-            germanCities = cityData.ReadJSON<City>(cityFile);
+            users = _userData.LoadUserData(userDataFile);
+            germanCities = _cityData.ReadJson<City>(cityFile);
         }
 
         public bool SetEmailIfValid(string email)
         {
-            if(!emailValidator.IsEmailTaken(users, email) && emailValidator.IsValid(email))
-            {
-                email = email.ToLower();
-                user.email = email;
-                return true;
-            }
-            return false;
+            if (_emailValidator.IsEmailTaken(users, email) || !_emailValidator.IsValid(email)) return false;
+            email = email.ToLower();
+            user.email = email;
+            return true;
         }
 
         [ExcludeFromCodeCoverage]
         public bool GetPassword()
         {
-            string password = passwordValidator.PasswordInput();
-            if (stringValidator.IsValid(password))
+            string password = _passwordValidator.PasswordInput();
+            if (_stringValidator.IsValid(password))
             {
                 return false;
             } else
             {
-                user.password = passwordValidator.HashString(password);
+                user.password = _passwordValidator.HashString(password);
                 return true;
             } 
         }
 
         public bool SetStreetIfValid(string street)
         {
-            if (!stringValidator.IsValid(street) && !intValidator.IsInputInt(street))
-            {
-                user.street = street;
-                return true;
-            }
-            return false;
+            if (_stringValidator.IsValid(street) || _intValidator.IsInputInt(street)) return false;
+            user.street = street;
+            return true;
         }
 
-        public bool SetZIPIfValid(string postal)
+        public bool SetZipIfValid(string postal)
         {
-            if (!stringValidator.IsValid(postal) && intValidator.IsInputInt(postal) && intValidator.IsIntPositiv(postal))
-            {
-                user.postal = postal;
-                return true;
-            }
-            return false;
+            if (_stringValidator.IsValid(postal) || !_intValidator.IsInputInt(postal) ||
+                !_intValidator.IsIntPositiv(postal)) return false;
+            user.postal = postal;
+            return true;
         }
 
         public bool SetCityIfValid(string userCity)
@@ -101,7 +93,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void RegisterUser(string fileName)
         {
-            userData.WriteUserData(user,fileName);
+            _userData.WriteUserData(user,fileName);
         }
     }
 }

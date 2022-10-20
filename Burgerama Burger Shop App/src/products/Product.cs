@@ -38,10 +38,10 @@ namespace Burgerama_Burger_Shop_App.products
             return table;
         }
 
-        public static void CheckProductID()
+        public static void CheckProductId()
         {
             FileHandler fileHandler = new FileHandler("src/data/");
-            List<Product> productList = fileHandler.ReadJSON<Product>("product_data.json");
+            List<Product> productList = fileHandler.ReadJson<Product>("product_data.json");
 
             foreach(var product1 in productList)
             {

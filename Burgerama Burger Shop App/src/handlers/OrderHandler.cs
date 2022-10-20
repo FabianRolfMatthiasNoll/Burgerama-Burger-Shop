@@ -11,9 +11,9 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 {
     public class OrderHandler
     {
-        FileHandler fileHandler;
-        DriverHandler driverHandler;
-        List<Product> unsortedProducts;
+        readonly FileHandler _fileHandler;
+        private readonly DriverHandler _driverHandler;
+        List<Product> _unsortedProducts;
         public List<Product> products;
         public Order order;
         public string fileNameProduct;
@@ -23,15 +23,15 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             fileNameProduct = fileNameP;
             products = new List<Product>();
             order = new Order(filePath,  fileNameDStates);
-            fileHandler = new FileHandler(filePath);
-            driverHandler = new DriverHandler(filePath, fileNameDStates, fileNameDConfig);
-            unsortedProducts = new List<Product>();
+            _fileHandler = new FileHandler(filePath);
+            _driverHandler = new DriverHandler(filePath, fileNameDStates, fileNameDConfig);
+            _unsortedProducts = new List<Product>();
         }
 
         public void LoadProductData()
         {
-            unsortedProducts = fileHandler.ReadJSON<Product>(fileNameProduct);
-            products = unsortedProducts.OrderBy(o => o.categoryId).ToList();
+            _unsortedProducts = _fileHandler.ReadJson<Product>(fileNameProduct);
+            products = _unsortedProducts.OrderBy(o => o.categoryId).ToList();
         }
 
         [ExcludeFromCodeCoverage]
@@ -69,7 +69,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public int GetProductCount()
         {
             LoadProductData();
-            return unsortedProducts.Count;
+            return _unsortedProducts.Count;
         }
 
         public void AddProductToOrder(int index)
@@ -81,12 +81,12 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public void FinishOrder(User user)
         {
             order.FillInformationInOrder(user);
-            driverHandler.AddOrderToBestDriver(order);
+            _driverHandler.AddOrderToBestDriver(order);
         }
 
         public bool IsProductDrink(int index)
         {
-            if (products[index].category == "Drink" && !(products[index].name == "Red Bull"))
+            if (products[index].category == "Drink" && products[index].name != "Red Bull")
             {
                     return true;
             }

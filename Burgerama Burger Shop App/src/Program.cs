@@ -19,9 +19,9 @@ namespace Burgerama_Burger_Shop_App
             //update drivers if driver_config.json has been changed
             driverHandler.UpdateDrivers();
 
-            Product.CheckProductID();
+            Product.CheckProductId();
 
-            mainMenu.menuUI();
+            mainMenu.MenuUi();
         }
 
         public static void CheckFileDependencies()

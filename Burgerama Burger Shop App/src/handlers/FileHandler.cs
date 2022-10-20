@@ -33,8 +33,8 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void WriteUserData(User user, string fileName)
         {
-            var usersXML = XElement.Load($"{filePath}{fileName}");
-            usersXML.Add(new XElement("User",
+            var usersXml = XElement.Load($"{filePath}{fileName}");
+            usersXml.Add(new XElement("User",
                                 //new XAttribute("ID", user),
                                 new XElement("Email", user.email),
                                 new XElement("Postal", user.postal),
@@ -44,7 +44,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                                 )
                             );
             //saves the document after adding the new user
-            usersXML.Save($"{filePath}{fileName}");
+            usersXml.Save($"{filePath}{fileName}");
         }
 
         public bool IsDataAvailable(string fileName)
@@ -56,7 +56,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return false;
         }
 
-        public List<T> ReadJSON<T>(string fileName)
+        public List<T> ReadJson<T>(string fileName)
         {
             string json = File.ReadAllText($"{filePath}{fileName}");
             List<T> list = JsonConvert.DeserializeObject<List<T>>(json);
@@ -64,7 +64,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return list;
         }
 
-        public void WriteJSON<T>(List<T> list, string fileName)
+        public void WriteJson<T>(List<T> list, string fileName)
         {
             string json = JsonConvert.SerializeObject(list, Formatting.Indented);
             File.WriteAllText($"{filePath}{fileName}", json);

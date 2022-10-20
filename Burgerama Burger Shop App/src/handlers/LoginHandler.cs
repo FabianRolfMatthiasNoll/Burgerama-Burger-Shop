@@ -11,26 +11,26 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 {
     public class LoginHandler
     {
-        IEmailValidator emailValidator;
-        PasswordValidator passwordValidator;
-        FileHandler userData;
-        List<User> users;
-        string fileName;
+        readonly IEmailValidator _emailValidator;
+        readonly PasswordValidator _passwordValidator;
+        readonly FileHandler _userData;
+        List<User> _users;
+        readonly string _fileName;
         public string email;
         public string password;
 
         public LoginHandler(string filePath, string fName)
         {
-            userData = new FileHandler(filePath);
-            emailValidator = new EmailValidator();
-            passwordValidator = new PasswordValidator();
-            users = new List<User>();
-            fileName = fName;
+            _userData = new FileHandler(filePath);
+            _emailValidator = new EmailValidator();
+            _passwordValidator = new PasswordValidator();
+            _users = new List<User>();
+            _fileName = fName;
         }
 
         public void LoadUserData()
         {
-            users = userData.LoadUserData(fileName);
+            _users = _userData.LoadUserData(_fileName);
         }
 
         public bool SetEmail(string emailInput)
@@ -43,7 +43,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                 return true;
             }
 
-            if (emailValidator.IsValid(emailInput))
+            if (_emailValidator.IsValid(emailInput))
             {
                 this.email = emailInput;
                 return true;
@@ -54,8 +54,8 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         [ExcludeFromCodeCoverage]
         public void SetPassword()
         {
-            password = passwordValidator.PasswordInput();
-            password = passwordValidator.HashString(password);
+            password = _passwordValidator.PasswordInput();
+            password = _passwordValidator.HashString(password);
         }
 
         public bool IsUserManager()
@@ -69,7 +69,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public bool IsUserRegistered()
         {
-            foreach (var user in users)
+            foreach (var user in _users)
             {
                 if (user.email == email && user.password == password)
                 {
@@ -81,7 +81,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public User ReturnUser()
         {
-            foreach (var login in users)
+            foreach (var login in _users)
             {
                 if (string.Equals(login.email, email) && string.Equals(login.password, password))
                 {

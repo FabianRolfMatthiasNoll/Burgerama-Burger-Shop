@@ -9,17 +9,17 @@ namespace Burgerama_Burger_Shop_App.src.validators
 {
     public class BoolValidator : IValidator
     {
-        IValidator stringValidator;
+        readonly IValidator _stringValidator;
 
         public BoolValidator()
         {
-            stringValidator = new StringValidator();
+            _stringValidator = new StringValidator();
         }
 
         public bool IsValid(string input)
         {
             input = input.ToLower();
-            if (stringValidator.IsValid(input))
+            if (_stringValidator.IsValid(input))
             {
                 return false;
             }

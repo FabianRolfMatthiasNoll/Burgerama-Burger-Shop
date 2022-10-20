@@ -92,12 +92,12 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         [Theory]
         [InlineData("78532")]
         [InlineData("39775")]
-        public void SetZIPIfValidPass(string postal)
+        public void SetZipIfValidPass(string postal)
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
             bool output;
 
-            output = registrationHandler.SetZIPIfValid(postal);
+            output = registrationHandler.SetZipIfValid(postal);
 
             Assert.True(output);
             Assert.Equal(postal, registrationHandler.user.postal);
@@ -108,12 +108,12 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         [InlineData(" ")]
         [InlineData("-100")]
         [InlineData("Rundes Eck 7")]
-        public void SetZIPIfValidFail(string postal)
+        public void SetZipIfValidFail(string postal)
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
             bool output;
 
-            output = registrationHandler.SetZIPIfValid(postal);
+            output = registrationHandler.SetZipIfValid(postal);
 
             Assert.False(output);
             Assert.NotEqual(postal, registrationHandler.user.postal);

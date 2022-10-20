@@ -5,18 +5,18 @@ using System.Diagnostics.CodeAnalysis;
 namespace Burgerama_Burger_Shop_App.src.userinterfaces
 {
     [ExcludeFromCodeCoverage]
-    public class LoginUI
+    public class LoginUi
     {
-        LoginHandler login;
-        ManagmentUI managmentUI;
-        OrderUI orderUI;
-        string userInput;
+        readonly LoginHandler _login;
+        readonly ManagmentUi _managmentUi;
+        readonly OrderUi _orderUi;
+        string _userInput;
 
-        public LoginUI()
+        public LoginUi()
         {
-            login = new LoginHandler("src/data/", "user_data.xml");
-            managmentUI = new ManagmentUI();
-            orderUI = new OrderUI();
+            _login = new LoginHandler("src/data/", "user_data.xml");
+            _managmentUi = new ManagmentUi();
+            _orderUi = new OrderUi();
         }
         
         public void LoginMenu()
@@ -27,34 +27,34 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             Console.WriteLine("");
             Console.WriteLine("Please input your Login Credentials\n");
 
-            login.LoadUserData();
+            _login.LoadUserData();
 
             Console.Write("Please enter your Email: ");
-            userInput = Console.ReadLine();
-            while (!login.SetEmail(userInput)) 
+            _userInput = Console.ReadLine();
+            while (!_login.SetEmail(_userInput)) 
             { 
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
                 Program.ClearCurrentConsoleLine();
                 Console.Write("Please enter a valid email adress:");
-                userInput = Console.ReadLine();
-                userInput = userInput.ToLower();
+                _userInput = Console.ReadLine();
+                _userInput = _userInput.ToLower();
             }
 
             Program.ClearCurrentConsoleLine();
             Console.Write("Password:");
-            login.SetPassword();
+            _login.SetPassword();
 
-            if (login.IsUserManager())
+            if (_login.IsUserManager())
             {
-                managmentUI.ManagerMenu();
+                _managmentUi.ManagerMenu();
             }
 
-            if (login.IsUserRegistered())
+            if (_login.IsUserRegistered())
             {
                 Console.Clear();
-                orderUI.OrderMenu(login.ReturnUser());
+                _orderUi.OrderMenu(_login.ReturnUser());
             } 
-            else if (login.IsUserManager())
+            else if (_login.IsUserManager())
             {
 
             } 

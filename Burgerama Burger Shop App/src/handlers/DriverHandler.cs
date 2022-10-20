@@ -10,17 +10,17 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 {
     public class DriverHandler
     {
-        FileHandler fileHandler;
+        readonly FileHandler _fileHandler;
         public List<Driver> drivers;
-        string fileNameStates;
-        string fileNameConfig;
+        readonly string _fileNameStates;
+        readonly string _fileNameConfig;
 
         public DriverHandler(string filePath, string fNameStates, string fNameConfig)
         {
-            fileHandler = new FileHandler(filePath);
+            _fileHandler = new FileHandler(filePath);
             drivers = new List<Driver>();
-            fileNameStates = fNameStates;
-            fileNameConfig = fNameConfig;
+            _fileNameStates = fNameStates;
+            _fileNameConfig = fNameConfig;
         }
 
         public void CountOpenOrders()
@@ -68,8 +68,8 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void UpdateDrivers()
         {
-            List<Driver> driverStates = fileHandler.ReadJSON<Driver>(fileNameStates);
-            drivers = fileHandler.ReadJSON<Driver>(fileNameConfig);
+            List<Driver> driverStates = _fileHandler.ReadJson<Driver>(_fileNameStates);
+            drivers = _fileHandler.ReadJson<Driver>(_fileNameConfig);
 
             foreach (var driver1 in driverStates)
             {
@@ -88,12 +88,12 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void LoadDriverStates()
         {
-            drivers = fileHandler.ReadJSON<Driver>(fileNameStates);
+            drivers = _fileHandler.ReadJson<Driver>(_fileNameStates);
         }
 
         public void SaveCurrentDriverStates()
         {
-            fileHandler.WriteJSON<Driver>(drivers, fileNameStates);
+            _fileHandler.WriteJson<Driver>(drivers, _fileNameStates);
         }
     }
 }

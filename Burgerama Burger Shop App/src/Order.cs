@@ -27,23 +27,23 @@ namespace Burgerama_Burger_Shop_App
         public List<Product> boughtProducts;
         public User customer;
 
-        FileHandler fileHandler;
-        List<Driver> drivers;
+        readonly FileHandler _fileHandler;
+        List<Driver> _drivers;
         public string fileNameDriver;
 
         public Order(string filePath, string fileNameD)
         {
             fileNameDriver = fileNameD;
             state = State.Preperation;
-            fileHandler = new FileHandler(filePath);
+            _fileHandler = new FileHandler(filePath);
             boughtProducts = new List<Product>();
-            drivers = new List<Driver>();
+            _drivers = new List<Driver>();
 
         }
 
         public void FillInformationInOrder(User user)
         {
-            drivers = fileHandler.ReadJSON<Driver>(fileNameDriver);
+            _drivers = _fileHandler.ReadJson<Driver>(fileNameDriver);
             customer = user;
             
             foreach(var product in boughtProducts)
@@ -67,7 +67,7 @@ namespace Burgerama_Burger_Shop_App
 
             bool driverAvailable = false;
 
-            foreach (var driver in drivers)
+            foreach (var driver in _drivers)
             {
                 if (driver.IsDriverFree())
                 {

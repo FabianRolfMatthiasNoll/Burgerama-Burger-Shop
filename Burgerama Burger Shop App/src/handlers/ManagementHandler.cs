@@ -9,22 +9,22 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
-    public class ManagmentHandler
+    public class ManagementHandler
     {
-        FileHandler fileHandler;
+        private readonly FileHandler _fileHandler;
         public List<Driver> drivers;
-        string fileName;
+        private readonly string _fileName;
 
-        public ManagmentHandler(string filePath, string fName)
+        public ManagementHandler(string filePath, string fName)
         {
-            fileHandler = new FileHandler(filePath);
+            _fileHandler = new FileHandler(filePath);
             drivers = new List<Driver>();
-            fileName = fName;
+            _fileName = fName;
         }
 
         public void LoadDriverData()
         {
-            drivers = fileHandler.ReadJSON<Driver>(fileName);
+            drivers = _fileHandler.ReadJson<Driver>(_fileName);
         }
 
         [ExcludeFromCodeCoverage]
@@ -56,20 +56,20 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                     order.DecreaseTotalTime();
                 }
             }
-            fileHandler.WriteJSON(drivers, fileName);
+            _fileHandler.WriteJson(drivers, _fileName);
         }
 
         [ExcludeFromCodeCoverage]
         public void ReloadData()
         {
-            drivers = fileHandler.ReadJSON<Driver>(fileName);
+            drivers = _fileHandler.ReadJson<Driver>(_fileName);
         }
 
         public void EraseClosedOrders()
         {
             foreach (var driver in drivers)
             {
-            restart:
+                restart:
                 foreach (var order in driver.orders)
                 {
                     if (order.state == State.Closed)
@@ -79,7 +79,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                     }
                 }
             }
-            fileHandler.WriteJSON(drivers, fileName);
+            _fileHandler.WriteJson(drivers, _fileName);
         }
     }
 }

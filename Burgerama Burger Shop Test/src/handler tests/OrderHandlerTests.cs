@@ -13,7 +13,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
     public class OrderHandlerTests
     {
         //Test Exceptions
-        //Test FinishOrder = only consists of submethods that will be testet later
+        //Test FinishOrder = only consists of sub methods that will be tested later
 
         [Fact]
         public void DoesProductDataLoadCorrectly()
@@ -46,9 +46,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         {
             OrderHandler orderHandler = new OrderHandler("src/test data/", "product_data_test.json", "driver_data_test.json", "driver_config_test.json");
             orderHandler.products.Add(new Product(1, "Drink", "Sprite", 3.99, 66, 1));
-            bool output;
 
-            output = orderHandler.IsProductDrink(0);
+            bool output = orderHandler.IsProductDrink(0);
 
             Assert.True(output);
         }
@@ -60,9 +59,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         {
             OrderHandler orderHandler = new OrderHandler("src/test data/", "product_data_test.json", "driver_data_test.json", "driver_config_test.json");
             orderHandler.products.Add(new Product(1, category, name, 3.99, 66, 1));
-            bool output;
 
-            output = orderHandler.IsProductDrink(0);
+            bool output = orderHandler.IsProductDrink(0);
 
             Assert.False(output);
         }
@@ -72,12 +70,11 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         {
             OrderHandler orderHandler = new OrderHandler("src/test data/", "product_data_test.json", "driver_data_test.json", "driver_config_test.json");
             orderHandler.products.Add(new Product(1, "Drink", "Sprite", 3.99, 66, 1));
-            Drink product = new Drink(1, "Drink", "Cola", 5.99, 10, 2, false);
 
             orderHandler.SetDrinkOnIce("true", 0);
-            product = (Drink)orderHandler.products[0];
+            Drink product = (Drink)orderHandler.products[0];
 
-            Assert.Equal(true, product.onIce);
+            Assert.True(product.onIce);
         }
 
         [Fact]
@@ -85,9 +82,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         {
             OrderHandler orderHandler = new OrderHandler("src/test data/", "product_data_test.json", "driver_data_test.json", "driver_config_test.json");
             orderHandler.products.Add(new Product(1, "Merchandise (Clothing)", "Hoodie", 3.99, 66, 1));
-            bool output;
 
-            output = orderHandler.IsProductMerchandise(0);
+            bool output = orderHandler.IsProductMerchandise(0);
 
             Assert.True(output);
         }
@@ -97,9 +93,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         {
             OrderHandler orderHandler = new OrderHandler("src/test data/", "product_data_test.json", "driver_data_test.json", "driver_config_test.json");
             orderHandler.products.Add(new Product(1, "Merchandise (One Size)", "Stickers", 3.99, 66, 1));
-            bool output;
 
-            output = orderHandler.IsProductMerchandise(0);
+            bool output = orderHandler.IsProductMerchandise(0);
 
             Assert.False(output);
         }
@@ -115,9 +110,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void IsStringValidSizePass(string input)
         {
             OrderHandler orderHandler = new OrderHandler("src/test data/", "product_data_test.json", "driver_data_test.json", "driver_config_test.json");
-            bool output;
 
-            output = orderHandler.SizeValidator(input);
+            bool output = orderHandler.SizeValidator(input);
 
             Assert.True(output);
         }
@@ -132,9 +126,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void IsStringValidSizeFail(string input)
         {
             OrderHandler orderHandler = new OrderHandler("src/test data/", "product_data_test.json", "driver_data_test.json", "driver_config_test.json");
-            bool output;
 
-            output = orderHandler.SizeValidator(input);
+            bool output = orderHandler.SizeValidator(input);
 
             Assert.False(output);
         }
@@ -148,10 +141,9 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         {
             OrderHandler orderHandler = new OrderHandler("src/test data/", "product_data_test.json", "driver_data_test.json", "driver_config_test.json");
             orderHandler.products.Add(new Product(1, "Merchandise (Clothing)", "Hoodie", 3.99, 66, 1));
-            Merchandise product = new Merchandise(1, "Merchandise (Clothing)", "Hoodie", 5.99, 10, 2);
 
             orderHandler.SetSizeOfProduct(input, 0);
-            product = (Merchandise)orderHandler.products[0];
+            Merchandise product = (Merchandise)orderHandler.products[0];
 
             Assert.Equal(input.ToUpper(), product.size);
         }

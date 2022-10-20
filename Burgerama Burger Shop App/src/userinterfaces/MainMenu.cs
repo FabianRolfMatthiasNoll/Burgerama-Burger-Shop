@@ -7,19 +7,19 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
     [ExcludeFromCodeCoverage]
     public class MainMenu
     {
-        LoginUI loginUI;
-        RegistrationUI registrationUI;
-        IIntValidator intValidator;
-        string userInput;
+        readonly LoginUi _loginUi;
+        readonly RegistrationUi _registrationUi;
+        readonly IIntValidator _intValidator;
+        string _userInput;
 
         public MainMenu()
         {
-            loginUI = new LoginUI();
-            registrationUI = new RegistrationUI();
-            intValidator = new IntValidator(1,2);
+            _loginUi = new LoginUi();
+            _registrationUi = new RegistrationUi();
+            _intValidator = new IntValidator(1,2);
         }
 
-        public void menuUI()
+        public void MenuUi()
         {
             Return:
             Console.SetWindowSize(140, 30);
@@ -32,26 +32,26 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             Console.WriteLine("");
             Console.Write("Please select an Option: ");
 
-            this.userInput = Console.ReadLine();
+            this._userInput = Console.ReadLine();
 
-            while (!intValidator.IsValid(userInput))
+            while (!_intValidator.IsValid(_userInput))
             {
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
                 Program.ClearCurrentConsoleLine();
                 Console.Write("Please enter a valid number!:");
-                userInput = Console.ReadLine();
+                _userInput = Console.ReadLine();
             }
 
-            int.TryParse(this.userInput, out int userSelection);
+            int.TryParse(this._userInput, out int userSelection);
 
             if (userSelection == 1)
             {
-                registrationUI.RegistrationMenu();
+                _registrationUi.RegistrationMenu();
                 goto Return;
             }
             else if (userSelection == 2)
             {
-                loginUI.LoginMenu();
+                _loginUi.LoginMenu();
                 goto Return;
             }
         }

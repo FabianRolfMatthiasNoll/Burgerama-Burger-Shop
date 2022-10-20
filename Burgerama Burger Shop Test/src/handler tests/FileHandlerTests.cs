@@ -83,7 +83,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             FileHandler fileHandler = new FileHandler("src/test data/");
             List<Product> products = new List<Product>();
 
-            products = fileHandler.ReadJSON<Product>("product_data_test.json");
+            products = fileHandler.ReadJson<Product>("product_data_test.json");
 
             Assert.Equal("Cheeseburger", products[0].name);
         }
@@ -94,11 +94,11 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             FileHandler fileHandler = new FileHandler("src/test data/");
             List<Product> products = new List<Product>();
             List<Product> newProducts = new List<Product>();
-            products = fileHandler.ReadJSON<Product>("product_data_test.json");
+            products = fileHandler.ReadJson<Product>("product_data_test.json");
 
-            fileHandler.WriteJSON<Product>(products, "product_write_test.json");
+            fileHandler.WriteJson<Product>(products, "product_write_test.json");
 
-            newProducts = fileHandler.ReadJSON<Product>("product_write_test.json");
+            newProducts = fileHandler.ReadJson<Product>("product_write_test.json");
             Assert.Equal("Cheeseburger", newProducts[0].name);
         }
     }
