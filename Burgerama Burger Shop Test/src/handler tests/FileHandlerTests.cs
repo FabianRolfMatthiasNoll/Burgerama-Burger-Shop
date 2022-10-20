@@ -58,9 +58,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void DataAvailablePass(string fileName)
         {
             FileHandler fileHandler = new FileHandler("src/test data/");
-            bool output;
 
-            output = fileHandler.IsDataAvailable(fileName);
+            var output = fileHandler.IsDataAvailable(fileName);
 
             Assert.True(output);
         }
@@ -70,9 +69,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void DataAvailableFail(string fileName)
         {
             FileHandler fileHandler = new FileHandler("src/test data/");
-            bool output;
 
-            output = fileHandler.IsDataAvailable(fileName);
+            var output = fileHandler.IsDataAvailable(fileName);
 
             Assert.False(output);
         }
@@ -81,9 +79,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void DoesJsonLoadCorrectly()
         {
             FileHandler fileHandler = new FileHandler("src/test data/");
-            List<Product> products = new List<Product>();
 
-            products = fileHandler.ReadJson<Product>("product_data_test.json");
+            var products = fileHandler.ReadJson<Product>("product_data_test.json");
 
             Assert.Equal("Cheeseburger", products[0].name);
         }

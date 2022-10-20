@@ -14,9 +14,8 @@ namespace Burgerama_Burger_Shop_Test.src
         {
             Driver driver = new Driver("Rosalin", 2);
             driver.orders.Add(null);
-            bool output;
 
-            output = driver.IsDriverFree();
+            var output = driver.IsDriverFree();
 
             Assert.True(output);
         }
@@ -27,9 +26,8 @@ namespace Burgerama_Burger_Shop_Test.src
             Driver driver = new Driver("Rosalin", 2);
             driver.orders.Add(null);
             driver.orders.Add(null);
-            bool output;
 
-            output = driver.IsDriverFree();
+            var output = driver.IsDriverFree();
 
             Assert.False(output);
         }

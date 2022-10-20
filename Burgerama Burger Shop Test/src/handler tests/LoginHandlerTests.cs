@@ -19,9 +19,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void SetEmailPass(string email)
         {
             LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
-            bool output;
 
-            output = loginHandler.SetEmail(email);
+            var output = loginHandler.SetEmail(email);
 
             Assert.True(output);
         }
@@ -34,9 +33,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void SetEmailFail(string email)
         {
             LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
-            bool output;
 
-            output = loginHandler.SetEmail(email);
+            var output = loginHandler.SetEmail(email);
 
             Assert.False(output);
         }
@@ -47,9 +45,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
             loginHandler.email = "manager";
             loginHandler.password = "39F968F400E6B06A5153F37683C348C94C948539B17636C0529A4E833ACE9C40";
-            bool output;
 
-            output = loginHandler.IsUserManager();
+            var output = loginHandler.IsUserManager();
 
             Assert.True(output);
         }
@@ -63,9 +60,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
             loginHandler.email = email;
             loginHandler.password = password;
-            bool output;
 
-            output = loginHandler.IsUserManager();
+            var output = loginHandler.IsUserManager();
 
             Assert.False(output);
         }
@@ -82,9 +78,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             loginHandler.LoadUserData();
             loginHandler.email = email;
             loginHandler.password = password;
-            bool output;
 
-            output = loginHandler.IsUserRegistered();
+            var output = loginHandler.IsUserRegistered();
 
             Assert.True(output);
         }
@@ -99,9 +94,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             loginHandler.LoadUserData();
             loginHandler.email = email;
             loginHandler.password = password;
-            bool output;
 
-            output = loginHandler.IsUserRegistered();
+            var output = loginHandler.IsUserRegistered();
 
             Assert.False(output);
         }

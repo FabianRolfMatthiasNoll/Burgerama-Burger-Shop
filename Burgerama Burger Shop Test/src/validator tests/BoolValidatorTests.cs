@@ -18,9 +18,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsStringAValidBoolPass(string input)
         {
             BoolValidator boolValidator = new BoolValidator();
-            bool output;
 
-            output = boolValidator.IsValid(input);
+            var output = boolValidator.IsValid(input);
 
             Assert.True(output);
         }
@@ -34,9 +33,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsStringAValidBoolFail(string input)
         {
             BoolValidator boolValidator = new BoolValidator();
-            bool output;
 
-            output = boolValidator.IsValid(input);
+            var output = boolValidator.IsValid(input);
 
             Assert.False(output);
         }

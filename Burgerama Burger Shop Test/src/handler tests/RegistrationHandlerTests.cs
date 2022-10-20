@@ -31,9 +31,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
             registrationHandler.LoadRegistrationData("user_data_test.xml", "german_cities_test.json");
-            bool output;
 
-            output = registrationHandler.SetEmailIfValid(email);
+            var output = registrationHandler.SetEmailIfValid(email);
             email = email.ToLower();
 
             Assert.True(output);
@@ -50,9 +49,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
             registrationHandler.LoadRegistrationData("user_data_test.xml", "german_cities_test.json");
 
-            bool output;
-
-            output = registrationHandler.SetEmailIfValid(email);
+            var output = registrationHandler.SetEmailIfValid(email);
             email = email.ToLower();
 
             Assert.False(output);
@@ -66,9 +63,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void SetStreetIfValidPass(string street)
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
-            bool output;
 
-            output = registrationHandler.SetStreetIfValid(street);
+            var output = registrationHandler.SetStreetIfValid(street);
 
             Assert.True(output);
             Assert.Equal(street, registrationHandler.user.street);
@@ -81,9 +77,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void SetStreetIfValidFail(string street)
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
-            bool output;
 
-            output = registrationHandler.SetStreetIfValid(street);
+            var output = registrationHandler.SetStreetIfValid(street);
 
             Assert.False(output);
             Assert.NotEqual(street, registrationHandler.user.street);
@@ -95,9 +90,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void SetZipIfValidPass(string postal)
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
-            bool output;
 
-            output = registrationHandler.SetZipIfValid(postal);
+            var output = registrationHandler.SetZipIfValid(postal);
 
             Assert.True(output);
             Assert.Equal(postal, registrationHandler.user.postal);
@@ -111,9 +105,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void SetZipIfValidFail(string postal)
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
-            bool output;
 
-            output = registrationHandler.SetZipIfValid(postal);
+            var output = registrationHandler.SetZipIfValid(postal);
 
             Assert.False(output);
             Assert.NotEqual(postal, registrationHandler.user.postal);
@@ -127,9 +120,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
             registrationHandler.LoadRegistrationData("user_data_test.xml", "german_cities_test.json");
-            bool output;
 
-            output = registrationHandler.SetCityIfValid(city);
+            var output = registrationHandler.SetCityIfValid(city);
 
             Assert.True(output);
             Assert.Equal(city, registrationHandler.user.city);
@@ -144,9 +136,8 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         public void SetCityIfValidFail(string city)
         {
             RegistrationHandler registrationHandler = new RegistrationHandler("src/test data/");
-            bool output;
 
-            output = registrationHandler.SetCityIfValid(city);
+            var output = registrationHandler.SetCityIfValid(city);
 
             Assert.False(output);
             Assert.NotEqual(city, registrationHandler.user.city);

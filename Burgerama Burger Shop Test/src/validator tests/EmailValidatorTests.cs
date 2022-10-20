@@ -18,9 +18,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsEmailValidPass(string input)
         {
             EmailValidator emailValidator = new EmailValidator();
-            bool output;
 
-            output = emailValidator.IsValid(input);
+            var output = emailValidator.IsValid(input);
 
             Assert.True(output);
         }
@@ -34,9 +33,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsEmailValidFail(string input)
         {
             EmailValidator emailValidator = new EmailValidator();
-            bool output;
 
-            output = emailValidator.IsValid(input);
+            var output = emailValidator.IsValid(input);
 
             Assert.False(output);
         }
@@ -51,9 +49,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             FileHandler fileHandler = new FileHandler("src/test data/");
             EmailValidator emailValidator = new EmailValidator();
             List<User> userlist = fileHandler.LoadUserData("user_data_test.xml");
-            bool output;
 
-            output = emailValidator.IsEmailTaken(userlist, input);
+            var output = emailValidator.IsEmailTaken(userlist, input);
 
             Assert.True(output);
         }
@@ -68,9 +65,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
             FileHandler fileHandler = new FileHandler("src/test data/");
             EmailValidator emailValidator = new EmailValidator();
             List<User> userlist = fileHandler.LoadUserData("user_data_test.xml");
-            bool output;
 
-            output = emailValidator.IsEmailTaken(userlist, input);
+            var output = emailValidator.IsEmailTaken(userlist, input);
 
             Assert.False(output);
         }

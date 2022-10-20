@@ -17,9 +17,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         {
             //submethod isInputinBound is tested within here
             IntValidator intValidator = new IntValidator(1, 3);
-            bool output;
 
-            output = intValidator.IsValid(input);
+            var output = intValidator.IsValid(input);
 
             Assert.True(output);
         }
@@ -31,9 +30,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsIntValidFail(int input)
         {
             IntValidator intValidator = new IntValidator(1, 3);
-            bool output;
 
-            output = intValidator.IsValid(input);
+            var output = intValidator.IsValid(input);
 
             Assert.False(output);
         }
@@ -45,9 +43,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsStringValidPass(string input)
         {
             IntValidator intValidator = new IntValidator(1, 3);
-            bool output;
 
-            output = intValidator.IsValid(input);
+            var output = intValidator.IsValid(input);
 
             Assert.True(output);
         }
@@ -61,9 +58,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsStringValidFail(string input)
         {
             IntValidator intValidator = new IntValidator(1, 3);
-            bool output;
 
-            output = intValidator.IsValid(input);
+            var output = intValidator.IsValid(input);
 
             Assert.False(output);
         }
@@ -75,9 +71,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsStringAnIntPass(string input)
         {
             IntValidator intValidator = new IntValidator(0, 0);
-            bool output;
 
-            output = intValidator.IsInputInt(input);
+            var output = intValidator.IsInputInt(input);
 
             Assert.True(output);
         }
@@ -90,9 +85,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsStringAnIntFail(string input)
         {
             IntValidator intValidator = new IntValidator(0, 0);
-            bool output;
 
-            output = intValidator.IsInputInt(input);
+            var output = intValidator.IsInputInt(input);
 
             Assert.False(output);
         }
@@ -104,9 +98,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsIntPositivPass(int input)
         {
             IntValidator intValidator = new IntValidator(0, 0);
-            bool output;
 
-            output = intValidator.IsIntPositiv(input);
+            var output = intValidator.IsIntPositiv(input);
 
             Assert.True(output);
         }
@@ -118,9 +111,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsIntPositivFail(int input)
         {
             IntValidator intValidator = new IntValidator(0, 0);
-            bool output;
 
-            output = intValidator.IsIntPositiv(input);
+            var output = intValidator.IsIntPositiv(input);
 
             Assert.False(output);
         }
@@ -131,9 +123,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsStringPositivPass(string input)
         {
             IntValidator intValidator = new IntValidator(0, 0);
-            bool output;
 
-            output = intValidator.IsIntPositiv(input);
+            var output = intValidator.IsIntPositiv(input);
 
             Assert.True(output);
         }
@@ -146,9 +137,8 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         public void IsStringPositivFail(string input)
         {
             IntValidator intValidator = new IntValidator(0, 0);
-            bool output;
 
-            output = intValidator.IsIntPositiv(input);
+            var output = intValidator.IsIntPositiv(input);
 
             Assert.False(output);
         }

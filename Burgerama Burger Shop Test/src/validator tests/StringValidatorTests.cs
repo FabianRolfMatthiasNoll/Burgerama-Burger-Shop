@@ -16,10 +16,10 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         {
             //ARRANGE
             StringValidator stringValidator = new StringValidator();
-            bool output;
 
-            //ACT
-            output = stringValidator.IsValid(input);
+            var output =
+                //ACT
+                stringValidator.IsValid(input);
 
             //ASSERT
             Assert.Equal(false, output);
@@ -33,10 +33,10 @@ namespace Burgerama_Burger_Shop_Test.src.validator_tests
         {
             //ARRANGE
             StringValidator stringValidator = new StringValidator();
-            bool output;
 
-            //ACT
-            output = stringValidator.IsValid(input);
+            var output =
+                //ACT
+                stringValidator.IsValid(input);
 
             //ASSERT
             Assert.Equal(true, output);
