@@ -18,7 +18,6 @@ namespace Burgerama_Burger_Shop_App
 
     public class Order
     {
-        public int id;
         public State state;
         public int prepTime;
         public int shipTime;
@@ -29,11 +28,11 @@ namespace Burgerama_Burger_Shop_App
 
         readonly FileHandler _fileHandler;
         List<Driver> _drivers;
-        public string fileNameDriver;
+        private readonly string _fileNameDriver;
 
         public Order(string filePath, string fileNameD)
         {
-            fileNameDriver = fileNameD;
+            _fileNameDriver = fileNameD;
             state = State.Preperation;
             _fileHandler = new FileHandler(filePath);
             boughtProducts = new List<Product>();
@@ -43,7 +42,7 @@ namespace Burgerama_Burger_Shop_App
 
         public void FillInformationInOrder(User user)
         {
-            _drivers = _fileHandler.ReadJson<Driver>(fileNameDriver);
+            _drivers = _fileHandler.ReadJson<Driver>(_fileNameDriver);
             customer = user;
             
             foreach(var product in boughtProducts)
