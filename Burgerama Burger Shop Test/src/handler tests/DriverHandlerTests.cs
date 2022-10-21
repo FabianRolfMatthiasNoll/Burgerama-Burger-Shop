@@ -10,44 +10,17 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
 {
     public class DriverHandlerTests
     {
-        [Fact]
-        public void AddOrderToFreeDriver()
+        [Theory]
+        [InlineData("driver_data_test_free.json", "Lara Croft")]
+        [InlineData("driver_data_test_no_free.json", "Nishal Bondeli")]
+        public void GiveFreeDrivers_ReturnMostOpenOne(string testFile, string name)
         {
-            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test_free.json", "driver_config_test.json");
-            Order order = new Order("src/test data/", "driver_data_test.json");
-            driverHandler.LoadDriverStates();
-            order = driverHandler.drivers[2].orders[2];
+            var driverHandler = new DriverHandler("src/test data/driver data/", testFile,
+                "driver_config_test.json");
 
-            driverHandler.AddOrderToBestDriver(order);
-            driverHandler.LoadDriverStates();
+            var driver = driverHandler.ReturnOpenDriver();
 
-            Assert.Equal(3, driverHandler.drivers[0].orders.Count);
-        }
-
-        [Fact]
-        public void AddOrderToNotFreeDriver()
-        {
-            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test_no_free.json", "driver_config_test.json");
-            Order order = new Order("src/test data/", "driver_data_test.json");
-            driverHandler.LoadDriverStates();
-            order = driverHandler.drivers[2].orders[2];
-
-            driverHandler.AddOrderToBestDriver(order);
-            driverHandler.LoadDriverStates();
-
-            Assert.Equal(3, driverHandler.drivers[0].orders.Count);
-        }
-
-        [Fact]
-        public void CountAllOpenOrders()
-        {
-            DriverHandler driverHandler = new DriverHandler("src/test data/", "driver_data_test2.json", "driver_config_test.json");
-
-            driverHandler.CountOpenOrders();
-
-            Assert.Equal(1, driverHandler.drivers[0].openOrders);
-            Assert.Equal(3, driverHandler.drivers[1].openOrders);
-            Assert.Equal(3, driverHandler.drivers[2].openOrders);
+            Assert.Equal(name, driver.name);
         }
 
         [Fact]
@@ -59,7 +32,5 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
 
             Assert.Equal("Lea Ivosevic", driverHandler.drivers[3].name);
         }
-
-
     }
 }
