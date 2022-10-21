@@ -23,45 +23,29 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             _fileNameConfig = fNameConfig;
         }
 
-        public void CountOpenOrders()
+        public Driver ReturnOpenDriver()
         {
             LoadDriverStates();
-            foreach (var driver in drivers)
-            {
-                int openOrderCount = 0;
-
-                foreach (var order in driver.orders)
-                {
-                    if (order.state != State.Closed)
-                    {
-                        openOrderCount++;
-                    }
-                }
-
-                driver.openOrders = openOrderCount;
-            }
-            SaveCurrentDriverStates();
-        }
-
-        public void AddOrderToBestDriver(Order order)
-        {
-            LoadDriverStates();
-            CountOpenOrders();
             drivers = drivers.OrderBy(o => o.openOrders).ToList();
-            bool driverAdded = false;
-            foreach(var driver in drivers)
+            foreach (var driver in drivers)
             {
                 if (driver.IsDriverFree())
                 {
-                    driver.orders.Add(order);
-                    driverAdded = true;
-                    break;
+                    return driver;
                 }
             }
+            return drivers[0];
+        }
 
-            if(driverAdded == false)
+        public void AddOrderToDriver(Order order, Driver openDriver)
+        {
+            for (int i = 0; i < drivers.Count; i++)
             {
-                drivers[0].orders.Add(order);
+                if (drivers[i].name == openDriver.name)
+                {
+                    drivers[i] = openDriver;
+                    break;
+                }
             }
             SaveCurrentDriverStates();
         }
@@ -89,6 +73,10 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public void LoadDriverStates()
         {
             drivers = _fileHandler.ReadJson<Driver>(_fileNameStates);
+            foreach (var driver in drivers)
+            {
+                driver.CountOpenOrders();
+            }
         }
 
         public void SaveCurrentDriverStates()
