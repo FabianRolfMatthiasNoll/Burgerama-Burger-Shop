@@ -17,10 +17,17 @@ namespace Burgerama_Burger_Shop_Test.src
             Order order = new Order("src/test data/", "driver_data_test.json");
             User user = new User();
             user.email = "TestEmail";
+            var driver = new Driver()
+            {
+                name = "Rosalin",
+                capacity = 2,
+                openOrders = 1
+            };
+
             order.boughtProducts.Add(new Product(1, "Food", "Burger", 4, 10, 1));
             order.boughtProducts.Add(new Product(1, "Food", "BurgerXL", 6, 15, 1));
 
-            order.FillInformationInOrder(user);
+            order.FillInformationInOrder(user,driver);
 
             Assert.Equal(15, order.prepTime);
             Assert.Equal(State.Preperation, order.state);
@@ -36,10 +43,16 @@ namespace Burgerama_Burger_Shop_Test.src
             Order order = new Order("src/test data/", "driver_data_test_no_free.json");
             User user = new User();
             user.email = "TestEmail";
+            var driver = new Driver()
+            {
+                name = "Rosalin",
+                capacity = 2,
+                openOrders = 2
+            };
             order.boughtProducts.Add(new Product(1, "Food", "Burger", 4, 10, 1));
             order.boughtProducts.Add(new Product(1, "Food", "BurgerXL", 6, 15, 1));
 
-            order.FillInformationInOrder(user);
+            order.FillInformationInOrder(user, driver);
 
             Assert.Equal(15, order.prepTime);
             Assert.Equal(State.Preperation, order.state);
@@ -55,10 +68,16 @@ namespace Burgerama_Burger_Shop_Test.src
             Order order = new Order("src/test data/", "driver_data_test.json");
             User user = new User();
             user.email = "TestEmail";
+            var driver = new Driver()
+            {
+                name = "Rosalin",
+                capacity = 2,
+                openOrders = 1
+            };
             order.boughtProducts.Add(new Product(1, "Merchandise", "Burger", 4, 0, 1));
             order.boughtProducts.Add(new Product(1, "Merchandise", "BurgerXL", 6, 0, 1));
 
-            order.FillInformationInOrder(user);
+            order.FillInformationInOrder(user, driver);
 
             Assert.Equal(0, order.prepTime);
             Assert.Equal(State.Delivery, order.state);
@@ -74,10 +93,16 @@ namespace Burgerama_Burger_Shop_Test.src
             Order order = new Order("src/test data/", "driver_data_test_no_free.json");
             User user = new User();
             user.email = "TestEmail";
+            var driver = new Driver()
+            {
+                name = "Rosalin",
+                capacity = 2,
+                openOrders = 2
+            };
             order.boughtProducts.Add(new Product(1, "Merchandise", "Burger", 4, 0, 1));
             order.boughtProducts.Add(new Product(1, "Merchandise", "BurgerXL", 6, 0, 1));
 
-            order.FillInformationInOrder(user);
+            order.FillInformationInOrder(user,driver);
 
             Assert.Equal(0, order.prepTime);
             Assert.Equal(State.Delivery, order.state);
