@@ -80,8 +80,9 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         [ExcludeFromCodeCoverage]
         public void FinishOrder(User user)
         {
-            order.FillInformationInOrder(user);
-            _driverHandler.AddOrderToBestDriver(order);
+            var driver = _driverHandler.ReturnOpenDriver();
+            order.FillInformationInOrder(user, driver);
+            _driverHandler.AddOrderToDriver(order, driver);
         }
 
         public bool IsProductDrink(int index)
