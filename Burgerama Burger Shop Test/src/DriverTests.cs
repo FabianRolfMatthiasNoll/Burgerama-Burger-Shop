@@ -1,4 +1,5 @@
 ﻿using Burgerama_Burger_Shop_App;
+using Burgerama_Burger_Shop_App.src.handlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,11 @@ namespace Burgerama_Burger_Shop_Test.src
         [Fact]
         public void IsDriverFreePass()
         {
-            Driver driver = new Driver("Rosalin", 2);
+            Driver driver = new Driver()
+            {
+                name = "Rosalin",
+                capacity = 2
+            };
             driver.orders.Add(null);
 
             var output = driver.IsDriverFree();
@@ -23,13 +28,36 @@ namespace Burgerama_Burger_Shop_Test.src
         [Fact]
         public void IsDriverFreeFail()
         {
-            Driver driver = new Driver("Rosalin", 2);
+            Driver driver = new Driver()
+            {
+                name = "Rosalin",
+                capacity = 2
+            };
             driver.orders.Add(null);
             driver.orders.Add(null);
 
             var output = driver.IsDriverFree();
 
             Assert.False(output);
+        }
+
+        [Theory]
+        [InlineData("Happy")]
+        [InlineData("Bored")]
+        [InlineData("Balanced")]
+        [InlineData("Stressed")]
+        [InlineData("Exhausted")]
+        public void SetAndGetDriverMood(string mood)
+        {
+            Driver driver = new Driver()
+            {
+                name = "Rosalin",
+                capacity = 2
+            };
+
+            driver.Mood = mood;
+
+            Assert.Equal(mood, driver.Mood);
         }
     }
 }
