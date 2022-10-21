@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.products;
 using Burgerama_Burger_Shop_App.src.handlers;
+using Burgerama_Burger_Shop_App.src.userinterfaces;
 
 namespace Burgerama_Burger_Shop_App
 {
@@ -27,7 +28,6 @@ namespace Burgerama_Burger_Shop_App
         public User customer;
 
         readonly FileHandler _fileHandler;
-        List<Driver> _drivers;
         private readonly string _fileNameDriver;
 
         public Order(string filePath, string fileNameD)
@@ -36,13 +36,11 @@ namespace Burgerama_Burger_Shop_App
             state = State.Preperation;
             _fileHandler = new FileHandler(filePath);
             boughtProducts = new List<Product>();
-            _drivers = new List<Driver>();
 
         }
 
-        public void FillInformationInOrder(User user)
+        public void FillInformationInOrder(User user, Driver driver)
         {
-            _drivers = _fileHandler.ReadJson<Driver>(_fileNameDriver);
             customer = user;
             
             foreach(var product in boughtProducts)
@@ -61,24 +59,10 @@ namespace Burgerama_Burger_Shop_App
                     state = State.Preperation;
                 }
 
-                totalSum = totalSum + product.price;
+                totalSum += product.price;
             }
 
-            bool driverAvailable = false;
-
-            foreach (var driver in _drivers)
-            {
-                if (driver.IsDriverFree())
-                {
-                    shipTime = 20;
-                    driverAvailable = true;
-                    break;
-                }
-            }
-            if (!driverAvailable)
-            {
-                shipTime = 35;
-            }
+            shipTime = driver.CalculateDeliveryTime();
 
             totalTime = shipTime + prepTime;
         }
@@ -87,24 +71,24 @@ namespace Burgerama_Burger_Shop_App
         {
             if (state == State.Preperation)
             {
-                prepTime = prepTime - 15;
+                prepTime -= 15;
                 if (prepTime <= 0)
                 {
                     state = State.Delivery;
-                    shipTime = shipTime - Math.Abs(prepTime);
+                    shipTime -= Math.Abs(prepTime);
                     prepTime = 0;
                 }
             }
             else if (state == State.Delivery)
             {
-                shipTime = shipTime - 15;
+                shipTime -= 15;
                 if (shipTime <= 0)
                 {
                     state = State.Closed;
                     shipTime = 0;
                 }
             }
-            totalTime = totalTime - 15;
+            totalTime -= 15;
             if(totalTime < 0)
             {
                 totalTime = 0;
