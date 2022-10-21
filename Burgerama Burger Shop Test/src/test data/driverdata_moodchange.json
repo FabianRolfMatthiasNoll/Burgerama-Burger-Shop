@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Joe Pegg",
+    "capacity": 3,
+    "openOrders": 1,
+    "Mood": "Happy",
+    "orders": []
+  },
+  {
+    "name": "Lara Croft",
+    "capacity": 6,
+    "openOrders": 3,
+    "Mood": "Happy",
+    "orders": []
+  },
+  {
+    "name": "Nishal Bondeli",
+    "capacity": 4,
+    "openOrders": 3,
+    "Mood": "Happy",
+    "orders": []
+  }
+]

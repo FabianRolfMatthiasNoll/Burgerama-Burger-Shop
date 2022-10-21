@@ -1,8 +1,8 @@
 [
   {
     "name": "Joe Pegg",
-    "capacity": 3,
-    "openOrders": 1,
+    "capacity": 1,
+    "openOrders": 4,
     "orders": [
       {
         "id": 0,
@@ -63,7 +63,57 @@
       },
       {
         "id": 0,
-        "state": 2,
+        "state": 1,
+        "prepTime": 0,
+        "shipTime": 20,
+        "totalTime": 20,
+        "totalSum": 0.99,
+        "boughtProducts": [
+          {
+            "id": 387,
+            "category": "Merchandise (One Size)",
+            "categoryId": 4,
+            "name": "Stickers",
+            "price": 0.99,
+            "prepTime": 0
+          }
+        ],
+        "customer": {
+          "email": "admin",
+          "password": "182906571A6237B82F137B3F2D83C003E564209E481304BF32F84B44A126C5B3",
+          "postal": "420",
+          "street": "adminstreet 69",
+          "city": "admintown"
+        }
+      },
+      {
+        "id": 0,
+        "state": 1,
+        "prepTime": 0,
+        "shipTime": 20,
+        "totalTime": 20,
+        "totalSum": 0.99,
+        "boughtProducts": [
+          {
+            "id": 387,
+            "category": "Merchandise (One Size)",
+            "categoryId": 4,
+            "name": "Stickers",
+            "price": 0.99,
+            "prepTime": 0
+          }
+        ],
+        "customer": {
+          "email": "admin",
+          "password": "182906571A6237B82F137B3F2D83C003E564209E481304BF32F84B44A126C5B3",
+          "postal": "420",
+          "street": "adminstreet 69",
+          "city": "admintown"
+        }
+      },
+      {
+        "id": 0,
+        "state": 1,
         "prepTime": 0,
         "shipTime": 20,
         "totalTime": 20,
@@ -90,7 +140,7 @@
   },
   {
     "name": "Lara Croft",
-    "capacity": 6,
+    "capacity": 1,
     "openOrders": 3,
     "orders": [
       {
@@ -316,8 +366,8 @@
   },
   {
     "name": "Nishal Bondeli",
-    "capacity": 4,
-    "openOrders": 3,
+    "capacity": 1,
+    "openOrders": 2,
     "orders": [
       {
         "id": 0,
@@ -423,31 +473,6 @@
             "name": "Red Bull",
             "price": 3.9,
             "prepTime": 12
-          }
-        ],
-        "customer": {
-          "email": "admin",
-          "password": "182906571A6237B82F137B3F2D83C003E564209E481304BF32F84B44A126C5B3",
-          "postal": "420",
-          "street": "adminstreet 69",
-          "city": "admintown"
-        }
-      },
-      {
-        "id": 0,
-        "state": 1,
-        "prepTime": 5,
-        "shipTime": 20,
-        "totalTime": 25,
-        "totalSum": 0.99,
-        "boughtProducts": [
-          {
-            "id": 387,
-            "category": "Merchandise (One Size)",
-            "categoryId": 4,
-            "name": "Stickers",
-            "price": 0.99,
-            "prepTime": 0
           }
         ],
         "customer": {
