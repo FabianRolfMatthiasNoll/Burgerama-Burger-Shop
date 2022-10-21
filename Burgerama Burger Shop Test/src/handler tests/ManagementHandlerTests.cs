@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Burgerama_Burger_Shop_Test.src.handler_tests
 {
-    public class ManagmentHandlerTests
+    public class ManagementHandlerTests
     {
         [Fact]
         public void MoveTimeForward()
         {
-            ManagementHandler managementHandler = new ManagementHandler("src/test data/", "driver_data_test_time1.json");
+            ManagementHandler managementHandler = new ManagementHandler("src/test data/management data/", "driver_data_test_time1.json");
             managementHandler.LoadDriverData();
 
             managementHandler.FastForwardTime();
@@ -26,7 +26,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         [Fact]
         public void MoveTimeForwardTwice()
         {
-            ManagementHandler managementHandler = new ManagementHandler("src/test data/", "driver_data_test_time2.json");
+            ManagementHandler managementHandler = new ManagementHandler("src/test data/management data/", "driver_data_test_time2.json");
             managementHandler.LoadDriverData();
 
             managementHandler.FastForwardTime();
@@ -40,7 +40,7 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
         [Fact]
         public void MoveTimeForwardThrice()
         {
-            ManagementHandler managementHandler = new ManagementHandler("src/test data/", "driver_data_test_time3.json");
+            ManagementHandler managementHandler = new ManagementHandler("src/test data/management data/", "driver_data_test_time3.json");
             managementHandler.LoadDriverData();
 
             managementHandler.FastForwardTime();
