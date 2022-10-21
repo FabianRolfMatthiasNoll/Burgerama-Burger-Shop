@@ -9,7 +9,5 @@ namespace Burgerama_Burger_Shop_App.src
     public class City
     {
         public string city;
-        public string country;
-        public string adminName;
     }
 }
