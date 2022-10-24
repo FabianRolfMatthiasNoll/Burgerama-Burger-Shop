@@ -23,7 +23,7 @@ namespace Burgerama_Burger_Shop_Test.src
             var driver = new Driver()
             {
                 name = _driverName,
-                mood = new BalancedMood(),
+                mood = new BalancedMood(20,5,4),
                 capacity = 2,
                 openOrders = 1
             };
@@ -50,7 +50,7 @@ namespace Burgerama_Burger_Shop_Test.src
             var driver = new Driver()
             {
                 name = _driverName,
-                mood = new StressedMood(),
+                mood = new StressedMood(20,5,6),
                 capacity = 2,
                 openOrders = 2
             };
@@ -76,7 +76,7 @@ namespace Burgerama_Burger_Shop_Test.src
             var driver = new Driver()
             {
                 name = _driverName,
-                mood = new BalancedMood(),
+                mood = new BalancedMood(20,5,4),
                 capacity = 2,
                 openOrders = 1
             };
@@ -102,7 +102,7 @@ namespace Burgerama_Burger_Shop_Test.src
             var driver = new Driver()
             {
                 name = _driverName,
-                mood = new StressedMood(),
+                mood = new StressedMood(20,5,6),
                 capacity = 2,
                 openOrders = 2
             };

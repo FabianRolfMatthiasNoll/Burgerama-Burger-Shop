@@ -16,9 +16,9 @@ namespace Burgerama_Burger_Shop_Test.src.mood_tests
         [InlineData(12, 12)]
         public void CalculateDeliveryTime(int initialDeliveryTime, int expectedDeliveryTime)
         {
-            IMood mood = new BalancedMood();
+            IMood mood = new BalancedMood(initialDeliveryTime,5,0);
 
-            var actualDeliveryTime = mood.CalculateDeliveryTime(initialDeliveryTime);
+            var actualDeliveryTime = mood.CalculateDeliveryTime();
 
             Assert.Equal(expectedDeliveryTime, actualDeliveryTime);
         }
@@ -26,13 +26,10 @@ namespace Burgerama_Burger_Shop_Test.src.mood_tests
         [Fact]
         public void OrderComesIn_OrderInCapacity_SwitchToMood()
         {
-            IMood mood = new BalancedMood();
-            IMood expectedMood = new BalancedMood();
-            int capacity = 5; 
-            int openOrders = 1;
-            openOrders++;
+            IMood mood = new BalancedMood(20,5,2);
+            IMood expectedMood = new BalancedMood(20, 5, 2);
 
-            var actualMood = mood.SwitchToNextMood(capacity, openOrders);
+            var actualMood = mood.SwitchToNextMood();
             var actualType = actualMood.GetType();
             var expectedType = expectedMood.GetType();
 
@@ -42,13 +39,10 @@ namespace Burgerama_Burger_Shop_Test.src.mood_tests
         [Fact]
         public void OrderComesIn_OrderOverCapacity_SwitchToMood()
         {
-            IMood mood = new BalancedMood();
-            IMood expectedMood = new StressedMood();
-            int capacity = 5; 
-            int openOrders = 5;
-            openOrders++;
+            IMood mood = new BalancedMood(20, 5, 6);
+            IMood expectedMood = new StressedMood(20, 5, 6);
 
-            var actualMood = mood.SwitchToNextMood(capacity, openOrders);
+            var actualMood = mood.SwitchToNextMood();
             var actualType = actualMood.GetType();
             var expectedType = expectedMood.GetType();
 
@@ -58,12 +52,10 @@ namespace Burgerama_Burger_Shop_Test.src.mood_tests
         [Fact]
         public void SwitchToNextMood_AfterTimeCycle_OrdersInCapacity()
         {
-            IMood mood = new BalancedMood();
-            IMood expectedMood = new BalancedMood();
-            int capacity = 5; 
-            int openOrders = 5;
+            IMood mood = new BalancedMood(20,5,5);
+            IMood expectedMood = new BalancedMood(20,5,5);
 
-            var actualMood = mood.SwitchToNextMoodTimeCycle(capacity, openOrders);
+            var actualMood = mood.SwitchToNextMoodTimeCycle();
             var actualType = actualMood.GetType();
             var expectedType = expectedMood.GetType();
 
@@ -73,12 +65,10 @@ namespace Burgerama_Burger_Shop_Test.src.mood_tests
         [Fact]
         public void SwitchToNextMood_AfterTimeCycle_NoOrders()
         {
-            IMood mood = new BalancedMood();
-            IMood expectedMood = new HappyMood();
-            int capacity = 5; 
-            int openOrders = 0;
+            IMood mood = new BalancedMood(10,5,0);
+            IMood expectedMood = new HappyMood(10,5,0);
 
-            var actualMood = mood.SwitchToNextMoodTimeCycle(capacity, openOrders);
+            var actualMood = mood.SwitchToNextMoodTimeCycle();
             var actualType = actualMood.GetType();
             var expectedType = expectedMood.GetType();
 
