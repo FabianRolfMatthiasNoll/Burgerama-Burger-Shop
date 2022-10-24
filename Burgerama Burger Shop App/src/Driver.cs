@@ -48,11 +48,22 @@ namespace Burgerama_Burger_Shop_App
 
         public int CalculateDeliveryTime()
         {
+            //here will be the mood feature added
             if (capacity > openOrders)
             {
                 return 20;
             }
             return 35;
+        }
+
+        public void CalculateMood()
+        {
+            //functionaloity claclulatehsdakhas
+        }
+
+        public void CalculateMoodAfterTime()
+        {
+            //functionaloity claclulatehsdakhas
         }
     }
 }
