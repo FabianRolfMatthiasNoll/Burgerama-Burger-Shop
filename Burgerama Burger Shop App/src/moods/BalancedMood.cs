@@ -9,13 +9,17 @@ namespace Burgerama_Burger_Shop_App.src.moods
 {
     public class BalancedMood : IMood
     {
-        public int DeliveryTimeFactor { get; }
-        public void SwitchToNextMood(int capacity, int openOrders)
+        public int CalculateDeliveryTime(int deliveryTime)
+        {
+            return deliveryTime;
+        }
+
+        public IMood SwitchToNextMood(int capacity, int openOrders)
         {
             throw new NotImplementedException();
         }
 
-        public void SwitchToNextMoodTimeCycle(int capacity, int openOrders)
+        public IMood SwitchToNextMoodTimeCycle(int capacity, int openOrders)
         {
             throw new NotImplementedException();
         }
