@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Burgerama_Burger_Shop_App.src.moods;
 
 namespace Burgerama_Burger_Shop_Test.src
 {
@@ -12,8 +13,6 @@ namespace Burgerama_Burger_Shop_Test.src
     public class OrderTests
     {
         private string _driverName = "Rosalin";
-        private string _moodBalanced = "Balanced";
-        private string _moodStressed = "Stressed";
 
         [Fact]
         public void CalculateOrderAttributesFoodAndAvailableDriver()
@@ -24,7 +23,7 @@ namespace Burgerama_Burger_Shop_Test.src
             var driver = new Driver()
             {
                 name = _driverName,
-                Mood = _moodBalanced,
+                mood = new BalancedMood(),
                 capacity = 2,
                 openOrders = 1
             };
@@ -51,7 +50,7 @@ namespace Burgerama_Burger_Shop_Test.src
             var driver = new Driver()
             {
                 name = _driverName,
-                Mood = _moodStressed,
+                mood = new StressedMood(),
                 capacity = 2,
                 openOrders = 2
             };
@@ -77,7 +76,7 @@ namespace Burgerama_Burger_Shop_Test.src
             var driver = new Driver()
             {
                 name = _driverName,
-                Mood = _moodBalanced,
+                mood = new BalancedMood(),
                 capacity = 2,
                 openOrders = 1
             };
@@ -103,7 +102,7 @@ namespace Burgerama_Burger_Shop_Test.src
             var driver = new Driver()
             {
                 name = _driverName,
-                Mood = _moodStressed,
+                mood = new StressedMood(),
                 capacity = 2,
                 openOrders = 2
             };
