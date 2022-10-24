@@ -4,40 +4,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.src.interfaces;
+using Newtonsoft.Json;
 
 namespace Burgerama_Burger_Shop_App.src.moods
 {
     public class BalancedMood : IMood
     {
-        public int CalculateDeliveryTime(int deliveryTime)
+        [JsonIgnore]
+        public int DeliveryTime { get; set; }
+        [JsonIgnore]
+        public int Capacity { get; set; }
+        [JsonIgnore]
+        public int OpenOrders { get; set; }
+
+        public string MoodName { get; set; }
+
+        public BalancedMood(int deliveryTime, int capacity, int openOrders)
         {
-            return deliveryTime;
+            DeliveryTime = deliveryTime;
+            Capacity = capacity;
+            OpenOrders = openOrders;
+            MoodName = "Balanced";
         }
 
-        public IMood SwitchToNextMood(int capacity, int openOrders)
+        public int CalculateDeliveryTime()
         {
-            if (capacity > openOrders)
+            return this.DeliveryTime;
+        }
+
+        public IMood SwitchToNextMood()
+        {
+            if (this.Capacity > this.OpenOrders)
             {
-                var mood = new BalancedMood();
+                var mood = new BalancedMood(this.DeliveryTime,this.Capacity,this.OpenOrders);
                 return mood;
             }
             else
             {
-                var mood = new StressedMood();
+                var mood = new StressedMood(this.DeliveryTime, this.Capacity, this.OpenOrders);
                 return mood;
             }
         }
 
-        public IMood SwitchToNextMoodTimeCycle(int capacity, int openOrders)
+        public IMood SwitchToNextMoodTimeCycle()
         {
-            if (openOrders == 0)
+            if (this.OpenOrders == 0)
             {
-                var mood = new HappyMood();
+                var mood = new HappyMood(this.DeliveryTime, this.Capacity, this.OpenOrders);
                 return mood;
             }
             else
             {
-                var mood = new BalancedMood();
+                var mood = new BalancedMood(this.DeliveryTime, this.Capacity, this.OpenOrders);
                 return mood;
             }
         }

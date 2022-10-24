@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Burgerama_Burger_Shop_App.src.interfaces
 {
     public interface IMood
     {
-        public int CalculateDeliveryTime(int deliveryTime);
+        [JsonIgnore]
+        public int DeliveryTime { get; set; }
+        [JsonIgnore]
+        public int Capacity { get; set; }
+        [JsonIgnore]
+        public int OpenOrders { get; set; }
 
-        public IMood SwitchToNextMood(int capacity, int openOrders);
+        public string MoodName { get; set; }
 
-        public IMood SwitchToNextMoodTimeCycle(int capacity, int openOrders);
+        public int CalculateDeliveryTime();
+
+        public IMood SwitchToNextMood();
+
+        public IMood SwitchToNextMoodTimeCycle();
     }
 }

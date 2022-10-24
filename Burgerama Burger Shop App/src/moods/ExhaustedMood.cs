@@ -4,25 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.src.interfaces;
+using Newtonsoft.Json;
 
 namespace Burgerama_Burger_Shop_App.src.moods
 {
     public class ExhaustedMood : IMood
     {
-        public int CalculateDeliveryTime(int deliveryTime)
+        [JsonIgnore]
+        public int DeliveryTime { get; set; }
+        [JsonIgnore]
+        public int Capacity { get; set; }
+        [JsonIgnore]
+        public int OpenOrders { get; set; }
+
+        public string MoodName { get; set; }
+
+        public ExhaustedMood(int deliveryTime, int capacity, int openOrders)
         {
-            return deliveryTime + 25;
+            DeliveryTime = deliveryTime;
+            Capacity = capacity;
+            OpenOrders = openOrders;
+            MoodName = "Exhausted";
         }
 
-        public IMood SwitchToNextMood(int capacity, int openOrders)
+        public int CalculateDeliveryTime()
         {
-            var mood = new ExhaustedMood();
+            return this.DeliveryTime + 25;
+        }
+
+        public IMood SwitchToNextMood()
+        {
+            var mood = new ExhaustedMood(this.DeliveryTime, this.Capacity, this.OpenOrders);
             return mood;
         }
 
-        public IMood SwitchToNextMoodTimeCycle(int capacity, int openOrders)
+        public IMood SwitchToNextMoodTimeCycle()
         {
-            var mood = new StressedMood();
+            var mood = new StressedMood(this.DeliveryTime, this.Capacity, this.OpenOrders);
             return mood;
         }
     }
