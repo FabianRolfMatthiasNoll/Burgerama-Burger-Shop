@@ -39,12 +39,13 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void AddOrderToDriver(Order order, Driver openDriver)
         {
+            openDriver.orders.Add(order);
             for (int i = 0; i < drivers.Count; i++)
             {
                 if (drivers[i].name == openDriver.name)
                 {
                     drivers[i] = openDriver;
-                    //Add Functionality for new Mood Setting driver.CalculateMood
+                    drivers[i].mood = drivers[i].mood.SwitchToNextMood();
                     break;
                 }
             }
@@ -53,8 +54,8 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void UpdateDrivers()
         {
-            List<Driver> driverStates = _fileHandler.ReadJson<Driver>(_fileNameStates);
-            drivers = _fileHandler.ReadJson<Driver>(_fileNameConfig);
+            List<Driver> driverStates = _fileHandler.ReadDriverList(_fileNameStates);
+            drivers = _fileHandler.ReadDriverList(_fileNameConfig);
 
             foreach (var driver1 in driverStates)
             {
@@ -65,6 +66,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                         driver2.orders = driver1.orders;
                         driver2.openOrders = driver1.openOrders;
                         driver2.capacity = driver1.capacity;
+                        driver2.mood = driver1.mood;
                     }
                 }
             }
@@ -73,7 +75,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void LoadDriverStates()
         {
-            drivers = _fileHandler.ReadJson<Driver>(_fileNameStates);
+            drivers = _fileHandler.ReadDriverList(_fileNameStates);
             foreach (var driver in drivers)
             {
                 driver.CountOpenOrders();
