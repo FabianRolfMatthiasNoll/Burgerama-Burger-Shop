@@ -3,9 +3,11 @@
     "name": "Joe Pegg",
     "capacity": 3,
     "openOrders": 4,
+    "mood": {
+      "MoodName": "Stressed"
+    },
     "orders": [
       {
-        "id": 0,
         "state": 0,
         "prepTime": 16,
         "shipTime": 20,
@@ -62,7 +64,6 @@
         }
       },
       {
-        "id": 0,
         "state": 1,
         "prepTime": 0,
         "shipTime": 20,
@@ -87,7 +88,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 12,
         "shipTime": 20,
@@ -112,7 +112,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 5,
         "shipTime": 35,
@@ -128,7 +127,6 @@
             "prepTime": 5
           },
           {
-            "onIce": true,
             "id": 223,
             "category": "Drink",
             "categoryId": 2,
@@ -151,9 +149,11 @@
     "name": "Lara Croft",
     "capacity": 6,
     "openOrders": 6,
+    "mood": {
+      "MoodName": "Balanced"
+    },
     "orders": [
       {
-        "id": 0,
         "state": 0,
         "prepTime": 16,
         "shipTime": 20,
@@ -226,7 +226,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 14,
         "shipTime": 20,
@@ -291,7 +290,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 5,
         "shipTime": 20,
@@ -372,7 +370,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 12,
         "shipTime": 20,
@@ -445,7 +442,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 16,
         "shipTime": 20,
@@ -502,7 +498,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 12,
         "shipTime": 20,
@@ -556,9 +551,11 @@
     "name": "Nishal Bondeli",
     "capacity": 2,
     "openOrders": 4,
+    "mood": {
+      "MoodName": "Stressed"
+    },
     "orders": [
       {
-        "id": 0,
         "state": 0,
         "prepTime": 16,
         "shipTime": 20,
@@ -631,7 +628,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 16,
         "shipTime": 20,
@@ -672,7 +668,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 12,
         "shipTime": 20,
@@ -705,7 +700,6 @@
         }
       },
       {
-        "id": 0,
         "state": 0,
         "prepTime": 14,
         "shipTime": 20,
