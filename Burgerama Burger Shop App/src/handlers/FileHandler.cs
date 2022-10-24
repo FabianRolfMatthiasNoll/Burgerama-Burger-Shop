@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Burgerama_Burger_Shop_App.src.moods;
 
 namespace Burgerama_Burger_Shop_App.src.handlers
 {
@@ -54,6 +55,34 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                 return true;
             }
             return false;
+        }
+
+        public List<Driver> ReadDriverList(string fileName)
+        {
+            string json = File.ReadAllText($"{filePath}{fileName}");
+            List<Driver> list = JsonConvert.DeserializeObject<List<Driver>>(json);
+
+            foreach (var driver in list)
+            {
+                if (driver.mood.MoodName == "Happy")
+                {
+                    driver.mood = new HappyMood(20, driver.capacity, driver.openOrders);
+                } else if (driver.mood.MoodName == "Bored")
+                {
+                    driver.mood = new BoredMood(20, driver.capacity, driver.openOrders);
+                } else if (driver.mood.MoodName == "Balanced")
+                {
+                    driver.mood = new BalancedMood(20, driver.capacity, driver.openOrders);
+                } else if (driver.mood.MoodName == "Stressed")
+                {
+                    driver.mood = new StressedMood(20, driver.capacity, driver.openOrders);
+                } else if (driver.mood.MoodName == "Exhausted")
+                {
+                    driver.mood = new ExhaustedMood(20, driver.capacity, driver.openOrders);
+                }
+            }
+
+            return list;
         }
 
         public List<T> ReadJson<T>(string fileName)
