@@ -24,7 +24,18 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
         public void LoadDriverData()
         {
-            drivers = _fileHandler.ReadJson<Driver>(_fileName);
+            drivers = _fileHandler.ReadDriverList(_fileName);
+        }
+
+        [ExcludeFromCodeCoverage]
+        public ConsoleTable CreateDriverOverview()
+        {
+            var table = new ConsoleTable("Driver Name", "Mood", "Capacity", "Open Orders");
+            foreach (var driver in drivers)
+            {
+                table.AddRow(driver.name, driver.mood.MoodName, driver.capacity, driver.openOrders);
+            }
+            return table;
         }
 
         [ExcludeFromCodeCoverage]
@@ -55,7 +66,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
                 {
                     order.DecreaseTotalTime();
                 }
-                //here adding the mood feature
+                driver.mood = driver.mood.SwitchToNextMoodTimeCycle();
             }
             _fileHandler.WriteJson(drivers, _fileName);
         }
@@ -63,7 +74,11 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         [ExcludeFromCodeCoverage]
         public void ReloadData()
         {
-            drivers = _fileHandler.ReadJson<Driver>(_fileName);
+            drivers = _fileHandler.ReadDriverList(_fileName);
+            foreach (var driver in drivers)
+            {
+                driver.CountOpenOrders();
+            }
         }
 
         public void EraseClosedOrders()

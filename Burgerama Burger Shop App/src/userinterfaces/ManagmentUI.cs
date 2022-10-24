@@ -25,12 +25,13 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
             _managementHandler.LoadDriverData();
             MenuStart:
             Console.Clear();
-            Console.SetWindowSize(150, 50);
+            Console.SetWindowSize(180, 50);
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("                                             Welcome Back Manager");
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("                                          Here are all existing Orders:             ");
-            
+            var tableDriver = _managementHandler.CreateDriverOverview();
+            tableDriver.Write(Format.Alternative);
             var table = _managementHandler.CreateOrderOverview();
             table.Write(Format.Alternative);
 
