@@ -67,6 +67,15 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return false;
         }
 
+        public bool IsUserAdmin()
+        {
+            if (email == "admin" && password == "182906571A6237B82F137B3F2D83C003E564209E481304BF32F84B44A126C5B3")
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool IsUserRegistered()
         {
             foreach (var user in _users)

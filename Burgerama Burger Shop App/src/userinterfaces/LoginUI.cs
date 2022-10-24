@@ -49,7 +49,7 @@ namespace Burgerama_Burger_Shop_App.src.userinterfaces
                 _managmentUi.ManagerMenu();
             }
 
-            if (_login.IsUserRegistered())
+            if (_login.IsUserRegistered() || _login.IsUserAdmin())
             {
                 Console.Clear();
                 _orderUi.OrderMenu(_login.ReturnUser());
