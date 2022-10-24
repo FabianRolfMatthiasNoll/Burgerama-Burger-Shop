@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\test data\driverData_MoodChange.json" />
     <None Remove="src\test data\driver_config_test.json" />
     <None Remove="src\test data\driver_data_test.json" />
     <None Remove="src\test data\driver_data_test2.json" />
@@ -27,19 +28,22 @@
     <Content Include="src\test data\driver_config_test.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\test data\driver_data_test_free.json">
+    <Content Include="src\test data\driverdata_moodchange.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\test data\driver_data_test_time3.json">
+    <Content Include="src\test data\driver data\driver_data_test_free.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\test data\driver_data_test_time2.json">
+    <Content Include="src\test data\management data\driver_data_test_time3.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\test data\driver_data_test_time1.json">
+    <Content Include="src\test data\management data\driver_data_test_time2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\test data\driver_data_test_no_free.json">
+    <Content Include="src\test data\management data\driver_data_test_time1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\test data\driver data\driver_data_test_no_free.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="src\test data\driver_data_test2.json">
