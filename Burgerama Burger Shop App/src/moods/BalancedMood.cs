@@ -16,12 +16,30 @@ namespace Burgerama_Burger_Shop_App.src.moods
 
         public IMood SwitchToNextMood(int capacity, int openOrders)
         {
-            throw new NotImplementedException();
+            if (capacity > openOrders)
+            {
+                var mood = new BalancedMood();
+                return mood;
+            }
+            else
+            {
+                var mood = new StressedMood();
+                return mood;
+            }
         }
 
         public IMood SwitchToNextMoodTimeCycle(int capacity, int openOrders)
         {
-            throw new NotImplementedException();
+            if (openOrders == 0)
+            {
+                var mood = new HappyMood();
+                return mood;
+            }
+            else
+            {
+                var mood = new BalancedMood();
+                return mood;
+            }
         }
     }
 }
