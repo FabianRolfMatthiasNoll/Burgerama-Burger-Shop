@@ -11,6 +11,10 @@ namespace Burgerama_Burger_Shop_Test.src
     [Collection("Non-Parallel Collection")]
     public class OrderTests
     {
+        private string _driverName = "Rosalin";
+        private string _moodBalanced = "Balanced";
+        private string _moodStressed = "Stressed";
+
         [Fact]
         public void CalculateOrderAttributesFoodAndAvailableDriver()
         {
@@ -19,7 +23,8 @@ namespace Burgerama_Burger_Shop_Test.src
             user.email = "TestEmail";
             var driver = new Driver()
             {
-                name = "Rosalin",
+                name = _driverName,
+                Mood = _moodBalanced,
                 capacity = 2,
                 openOrders = 1
             };
@@ -45,7 +50,8 @@ namespace Burgerama_Burger_Shop_Test.src
             user.email = "TestEmail";
             var driver = new Driver()
             {
-                name = "Rosalin",
+                name = _driverName,
+                Mood = _moodStressed,
                 capacity = 2,
                 openOrders = 2
             };
@@ -70,7 +76,8 @@ namespace Burgerama_Burger_Shop_Test.src
             user.email = "TestEmail";
             var driver = new Driver()
             {
-                name = "Rosalin",
+                name = _driverName,
+                Mood = _moodBalanced,
                 capacity = 2,
                 openOrders = 1
             };
@@ -95,7 +102,8 @@ namespace Burgerama_Burger_Shop_Test.src
             user.email = "TestEmail";
             var driver = new Driver()
             {
-                name = "Rosalin",
+                name = _driverName,
+                Mood = _moodStressed,
                 capacity = 2,
                 openOrders = 2
             };
@@ -111,7 +119,5 @@ namespace Burgerama_Burger_Shop_Test.src
             Assert.Equal(35, order.totalTime);
             Assert.Equal(user.email, order.customer.email);
         }
-        
-        //decrese total time is tested in managmantHandler but still to be added
     }
 }
