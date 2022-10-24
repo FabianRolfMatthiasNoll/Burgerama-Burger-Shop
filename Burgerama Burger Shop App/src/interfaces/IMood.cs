@@ -8,10 +8,10 @@ namespace Burgerama_Burger_Shop_App.src.interfaces
 {
     public interface IMood
     {
-        public int DeliveryTimeFactor { get; }
+        public int CalculateDeliveryTime(int deliveryTime);
 
-        public void SwitchToNextMood(int capacity, int openOrders);
+        public IMood SwitchToNextMood(int capacity, int openOrders);
 
-        public void SwitchToNextMoodTimeCycle(int capacity, int openOrders);
+        public IMood SwitchToNextMoodTimeCycle(int capacity, int openOrders);
     }
 }
