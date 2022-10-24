@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.src.interfaces;
@@ -15,8 +16,9 @@ namespace Burgerama_Burger_Shop_App
         public string name;
         public int capacity;
         public int openOrders = 0;
+        public IMood mood = new HappyMood(20,5,0);
         public List<Order> orders;
-        public IMood mood = new HappyMood();
+        
 
         public Driver()
         {
@@ -48,12 +50,7 @@ namespace Burgerama_Burger_Shop_App
 
         public int CalculateDeliveryTime()
         {
-            //here will be the mood feature added
-            if (capacity > openOrders)
-            {
-                return 20;
-            }
-            return 35;
+            return this.mood.CalculateDeliveryTime();
         }
     }
 }
