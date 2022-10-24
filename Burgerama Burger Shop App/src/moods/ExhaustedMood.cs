@@ -11,17 +11,19 @@ namespace Burgerama_Burger_Shop_App.src.moods
     {
         public int CalculateDeliveryTime(int deliveryTime)
         {
-            throw new NotImplementedException();
+            return deliveryTime + 25;
         }
 
         public IMood SwitchToNextMood(int capacity, int openOrders)
         {
-            throw new NotImplementedException();
+            var mood = new ExhaustedMood();
+            return mood;
         }
 
         public IMood SwitchToNextMoodTimeCycle(int capacity, int openOrders)
         {
-            throw new NotImplementedException();
+            var mood = new StressedMood();
+            return mood;
         }
     }
 }
