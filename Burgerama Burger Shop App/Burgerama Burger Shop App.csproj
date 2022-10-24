@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="src\data\driver_config.json" />
+    <None Remove="src\data\driver_data - Copy - Copy.json" />
+    <None Remove="src\data\driver_data - Copy.json" />
     <None Remove="src\data\driver_data.json" />
     <None Remove="src\data\german_cities.json" />
     <None Remove="src\data\product_data.json" />
@@ -20,7 +22,13 @@
     <Content Include="src\data\driver_config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\data\driver_data - Copy - Copy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\data\driver_data.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\data\driver_data - Copy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="src\data\german_cities.json">

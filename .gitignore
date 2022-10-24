@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Burgerama Burger Shop App/src/data/driver_data - Copy.json
+/Burgerama Burger Shop App/src/data/driver_data - Copy - Copy.json
