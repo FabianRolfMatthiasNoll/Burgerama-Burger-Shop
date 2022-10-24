@@ -6,17 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Burgerama_Burger_Shop_App.src.interfaces;
+using Burgerama_Burger_Shop_App.src.moods;
 
 namespace Burgerama_Burger_Shop_App
 {
-    public class Driver : IMood
+    public class Driver
     {
         public string name;
         public int capacity;
         public int openOrders = 0;
         public List<Order> orders;
-
-        public string Mood { get; set; }
+        public IMood mood = new HappyMood();
 
         public Driver()
         {
@@ -54,16 +54,6 @@ namespace Burgerama_Burger_Shop_App
                 return 20;
             }
             return 35;
-        }
-
-        public void CalculateMood()
-        {
-            //functionaloity claclulatehsdakhas
-        }
-
-        public void CalculateMoodAfterTime()
-        {
-            //functionaloity claclulatehsdakhas
         }
     }
 }
