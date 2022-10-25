@@ -64,21 +64,23 @@ namespace Burgerama_Burger_Shop_App.src.handlers
 
             foreach (var driver in list)
             {
-                if (driver.mood.MoodName == "Happy")
+                switch (driver.mood.MoodName)
                 {
-                    driver.mood = new HappyMood(20, driver.capacity, driver.openOrders);
-                } else if (driver.mood.MoodName == "Bored")
-                {
-                    driver.mood = new BoredMood(20, driver.capacity, driver.openOrders);
-                } else if (driver.mood.MoodName == "Balanced")
-                {
-                    driver.mood = new BalancedMood(20, driver.capacity, driver.openOrders);
-                } else if (driver.mood.MoodName == "Stressed")
-                {
-                    driver.mood = new StressedMood(20, driver.capacity, driver.openOrders);
-                } else if (driver.mood.MoodName == "Exhausted")
-                {
-                    driver.mood = new ExhaustedMood(20, driver.capacity, driver.openOrders);
+                    case "Happy":
+                        driver.mood = new HappyMood(20, driver.capacity, driver.openOrders);
+                        break;
+                    case "Bored":
+                        driver.mood = new BoredMood(20, driver.capacity, driver.openOrders);
+                        break;
+                    case "Balanced":
+                        driver.mood = new BalancedMood(20, driver.capacity, driver.openOrders);
+                        break;
+                    case "Stressed":
+                        driver.mood = new StressedMood(20, driver.capacity, driver.openOrders);
+                        break;
+                    case "Exhausted":
+                        driver.mood = new ExhaustedMood(20, driver.capacity, driver.openOrders);
+                        break;
                 }
             }
 
