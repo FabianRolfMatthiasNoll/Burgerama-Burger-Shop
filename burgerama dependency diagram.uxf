@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>13</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>767</x>
+      <y>377</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IValidator
+--
+- void bool IsValid(string input)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>195</x>
+      <y>962</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IEmailValidator
+--
+- void bool IsEmailTaken(string input)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>195</x>
+      <y>1131</y>
+      <w>338</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Validator&gt;&gt;
+EmailValidator
+--
+- void bool IsValid(string input)
+- void bool IsEmailTake(string input)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>455</y>
+      <w>611</w>
+      <h>533</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>450.0;10.0;450.0;250.0;10.0;250.0;10.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>1040</y>
+      <w>39</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>572</x>
+      <y>962</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Validator&gt;&gt;
+BoolValidator
+--
+- void bool IsValid(string input)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>741</x>
+      <y>767</y>
+      <w>39</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>949</x>
+      <y>1170</y>
+      <w>338</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Validator&gt;&gt;
+IntValidator
+--
+- public bool IsValid(int input);
+- public bool IsInputInt();
+- public bool IsInputInt(string input);
+- public bool IsIntPositiv(string input);
+- public bool IsIntPositiv(int input);
+- public bool IsInputInBound();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>949</x>
+      <y>962</y>
+      <w>338</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IIntValidator
+--
+- public bool IsInputInt();
+- public bool IsInputInt(string input);
+- public bool IsIntPositiv(string input);
+- public bool IsIntPositiv(int input);
+- public bool IsInputInBound();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1105</x>
+      <y>767</y>
+      <w>39</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1105</x>
+      <y>1118</y>
+      <w>39</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>754</x>
+      <y>65</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;User Interface&gt;&gt;
+MainMenu
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>923</x>
+      <y>143</y>
+      <w>39</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1326</x>
+      <y>962</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Validator&gt;&gt;
+StringValidator
+--
+- void bool IsValid(string input)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>767</y>
+      <w>624</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;460.0;10.0;460.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>377</x>
+      <y>65</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Handler&gt;&gt;
+Registration Handler
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>533</x>
+      <y>143</y>
+      <w>429</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>310.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>65</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Handler&gt;&gt;
+Login Handler
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>156</x>
+      <y>143</y>
+      <w>416</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>300.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1131</x>
+      <y>65</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;User Interface&gt;&gt;
+Managment Menu
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1508</x>
+      <y>65</y>
+      <w>338</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;User Interface&gt;&gt;
+Order Menu
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>923</x>
+      <y>143</y>
+      <w>403</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;90.0;290.0;90.0;290.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1287</x>
+      <y>143</y>
+      <w>429</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;90.0;310.0;90.0;310.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2106</x>
+      <y>221</y>
+      <w>338</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Simple Class&gt;&gt;
+Driver
+--
+string Name
+int capacity
+int openOrders
+List&lt;Order&gt; orders
+IMood mood;
+--
+IsDriverFree();
+CountOpenOrders();
+CalculateDeliveryTime();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2548</x>
+      <y>234</y>
+      <w>208</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IMood
+--
+int DeliveryTime
+int Capacity
+int OpenOrders
+--
+CalculateDeliveryTime
+SwitchMood
+SwitchMoodTimeCycle</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2431</x>
+      <y>325</y>
+      <w>143</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2314</x>
+      <y>689</y>
+      <w>208</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Mood Class&gt;&gt;
+BoredMood
+--
+string MoodName
+int DeliveryTime
+int Capacity
+int OpenOrders
+--
+CalculateDeliveryTime
+SwitchMood
+SwitchMoodTimeCycle</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2080</x>
+      <y>689</y>
+      <w>208</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Mood Class&gt;&gt;
+HappyMood
+--
+string MoodName
+int DeliveryTime
+int Capacity
+int OpenOrders
+--
+CalculateDeliveryTime
+SwitchMood
+SwitchMoodTimeCycle</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2548</x>
+      <y>689</y>
+      <w>208</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Mood Class&gt;&gt;
+BalancedMood
+--
+string MoodName
+int DeliveryTime
+int Capacity
+int OpenOrders
+--
+CalculateDeliveryTime
+SwitchMood
+SwitchMoodTimeCycle</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2782</x>
+      <y>689</y>
+      <w>208</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Mood Class&gt;&gt;
+StressedMood
+--
+string MoodName
+int DeliveryTime
+int Capacity
+int OpenOrders
+--
+CalculateDeliveryTime
+SwitchMood
+SwitchMoodTimeCycle</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3016</x>
+      <y>689</y>
+      <w>208</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Mood Class&gt;&gt;
+ExhaustedMood
+--
+string MoodName
+int DeliveryTime
+int Capacity
+int OpenOrders
+--
+CalculateDeliveryTime
+SwitchMood
+SwitchMoodTimeCycle</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2639</x>
+      <y>416</y>
+      <w>39</w>
+      <h>299</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2639</x>
+      <y>546</y>
+      <w>507</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;370.0;10.0;370.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2171</x>
+      <y>546</y>
+      <w>507</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>370.0;10.0;10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2418</x>
+      <y>546</y>
+      <w>39</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2886</x>
+      <y>546</y>
+      <w>39</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2171</x>
+      <y>0</y>
+      <w>208</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Handler&gt;&gt;
+DriverHandler
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2262</x>
+      <y>91</y>
+      <w>39</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
