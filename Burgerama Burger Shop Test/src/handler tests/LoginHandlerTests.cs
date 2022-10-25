@@ -66,6 +66,33 @@ namespace Burgerama_Burger_Shop_Test.src.handler_tests
             Assert.False(output);
         }
 
+        [Fact]
+        public void CheckForAdminPass()
+        {
+            LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
+            loginHandler.email = "admin";
+            loginHandler.password = "182906571A6237B82F137B3F2D83C003E564209E481304BF32F84B44A126C5B3";
+
+            var output = loginHandler.IsUserAdmin();
+
+            Assert.True(output);
+        }
+
+        [Theory]
+        [InlineData("admin", "")]
+        [InlineData("admin", "king")]
+        [InlineData("", "182906571A6237B82F137B3F2D83C003E564209E481304BF32F84B44A126C5B3")]
+        public void CheckForAdminFail(string email, string password)
+        {
+            LoginHandler loginHandler = new LoginHandler("src/test data/", "user_data_test.xml");
+            loginHandler.email = email;
+            loginHandler.password = password;
+
+            var output = loginHandler.IsUserAdmin();
+
+            Assert.False(output);
+        }
+
         [Theory]
         [InlineData("fabian.noll@gmail.com", "65A8CDC868F6772F6DBB72932FD008F53CF8F43090D37BDBC1B39B4663DE2791")]
         [InlineData("florian.armbruster@gmx.de", "69CA6781A5A3FD9E6C06381EFCA699F13E947678B04E7EC976B5D52290AB8F33")]
