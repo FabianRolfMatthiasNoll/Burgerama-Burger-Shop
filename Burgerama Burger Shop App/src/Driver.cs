@@ -18,11 +18,16 @@ namespace Burgerama_Burger_Shop_App
         public int openOrders = 0;
         public IMood mood = new HappyMood(20,5,0);
         public List<Order> orders;
-        
+        public int workLoad;
 
         public Driver()
         {
             orders = new List<Order>();
+        }
+
+        public void CalculateWorkLoad()
+        {
+            workLoad = capacity - openOrders;
         }
 
         public bool IsDriverFree()

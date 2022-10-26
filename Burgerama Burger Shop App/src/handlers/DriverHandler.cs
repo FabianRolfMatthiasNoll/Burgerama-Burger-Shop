@@ -26,14 +26,11 @@ namespace Burgerama_Burger_Shop_App.src.handlers
         public Driver ReturnOpenDriver()
         {
             LoadDriverStates();
-            drivers = drivers.OrderBy(o => o.openOrders).ToList();
             foreach (var driver in drivers)
             {
-                if (driver.IsDriverFree())
-                {
-                    return driver;
-                }
+               driver.CalculateWorkLoad();
             }
+            drivers = drivers.OrderByDescending(o => o.workLoad).ToList();
             return drivers[0];
         }
 
