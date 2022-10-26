@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,6 +58,7 @@ namespace Burgerama_Burger_Shop_App.src.handlers
             return false;
         }
 
+        [ExcludeFromCodeCoverage]
         public List<Driver> ReadDriverList(string fileName)
         {
             string json = File.ReadAllText($"{filePath}{fileName}");
