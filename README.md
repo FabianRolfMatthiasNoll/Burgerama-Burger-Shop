@@ -1,4 +1,8 @@
 ## Burgerama-Burger-Shop Managment and User Interface
+A Interface where you can, as a User, login or register at Burgerama, make a order and let it deliver for you. As
+a Manager you have a overview of all Orders and your Drivers, can see their mood and workload and how it affects delivery Time.
+Explore a simulated universe full of possibilitys. Unfold your powers and move time forward by 15minutes and watch how your Drivers are working.
+But jokes aside. In the Background "real drivers" are simulated. They have moods and maximum capacitys. And everything affects everything.
 
 ## Description
 The Burgerama Burger Shop requires a simple Console Application to manage the sale and supply of
