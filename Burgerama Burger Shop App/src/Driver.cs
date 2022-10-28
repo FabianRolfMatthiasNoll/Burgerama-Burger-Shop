@@ -1,12 +1,4 @@
-﻿using Burgerama_Burger_Shop_App.products;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Burgerama_Burger_Shop_App.src.interfaces;
+﻿using Burgerama_Burger_Shop_App.src.interfaces;
 using Burgerama_Burger_Shop_App.src.moods;
 
 namespace Burgerama_Burger_Shop_App

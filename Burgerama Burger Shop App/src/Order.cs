@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using Burgerama_Burger_Shop_App.products;
+﻿using Burgerama_Burger_Shop_App.products;
 using Burgerama_Burger_Shop_App.src.handlers;
-using Burgerama_Burger_Shop_App.src.userinterfaces;
 
 namespace Burgerama_Burger_Shop_App
 {
